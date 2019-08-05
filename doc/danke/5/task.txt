@@ -1,0 +1,52 @@
+1、图片瘦身
+2、地图找房交互优化
+3、可签约时长 调供应链接口
+4、房源详情页图片AI识别
+
+临时需求
+当房源主体为“杭州建信爱上租住房服务有限公司”，“建信住房服务（浙江）有限责任公司”的房源，
+
+所有端（APP\PC\H5\小程序）详情页不展示有关“分期月付免手续费”且付款方式中不展示分期月付
+
+
+1日
+
+打开10
+
+2日
+是
+
+12
+
+3日
+select count(*) from Mapi.subscribe_relate
+select count(*) from Mapi.subscribe_relate where addtime > '2019-05-20 00:00:00';
+
+select count(distinct(uid)) from Mapi.subscribe_relate ;
+select count(distinct(uid)) from Mapi.subscribe_relate where addtime > '2019-05-20 00:00:00';
+
+select name,param from Mapi.subscribe;
+select name,param from Mapi.subscribe where addtime > '2019-05-20 00:00:00' and city_id =1 limit 10;
+
+
+select city_name, count(*) as cnt from Mapi.subscribe group by city_name
+select city_name, count(*) as cnt from Mapi.subscribe where addtime > '2019-05-20 00:00:00' group by city_name
+
+订阅总数2085            去重 1718
+20号以后订阅总数378    去重 323
+
+  git push origin --delete feature-huxingtu-beiing-remove
+  feature-huxingtu-beiing-remove1
+  feature-sale-18
+  feature-sale-18-new
+  feature-sale-18.0
+  hotfix-month-promotion-bug
+  hotfix-payment-improve
+  hotfix-promotion-wordimprove
+  hotfix-push-bug
+  master
+  payment
+
+
+
+

@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+body{color:#353535; background-color: #f4f4f4; overflow-x:hidden; padding-bottom: 3.92rem;}
+div{box-sizing: border-box;}
+.user_name{font-size: 0.5rem; color:#fff; position:absolute; left: 0.64rem; top: 0.64rem;}
+.banner{width: 100%; display: block;}
+.banner_wrap{font-size: 0.853rem; font-weight: 500; height: 5.504rem; background: url('../images/vip_banner_bg.png') 0 0 no-repeat; background-size: 100% 5.504rem; text-align: center; padding-top: 1.323rem; box-sizing: border-box; }
+.banner_wrap div{margin-bottom: 0.512rem;}
+.vip_box{padding: 0.64rem 0.384rem; width:100%; box-sizing: border-box; margin-bottom: 0.427rem; background-color: #fff;}
+.vip_box.box3{margin-bottom: 0;}
+.vip_box_tilte{font-size: 0.768rem; font-weight: 500; margin-bottom: 0.384rem;}
+.vip_box_main{width: 100%; padding: 0.107rem 0; display: flex; align-content: center; align-items: center; justify-content: center;}
+.box1 .vip_box_main{background-color: #DDEDFA;}
+.box2 .vip_box_main{background-color: #FAEEDD;}
+.box3 .vip_box_main{background-color: #FAE4DD;}
+
+.vip_box_img{padding:0 1.28rem; height: 100%;}
+.vip_box_img img{width: 3.84rem; height: 3.84rem; display: block;}
+.vip_box_txt{flex: 1; font-size: 0.597rem;}
+.vip_box_txt view:first-child{font-weight: 500; font-size: 0.768rem; margin-bottom: 0.213rem;}
+
+
+.pop{display: none;}
+
+.pop_vip_main{ margin:0 0.64rem 1.707rem; text-align: center; font-size: 0.597rem; line-height: 1.195rem; clear: both; background-color: #fff;}
+
+.pop_title_wrap{width: 100%; height: 2.731rem; background: url('../images/vip_pop_title.png') 0 0 no-repeat; background-size: cover;}
+
+.pop_title{font-size: 0.853rem; font-weight: 500; padding: 0.32rem 0 0;}
+.pop_txt1{ font-size: 0.469rem;}
+
+
+
+.pop_wrap{margin-top: -1.493rem;}
+
+
+.headimg{
+  width:100%; 
+  padding-top: 0.64rem;
+  margin: 0 auto;  
+  display: flex;
+  justify-content:center;
+  padding-bottom: 0.427rem;
+  align-items:center;
+}
+.headimg .head{
+  width:33.33%;
+  height: 100%;
+  font-size: 0.469rem;
+  text-align: center;
+  position: relative;
+}
+.headimg .head::after{content: ''; position: absolute; width: 0.832rem; height: 0.832rem; background: url('../images/icon_add.png') 0 0 no-repeat; background-size: 0.832rem 0.832rem; top: 0.96rem; right: -0.384rem;}
+.headimg .head:last-child:after{display: none;}
+.headimg .head img{
+  border:solid 0.171rem #FEDE2E;
+  border-radius: 100%;
+  box-shadow: 0 0.171rem 0.512rem rgba(146, 152, 161, .5);
+}
+.headimg .head text{
+  display: block;
+}
+
+
+
+.head_3{width:2.048rem;height:2.048rem;}
+
+.vip_txt{font-size: 0.597rem; padding-top: 0.64rem; text-align: center;}
+.vip_txt text{color: #FFD81D; margin-left: 0.213rem;}
+
+
+
+.btn{ display: block; width:94%; height: 1.92rem; text-align: center; line-height: 1.92rem; background-color: #FFD81D; font-size: 0.725rem; border-radius: 1.92rem;font-weight: 500; box-shadow: 0 0 0.256rem rgba(178, 178, 178, .4);margin: 1rem auto;}
+.btn.cancel{background-color: #fff;box-shadow: 0 0 0.256rem rgba(238, 238, 238, 1);font-weight: normal;}
+.btn.disable{background-color: #fff; color: #888;font-weight: normal;}
+.btn.disable:active{box-shadow: 0 0 0.256rem rgba(238, 238, 238, 1)}
+.btn.cancel:active{box-shadow: 0 0.085rem 0.256rem rgba(238, 238, 238, 1)}
+.btn:active{box-shadow: 0 0.085rem 0.256rem rgba(178, 178, 178, .4) }
+
+.btn_fixed{position:fixed; background-color: #f4f4f4; left: 0; right: 0; bottom: 0;}
+
+.pop_box{ position: fixed; z-index: 100; left: 0; top: 0; width: 100%; bottom: 0; padding: 1.493rem 0.597rem 0; box-sizing: border-box; background-color: rgba(53, 53, 53, .8); overflow: hidden; text-align: center; font-size: 0.597rem; display: flex; justify-content: center;}
+.pop_close{width: 1.707rem; height: 2.902rem;padding-bottom: 1.195rem; position: relative; float: right; margin-right: 2.133rem; }
+.pop_close2{width: 100%; text-align: center; }
+.pop_close img,.pop_close2 img{width: 1.707rem; height: 1.707rem;}
+.pop_close::after{content: ''; position: absolute; height: 1.195rem; width: 0.064rem; background-color: #fff;top: 1.707rem; left: 0.811rem;}
+.pop_mask{ position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; bottom: 0;background-color: rgba(53, 53, 53, .8);}
+.pop_wrap{position: fixed; left: 50%; top: 50%; width:100%; transform: translate(-50%,-50%); z-index: 5001;}
+
+
+.pop_code{font-size: 0.469rem; padding:0.853rem 0;}
+.pop_code img{width:4.736rem; height: 4.736rem; border-radius: 4.736rem; overflow: hidden; border:1px solid #FCBE13;}
+

@@ -1,0 +1,210 @@
+<div class="rightinfo">
+    <input type="button" class="cancel" value="《 点击返回" onclick="history.go(-1);"/>
+
+
+    <form id="form" action="/sell/updateGoods/" method="post">
+        <input type="hidden" name="sellid" value="<?=$sellDetail['id']?>" />
+        <div class="formbody">
+            <div class="formtitle"><span style="color: #ff0000;">步骤1：审核宝贝信息</span></div>
+            <table id="tfhover" class="tftable" border="1" >
+                <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>SN</th>
+                    <th>当前状态</th>
+                    <th>拒收原因</th>
+                    <th>价格</th>
+                    <th>价值</th>
+                    <!--<th>分类</th>-->
+                    <!--<th>类型</th>-->
+                    <th>图片</th>
+                    <th>标签</th>
+                    <th>扩展信息</th>
+                    <th>备注</th>
+                    <th>创建时间</th>
+                </tr>
+                <?php foreach($goods as $key => $good){?>
+                <input type="hidden" name="id[]" value="<?=$good['id']?>" />
+
+                <tr align="center">
+                    <td><?=$good['id']?></td>
+                    <td><?=$good['good_sn']?></td>
+                    <td>
+                        <select name="status[]">
+                            <?php foreach ($goodsStatusData as $goodKey => $goodValue) {?>
+                            <option value="<?=$goodKey?>" <?php if ($good['status'] == $goodKey){?> selected="selected" <?php }?>><?=$goodValue?></option>
+                            <?php }?>
+                        </select>
+                    </td>
+                    <td>
+                        <input name="refuse_reason[]" type="text" placeholder="如果拒收此项必填" value="<?=$good['refuse_reason']?>" class="dfinput" style="width: 150px;">
+                    </td>
+                    <td>
+                        <input name="show_grape[]" type="text" value="<?=$good['show_grape']?>" class="dfinput" style="width: 70px;">
+                    </td>
+                    <td>
+                        <input name="worth_grape[]" type="text" value="<?=$good['worth_grape']?>" class="dfinput" style="width: 70px;">
+                    </td>
+                    <!--<td><?=$good['categoryid']?></td>-->
+                    <!--<td><?=$good['type']?></td>-->
+                    <td>
+                        <?php if($good['type'] == 'image'){?>
+                        <a href="<?=$good['file']?>" target="_blank" title="点击打开大图"><img src="<?=$good['file']?>" width="50" height="50"></a>
+                        <?php }else{?>
+                        <a href="<?=$good['file']?>" target="_blank" title="点击查看"> 视频</a>
+                        <?php }?>
+                    </td>
+                    <td>
+                        <?php
+                            $labels = json_decode($good['labels'], true);
+                            if (is_array($labels)) {
+                                foreach($labels as $lable){
+                                    if (is_array($lable)) {
+                                        foreach ($lable as $lableKey => $lab) {
+                        ?>
+                        <b><?=$lableKey?>:</b> <?=$lab?><br />
+                        <?php }?>
+                        <?php }?>
+                        <?php }?>
+                        <?php }?>
+
+                    </td>
+                    <td>
+                        <?php
+                            $extends = json_decode($good['extends'], true);
+                            if (is_array($extends)) {
+                                foreach($extends as $extend){
+                                    if (is_array($extend)) {
+                                        foreach ($extend as $extendKey => $ext) {
+                        ?>
+                        <b><?=$extendKey?>:</b> <?=$ext?><br />
+                        <?php }?>
+                        <?php }?>
+                        <?php }?>
+                        <?php }?>
+                    </td>
+                    <td><?=$good['remark']?></td>
+                    <td><?=$good['addtime']?></td>
+                </tr>
+                <?php }?>
+                <?php if ($sellDetail['status'] != '140') {?>
+                <tr style="height: 20px;">
+                    <td colspan="20">
+                        <input id="_saveBtn" name="" type="submit" class="btn" value="提 交">
+                    </td>
+                </tr>
+                <?php }?>
+
+                </tbody></table>
+        </div>
+    </form>
+<div class="formbody">
+            <div class="formtitle"><span style="color: #ff0000;">2：审核小卡片基本信息</span></div>
+            <? if (!empty($cardinfo)) {?>
+<table id="tfhover" class="tftable" border="1">
+                <tbody><tr>
+                    <th>ID</th>
+                    <th>地址</th>
+                    <th>类型</th>
+                    <th>文字</th>
+                    </tr>
+                     <tr align="center">
+                    <td><?=$cardinfo['id']?></td>
+                    <td><a href="<?=$cardinfo['cover']?>" target="_blank" title="点击打开大图"><img src="<?=$cardinfo['cover']?>" width="300" height="120"></a></td>
+                    <td><?=$cardinfo['type']?></td>
+                    <td><?=$cardinfo['text']?></td>
+                    </tr>
+                    </tbody>
+                    </table>
+<?} else {?>
+
+<center><b>无</b></center>
+<?}?>
+                    </div>
+    <form id="form" action="/sell/updateContact/" method="post">
+        <input type="hidden" name="id" value="<?=$sellDetail['id']?>" />
+        <div class="formbody">
+            <div class="formtitle"><span style="color: #ff0000;">3：审核地址基本信息</span></div>
+            <ul class="forminfo">
+                    <li><label>邮编：</label><input name="contact_zipcode" type="text" value="<?=$contact['contact_zipcode']?>" class="dfinput" ></li>
+                    <li><label>省份：</label>
+                    <input name="contact_province" type="text" value="<?=$contact['contact_province']?>" class="dfinput" ></li>
+                    <li><label>城市：</label>
+                    <input name="contact_city" type="text" value="<?=$contact['contact_city']?>" class="dfinput" ></li>
+                    <li><label>市区：</label>
+                    <input name="contact_county" type="text" value="<?=$contact['contact_county']?>" class="dfinput" ></li>
+                    <li><label>详细地址：</label>
+                    <input name="contact_address" type="text" value="<?=$contact['contact_address']?>" class="dfinput" ></li>
+                    <li><label>国家：</label>
+                    <input name="contact_national" type="text" value="<?=$contact['contact_national']?>" class="dfinput" ></li>
+
+                    <li><label>姓名：</label>
+                    <input name="contact_name" type="text" value="<?=$contact['contact_name']?>" class="dfinput" ></li>
+                    <li><label>手机号：</label>
+                    <input name="contact_phone" type="text" value="<?=$contact['contact_phone']?>" class="dfinput" ></li>
+
+                <?php if ($sellDetail['status'] != '140') {?>
+
+                        <input id="_saveBtn" name="" type="submit" class="btn" value="提 交">
+
+                <?php }?>
+                </ul>
+        </div>
+    </form>
+
+
+    <form id="form" action="/sell/setSellStatus/" method="post">
+        <input type="hidden" name="id" value="<?=$sellDetail['id']?>" />
+        <div class="formbody">
+            <div class="formtitle"><span style="color: #ff0000;">4：最后确认基本信息</span></div>
+            <ul class="forminfo">
+                    <li><label>sellid</label><input type="text" value="<?=$sellDetail['id']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i></li>
+                    <li><label>名称</label><input type="text" value="<?=$sellDetail['description']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i></li>
+                    <li><label>手机号</label><input type="text" value="<?php if($userDetail['phone']){?><?=$userDetail['phone']?><?php }else{?>--<?php }?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i></li>
+                    <li><label>价格</label><input type="text" value="<?=$sellDetail['show_grape']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i></li>
+                    <li><label>价值</label><input type="text" value="<?=$sellDetail['worth_grape']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i></li>
+                    <li><label>销售方式</label>
+                    <input type="text" value="<?php
+                       if($sellDetail['sales_type']==0){?>一口价出售<?}
+                       if($sellDetail['sales_type']==1){?>葡萄夺宝<?php }
+                    ?>" disabled="disabled" class="dfinput" >
+
+                    <i>* 不可更改</i></li>
+                    <li><label><b><font color="red">租售方式</font></b></label>
+                        <select <?php if($sellDetail['sales_type'] == '1' || $sellDetail['status'] != '100') {echo 'disabled="disabled"';}?> name="type" style="height:30px; width: 200px" class="select">
+                            <option value="1">普通出售</option>
+                            <option value="2">普通出租</option>
+                            <option value="3">买断</option>
+                        </select>
+                        <i>* <?php if($sellDetail['sales_type'] == '1' || $sellDetail['status'] != '100') {?>不可更改 <?php } else { ?><font color="red">审核请修改这里</font> <?php } ?></i>
+                    </li>
+                    <li><label><b><font color="red">vip独享</font></b></label>
+                        <select <?php if($sellDetail['sales_type'] == '1' || $sellDetail['status'] != '100') {echo 'disabled="disabled"';}?> name="vip" style="height:30px; width: 200px" class="select">
+                            <option value="0">否</option>
+                            <option value="1">是</option>
+                        </select>
+                        <i>* <?php if($sellDetail['sales_type'] == '1' || $sellDetail['status'] != '100') {?>不可更改 <?php } else { ?><font color="red">审核请修改这里</font> <?php } ?></i>
+                    </li>
+
+                    <li><label><b><font color="red">审核状态</font></b></label>
+                        <select name="status" style="height:30px; width: 200px" class="select">
+                            <?php foreach($statusData as $statusKey => $status){?>
+                            <option value="<?=$statusKey?>" <?php if($sellDetail['status'] == $statusKey) {echo 'selected="selected"';}?>><?=$status?></option>
+                            <?php }?>
+                        </select>
+                        <i>* <font color="red">审核请修改这里</font></i>
+                    </li>
+                    <li><label>是否免费</label><input type="text" value="<?php if ($sellDetail['free'] == 'Y') {?>免费<?php }else{?>收费<?php }?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i></li>
+                    <li><label>封面图</label><a href="<?=$sellDetail['cover']?>" target="_blank" title="点击打开大图"><img src="<?=$sellDetail['cover']?>" width="300" height="120"></a></li>
+                    <li><label>创建时间</label><input type="text" value="<?=$sellDetail['addtime']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i></li>
+
+                <?php if ($sellDetail['status'] != '140' && $sellDetail['status'] != '120') {?>
+                        <input id="_saveBtn" name="" type="submit" class="btn" value="提 交">
+                <?php }?>
+                </ul>
+        </div>
+    </form>
+
+
+
+</div>

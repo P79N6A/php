@@ -1,0 +1,97 @@
+<center ><h1><?=$title?></h1></center>
+<div class="wrapper">
+<div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/lotteryTravel/list">
+            <h6>条件搜索</h6>
+            <table>
+                <tr>
+                    <td style="height: 30px; line-height: 40px; text-align: right;">名称：</td>
+                    <td><input type="text" name="name" value="<?=$_GET['name']?>" style="height: 25px"/></td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;奖品：</td>
+                    <td><input type="text" name="award" value="<?=$_GET['award']?>" style="height: 25px"/></td>
+
+                </tr>
+                <tr>
+                <td><input type="submit" name="submit" value="查 询" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px"></td>
+
+                <td><a style="padding: 3px 5px; background-color: #a00; color:#FFFFFF; width: 70px"  href="/lotteryTravel/create" target="_blank">创建活动</a>
+                <a style="padding: 3px 5px; background-color: #b00; color:#FFFFF0; width: 70px"  href="/lotteryTravel/plw" target="_blank">查看本期排列五</a></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <table id = "tfhover" class="tftable" border="1">
+            <tr>
+                <th>编号</th>
+                <th>活动名称</th>
+                <th>奖品名称</th>
+                <th>列表图</th>
+                <th>分享图</th>
+                <th>入口图</th>
+                <th>详情图</th>
+                <th>组队总数</th>
+                <th>已完成对数</th>
+                <th>每队人数</th>
+                <th>中奖号</th>
+                <!-- <th>添加时间</th> -->
+                <th>开始时间</th>
+                <!-- <th>是否完成</th> -->
+                <th>是否开奖</th>
+                <th>操作</th>
+            </tr>
+        <?php if($list)foreach($list as $key=>$val){ ?>
+            <tr class="replay_item" node-type="replayItem" data-uid="<?=$val[uid]?>">
+
+                <td><center><?=$val['id']?></center></td>
+                <td><center><?=$val['name']?></center></td>
+                <td><center><?=$val['award']?></center></td>
+                <td><a href="<?=$val['list_cover']?>" target="_blank"><img src="<?=$val['list_cover']?>" width="50" height="50" alt="点击查看大图"></a></td>
+                <td><a href="<?=$val['share_cover']?>" target="_blank"><img src="<?=$val['share_cover']?>" width="50" height="50" alt="点击查看大图"></a></td>
+                <td><a href="<?=$val['gate_cover']?>" target="_blank"><img src="<?=$val['gate_cover']?>" width="50" height="50" alt="点击查看大图"></a></td>
+                <td><a href="<?=$val['detail_cover']?>" target="_blank"><img src="<?=$val['detail_cover']?>" width="50" height="50" alt="点击查看大图"></a></td>
+                <td><center><?=$val['total']?></center></td>
+                <td><center><?=$val['finish_total']?></center></td>
+                <td><center><?=$val['num']?></center></td>
+                <td><center><?=$val['wincode']?></center></td>
+                <!-- <td><center><?=$val['addtime']?></center></td> -->
+                <td><center><?=$val['startime']?></center></td>
+                <!-- <td><center><?=$val['isfinish']?></center></td> -->
+                <td><center><?=$val['status']?></center></td>
+                <td width="10%">
+                	<center>
+                	<?php if ($val['status'] == 'Y') {?>
+                	<a href="/lotteryTravel/view?id=<?php echo $val['id'];?>"  >开奖过程</a>
+                	<?php } else {?>
+                	<a href="/lotteryTravel/create?id=<?php echo $val['id'];?>"  >修改</a>
+                	<?php } ?>
+                     |
+                	<a href="/lotteryTravel/group?id=<?php echo $val['id'];?>">组队列表</a>
+                	</center>
+                	<!-- <a href="/package/del?id=<?=$val['id']?>" onclick="return confirm('您确定删除么？');"  class="grey_btn">删除</a> -->
+                </td>
+            </tr>
+        <?php } else { ?>
+            <tr style="height: 20px;"><td colspan="15"> <center>列表信息为空！ </center></td></tr>
+        <?php } ?>
+		<tr style="height: 20px;"><td colspan="15"> </td></tr>
+
+            <style>
+                .pagination{float: none}
+            </style>
+        <?php if ($page) {?>
+            <tr style="text-align: center; background: #FFF; height: 40px;">
+                <td colspan="12"><?=$page?></td>
+                <td colspan="3">总数=<?=$total?></td>
+            </tr>
+        <?php }?>
+    </table>
+</div>
+<script>
+function search_form_submit(){
+    $("#search_form").submit();
+}
+</script>
+<script src="/js/My97DatePicker/WdatePicker.js"></script>

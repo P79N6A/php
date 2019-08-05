@@ -1,0 +1,173 @@
+<script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="rightinfo">
+
+    <div style="margin-bottom: 20px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/orders/list">
+            <h6>条件搜索</h6>
+            <table>
+                <tr>
+                    <td style="height: 30px; line-height: 40px; text-align: right;" >订单号：</td>
+                    <td><input type="text" name="orderid" value="<?=$_GET['orderid']?>" style="height: 25px"/></td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;订单状态：</td>
+                    <td>
+                        <select name="status" style="height: 30px;width: 70px;">
+                            <option value="-1" <?php if($_GET['status'] == '-1') {echo 'selected="selected"';}?>>所有</option>
+                            <option value="0" <?php if($_GET['status'] == '0') {echo 'selected="selected"';}?>>待确认</option>
+                          <option value="1" <?php if($_GET['status'] == '1') {echo 'selected="selected"';}?>>已确认</option>
+                          <option value="2" <?php if($_GET['status'] == '2') {echo 'selected="selected"';}?>>已取消</option>
+                        </select>
+                    </td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;支付状态：</td>
+                    <td>
+                        <select name="pay_status" style="height: 30px;width: 70px;">
+                            <option value="-1" <?php if($_GET['pay_status'] == '-1') {echo 'selected="selected"';}?>>所有</option>
+                            <option value="0" <?php if($_GET['pay_status'] == '0') {echo 'selected="selected"';}?>>未付款</option>
+                          <option value="1" <?php if($_GET['pay_status'] == '1') {echo 'selected="selected"';}?>>付款准备</option>
+                          <option value="2" <?php if($_GET['pay_status'] == '2') {echo 'selected="selected"';}?>>确认已付款</option>
+                        </select>
+                    </td>
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;物流状态：</td>
+                    <td>
+                        <select name="express_status" style="height: 30px;width: 70px;">
+                            <option value="-1" <?php if($_GET['express_status'] == '-1') {echo 'selected="selected"';}?>>所有</option>
+                            <option value="0" <?php if($_GET['express_status'] == '0') {echo 'selected="selected"';}?>>未发货</option>
+                          <option value="1" <?php if($_GET['express_status'] == '1') {echo 'selected="selected"';}?>>已发货</option>
+                          <option value="2" <?php if($_GET['express_status'] == '2') {echo 'selected="selected"';}?>>已收货</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+
+                <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp; 开始时间：</td>
+                    <td>
+                        <input placeholder="请选择开始日期" name="create_start_time" value="<?=$_GET['create_start_time']?>" id="create_start_time" class="Wdate" type="text" onClick="WdatePicker()" style="padding-left: 5px;"/>
+                    </td>
+
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp; 结束时间：</td>
+                    <td>
+                        <input placeholder="请选择结束日期" name="create_end_time" value="<?=$_GET['create_end_time']?>" id="create_end_time" class="Wdate" type="text" onClick="WdatePicker()" style="padding-left: 5px;"/>
+                    </td>
+
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp; 支付开始时间：</td>
+                    <td>
+                        <input placeholder="请选择开始日期" name="pay_start_time" value="<?=$_GET['pay_start_time']?>" id="pay_start_time" class="Wdate" type="text" onClick="WdatePicker()" style="padding-left: 5px;"/>
+                    </td>
+
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp; 支付结束时间：</td>
+                    <td>
+                        <input placeholder="请选择结束日期" name="pay_end_time" value="<?=$_GET['pay_end_time']?>" id="pay_end_time" class="Wdate" type="text" onClick="WdatePicker()" style="padding-left: 5px;"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp;类型：</td>
+                    <td>
+                        <select name="type" style="height: 30px;width: 50px;">
+                            <option value="-1" <?php if($_GET['type'] == '-1') {echo 'selected="selected"';}?>>所有</option>
+
+                          	<option value="1" <?php if($_GET['type'] == '1') {echo 'selected="selected"';}?>>分享</option>
+                          	<option value="2" <?php if($_GET['type'] == '2') {echo 'selected="selected"';}?>>租用</option>
+                          	<option value="3" <?php if($_GET['type'] == '3') {echo 'selected="selected"';}?>>续租</option>
+                          	<option value="4" <?php if($_GET['type'] == '4') {echo 'selected="selected"';}?>>购买</option>
+                        	<option value="5" <?php if($_GET['type'] == '5') {echo 'selected="selected"';}?>>葡萄夺宝</option>
+
+                        </select>
+                    </td>
+
+                </tr>
+
+                <tr style="height: 30px;"><td> </td></tr>
+                <tr><td><input type="submit" name="submit" value="查 询" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px"></td></tr>
+            </table>
+        </form>
+    </div>
+
+    <!-- Row Highlight Javascript -->
+    <script>
+        window.onload=function(){
+            var tfrow = document.getElementById('tfhover').rows.length;
+            var tbRow=[];
+            for (var i=1;i<tfrow;i++) {
+                tbRow[i]=document.getElementById('tfhover').rows[i];
+                tbRow[i].onmouseover = function(){
+                    this.style.backgroundColor = '#f3f8aa';
+                };
+                tbRow[i].onmouseout = function() {
+                    this.style.backgroundColor = '#ffffff';
+                };
+            }
+        };
+    </script>
+    <style type="text/css">
+        table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+        table.tftable th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}
+        table.tftable tr {background-color:#ffffff;}
+        table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}
+    </style>
+
+    <table id="tfhover" class="tftable" border="1">
+        <tr>
+            <th>订单id</th>
+            <th>类型</th>
+            <th>订单状态</th>
+            <th>支付状态</th>
+            <th>物流状态</th>
+            <th>押金</th>
+            <th>葡萄数</th>
+            <th>服务费</th>
+            <th>支付时间</th>
+            <th>支付方式</th>
+            <th>支付金额</th>
+            <th>创建时间</th>
+            <th>最后修改时间</th>
+            <th>操作</th>
+        </tr>
+        <?
+            if ($list) foreach($list as $key => $val){
+        ?>
+
+            <tr>
+                <td><?=$val['orderid']?></td>
+                <td><?php if($val['type'] == 2) {?><a class="btn2 btn-w-m btn-black"> 租用</a><?php }
+                elseif ($val['type'] == 1) {?><a class="btn2 btn-w-m btn-cyan"> 分享</a><?php } elseif ($val['type'] == 3) {?> <a class="btn2 btn-w-m btn-yellow"> 续租</a><?php }
+                elseif ($val['type'] == 4) {?><a class="btn2 btn-w-m btn-brown"> 购买</a> <?php }
+                elseif ($val['type'] == 5) { ?><a class="btn2 btn-w-m btn-pink">夺宝 </a> <?php }
+                else {?> <a> </a> <?php } ?></td>
+                <td><a <?php if($val['status'] == 1){?>class="btn2 btn-w-m btn-green"<?php } elseif ($val['status'] == 2) {?>class="btn2 btn-w-m btn-pink"<?php }else{?> class="btn2 btn-w-m btn-info" <?php } ?> style="padding: 2px 5px;" href="/orders/list?status=<?=$val['status']?>"><?=$statusData[$val['status']]?></a></td>
+                <td><a <?php if($val['pay_status'] == 2){?>class="btn2 btn-w-m btn-red"<?php } elseif ($val['pay_status'] == 1) {?>class="btn2 btn-w-m btn-pink"<?php }else{?>class="btn2 btn-w-m btn-info" <?php } ?> style="padding: 2px 5px;" href="/orders/list?pay_status=<?=$val['pay_status']?>"><?=$payStatusData[$val['pay_status']]?></a></td>
+                <td><a <?php if($val['express_status'] == 1){?>class="btn2 btn-w-m btn-warning" <?php } elseif($val['express_status'] == 2) {?>class="btn2 btn-w-m btn-success"<?php } else {?> class="btn2 btn-w-m btn-info" <?php } ?> style="padding: 2px 5px;" href="/orders/list?express_status=<?=$val['express_status']?>"><?=$expressStatusData[$val['express_status']]?></a></td>
+                <td><?=$val['deposit_price']?></td>
+                <td><?=$val['grape']?></td>
+                <td><?=$val['service_price']?></td>
+                <td><?if($val['pay_time'] != '0000-00-00 00:00:00'){?><?=$val['pay_time']?><?}elseif($val['pay_type']==1 && $val['type']!=1){?><?=$val['addtime']?><?}else{?> 无 <?php } ?></td>
+                <td><?=$paytypeData[$val['pay_type']]?>	</td>
+                <td><?=$val['pay_price']?></td>
+                <td><?=$val['addtime']?></td>
+                <td><?=$val['modtime']?></td>
+                <td><a href="/orders/detail?orderid=<?=$val['orderid']?>">详情</a> | <a href="#">删除</a></td>
+            </tr>
+        <? } else { ?>
+            <tr style="height: 20px;"><td colspan="14"> <center>列表信息为空！</center> </td></tr>
+        <?php } ?>
+
+        <tr style="height: 20px;"><td colspan="14"> </td></tr>
+
+            <style>
+                .pagination{float: none}
+            </style>
+        <?php if ($page) {?>
+            <tr style="text-align: center; background: #FFF; height: 40px;">
+                <td colspan="12"><?=$page?></td>
+                <td colspan="2">总数=<?=$total?></td>
+            </tr>
+        <?php }?>
+    </table>
+
+
+
+</div>
+

@@ -1,0 +1,145 @@
+<div class="rightinfo">
+    <input type="button" class="cancel" value="《 点击返回" onclick="history.go(-1);"/>
+    <form id="form" action="/package/modify/" method="post">
+        <input type="hidden" name="id" value="<?=$_REQUEST['id']?>" />
+        <div class="formbody">
+            <div class="formtitle"><span>包裹基本信息</span></div>
+            <ul class="forminfo">
+                <li>
+                    <label>创建时间</label>
+                    <input type="text" value="<?=$package_info['addtime']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>最后修改时间</label>
+                    <input type="text" value="<?=$package_info['modtime']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>ID</label>
+                    <input type="text" value="<?=$package_info['id']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>包裹编号</label>
+                    <input name="packageid" type="text" value="<?=$package_info['packageid']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>系统唯一标识符</label>
+                    <input name="sn" type="text" value="<?=$package_info['sn']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>观看数</label>
+                    <input name="view_num" type="text" value="<?=$package_info['view_num']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>收藏数</label>
+                    <input name="favorite_num" type="text" value="<?=$package_info['favorite_num']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <hr style="border-top: 1px solid #cccccc" />
+                </li>                <li>
+                    <label>地址</label>
+                    <input name="location" type="text" value="<?=$package_info['location']?>"  class="dfinput" >
+                </li>
+
+                <li>
+                    <label>宝贝数量</label>
+                    <input name="num" type="text" value="<?=$package_info['num']?>"  class="dfinput" >
+                </li>
+                <li><label><b><font color="red">租售方式</font></b></label>
+                    <select <?php if($package_info['sales_type'] == '1' || $package_info['status'] == 'SELLOUT') {echo 'disabled="disabled"';}?> name="type" style="height:30px; width: 100px" class="select">
+                        <option value="1" <?php if($package_info['type'] == '1') {echo 'selected="selected"';}?>>普通出售</option>
+                        <option value="2" <?php if($package_info['type'] == '2') {echo 'selected="selected"';}?> >普通出租</option>
+                    </select>
+                    <i>* <font color="red">审核可以修改这里</font></i>
+                </li>
+                <li><label><b><font color="red">是否是vip独享</font></b></label>
+                    <select <?php if($package_info['sales_type'] == '1' || $package_info['status'] == 'SELLOUT') {echo 'disabled="disabled"';}?>
+                    name="vip" style="height:30px; width: 50px" class="select">
+                        <option value="0" <?php if($package_info['vip'] == '0') {echo 'selected="selected"';}?> >否</option>
+                        <option value="1" <?php if($package_info['vip'] == '1') {echo 'selected="selected"';}?> >是</option>
+                    </select>
+                    <i>* <font color="red">审核可以修改这里</font></i>
+                </li>
+                <li>
+                    <label><b><font color="red">状态</font></b></label>
+                    <select name="status" style="height:30px; width: 200px" class="select" <?php if($package_info['status'] == 'SELLOUT') {echo 'disabled="disabled"';}?>>
+                            <option value="PREPARE" <?php if($package_info['status'] == 'PREPARE') {echo 'selected="selected"';}?>>待编辑</option>
+                        	<option value="ONLINE" <?php if($package_info['status'] == 'ONLINE') {echo 'selected="selected"';}?>>上架中</option>
+                        	<option value="OFFLINE" <?php if($package_info['status'] == 'OFFLINE') {echo 'selected="selected"';}?>>已下架</option>
+                        	<?php if ($package_info['status'] == 'SELLOUT') {?>
+                        	<option value="SELLOUT" <?php if($package_info['status'] == 'SELLOUT') {echo 'selected="selected"';}?>>已售罄</option>
+                       		<?php }?>
+                    </select>
+                    <i>* <font color="red">请勿随意更改状态，已售罄状态就不能更改了</font></i>
+                </li>
+                <li>
+                    <label>租金</label>
+                    <input name="rent_price" <?php if($package_info['status'] == 'SELLOUT') {echo 'disabled="disabled"';}?> type="text" value="<?=$package_info['rent_price']?>" class="dfinput" ><i></i>
+                </li>
+                <li>
+                    <label>押金</label>
+                    <input name="deposit_price" <?php if($package_info['status'] == 'SELLOUT') {echo 'disabled="disabled"';}?> type="text" value="<?php echo $package_info['deposit_price'] ?>"  class="dfinput" ><i></i>
+                </li>
+                <li>
+                    <label>封面图</label>
+                    <a href="<?=$package_info['cover']?>" target="_blank"><img src="<?=$package_info['cover']?>" width="300" height="300"></a>
+                </li>
+                <li>
+                    <label>描述</label>
+                    <textarea name="description" rows="10" cols="100"><?php echo $package_info['description'];?></textarea>
+                    <i></i>
+                </li>
+                <li><label>&nbsp;</label><input id="_saveBtn" name="" type="submit" class="btn" value="保存"> <input type="button" class="btn" value="返回" onclick="history.go(-1);"/></li>
+            </ul>
+
+        </div>
+    </form>
+
+    <div class="formbody">
+        <div class="formtitle"><span style="color: #ff0000;">包裹包含信息</span></div>
+        <table id="tfhover" class="tftable" border="1" >
+            <tbody>
+            <tr>
+                <th>ID</th>
+                <th>图片</th>
+                <th>描述</th>
+                <th>创建时间</th>
+                <th>最近更新时间</th>
+            </tr>
+            <?php foreach($goods as $key => $good){?>
+
+                <tr align="center">
+                    <td><?=$good['id']?></td>
+                    <td><a href="<?=$good['file']?>" target="_blank" title="点击打开大图"><img src="<?=$good['file']?>" width="100" height="100"></a></td>
+                    <td><?=$good['description']?></td>
+                    <td><?=$good['addtime']?></td>
+                    <td><?=$good['modtime']?></td>
+                </tr>
+            <?php }?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="formbody">
+            <div class="formtitle"><span style="color: #ff0000;">小卡片信息</span></div>
+            <? if (!empty($cardinfo)) {?>
+            <table id="tfhover" class="tftable" border="1">
+                <tbody><tr>
+                    <th>ID</th>
+                    <th>地址</th>
+                    <th>类型</th>
+                    <th>文字</th>
+                    </tr>
+                     <tr align="center">
+                    <td><?=$cardinfo['id']?></td>
+                    <td><a href="<?=$cardinfo['cover']?>" target="_blank" title="点击打开大图"><img src="<?=$cardinfo['cover']?>" width="300" height="120"></a></td>
+                    <td><?=$cardinfo['type']?></td>
+                    <td><?=$cardinfo['text']?></td>
+                    </tr>
+                    </tbody>
+                    </table>
+            <?} else {?>
+
+            <tr style="height: 20px;"><td colspan="4"><center><b>无</b></td></tr></center>
+            <?}?>
+     </div>
+</div>

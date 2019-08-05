@@ -1,0 +1,83 @@
+<div class="rightinfo">
+    <input type="button" class="cancel" value="《 点击返回" onclick="history.go(-1);"/>
+    <form id="form" action="/goods/update/" method="post">
+        <input type="hidden" name="id" value="<?=$goodsDetail['id']?>" />
+        <div class="formbody">
+            <div class="formtitle"><span>宝贝基本信息</span></div>
+            <ul class="forminfo">
+                <li>
+                    <label>创建时间</label>
+                    <input type="text" value="<?=$goodsDetail['addtime']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>最后修改时间</label>
+                    <input type="text" value="<?=$goodsDetail['modtime']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>ID</label>
+                    <input type="text" value="<?=$goodsDetail['id']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>SELLID</label>
+                    <input name="sellid" type="text" value="<?=$goodsDetail['sellid']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>PACKAGE包ID</label>
+                    <input name="packageid" type="text" value="<?=$goodsDetail['packageid']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+
+
+                <li>
+                    <label>报价</label>
+                    <input type="text" disabled="disabled" value="<?=$goodsDetail['show_grape']?>" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>价值</label>
+                    <input type="text" disabled="disabled" value="<?=$goodsDetail['worth_grape']?>" class="dfinput" ><i>* 不可更改</i>
+                </li>
+
+                <li>
+                    <label>描述</label>
+                    <input name="description" style="width: 70%" type="text" value="<?=$goodsDetail['description']?>" class="dfinput" >
+                </li>
+                <li>
+                    <label>备注</label>
+                    <input name="remark" style="width: 70%" type="text" value="<?=$goodsDetail['remark']?>" class="dfinput" >
+                </li>
+                <li>
+                    <label>封面图</label>
+                    <a href="<?=$goodsDetail['file']?>" target="_blank">
+                        <img src="<?=$goodsDetail['file']?>" width="50" height="50" alt="点击查看大图"><i>* 点击查看大图</i>
+                    </a>
+                </li>
+                <li>
+                    <?
+                        if ($goodsDetail['labels']) foreach($goodsDetail['labels'] as $labelsKey => $labels){
+                    ?>
+                    <div style="float: left; margin-left: 100px; margin-top: 10px;">
+                        <b>TAG 名称：</b><?=$labels['name']?>                                    <b>在图片位置：</b><?=$labels['position']?><br>
+                        <br>
+
+                    </div>
+                    <div style="clear: both"></div>
+
+                    <? } ?>
+                </li>
+
+                <li>
+                    <label>当前状态</label>
+                    <select name="status" style="height:30px; width: 200px" class="select">
+                        <?php foreach($statusData as $statusKey => $status){?>
+                        <option value="<?=$statusKey?>" <?php if($goodsDetail['status'] == $statusKey) {echo 'selected="selected"';}?>><?=$status?></option>
+                        <?php }?>
+                    </select>
+                    <i>* 请勿随意更改状态</i>
+                </li>
+
+                <li><label>&nbsp;</label><input id="_saveBtn" name="submit" type="submit" class="btn" value="提 交"></li>
+
+            </ul>
+
+        </div>
+    </form>
+</div>

@@ -1,0 +1,9 @@
+<?php
+$ROOT_PATH = "/home/xiachunqi/work/ptshare/html5";
+set_include_path(get_include_path() . PATH_SEPARATOR . implode(PATH_SEPARATOR, array("/home/xiachunqi/work/ptshare/cos","/home/xiachunqi/work/ptshare/client")));
+
+$ENVIRONMENT = 'dev';
+
+include $ROOT_PATH."/config/server/server_conf.common.php";
+include $ROOT_PATH."/config/server/language_conf.php";
+?>

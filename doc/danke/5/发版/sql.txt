@@ -1,0 +1,18 @@
+CREATE TABLE `subscribe_push_log` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `push_date` char(8)  NOT NULL DEFAULT '' COMMENT '推送时间',
+  `relate_id` int(11) NOT NULL DEFAULT '0' COMMENT '订阅记录id',
+  `subscribe_id` int(11) NOT NULL DEFAULT '0' COMMENT '订阅条件id',
+  `price` float(10,2) NOT NULL DEFAULT '0.00' COMMENT '价格',
+  `faceSouth` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否朝南',
+  `hasToilet` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否有独卫',
+  `area` int(11) NOT NULL DEFAULT '0' COMMENT '平米数',
+  `room_id` int(11) NOT NULL DEFAULT '0' COMMENT '房间id',
+  `name` varchar(100)  NOT NULL DEFAULT '' COMMENT '订阅名称',
+  `param` varchar(1000) NOT NULL DEFAULT '' COMMENT '订阅参数',
+  `addtime` datetime NOT NULL COMMENT '创建时间',
+  `modtime` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `uid_push_time` (`uid`,`push_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

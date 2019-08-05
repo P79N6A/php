@@ -1,0 +1,206 @@
+<?php
+$ROOT_PATH = "/home/gaoyinglu/work/ptshare/service";
+set_include_path(get_include_path() . PATH_SEPARATOR . implode(PATH_SEPARATOR, array("/home/gaoyinglu/work/ptshare/cos","/home/gaoyinglu/work/ptshare/client")));
+
+
+//------------------------------ 用户  --------------------------------
+$MYSQL_CONF_PASSPORT = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "127.0.0.1",
+	        "port"         => "3306",
+	        "username"     => "grape",
+	        "password"     => 'grape2018',
+	        "charset"      => "utf8mb4",
+	        "database"     => "grape_passport",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3),
+        ),
+	),
+	"sharding"=>array(
+    	"profile" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+        "follower" => array(
+	   		"type"=>"hash",
+	   		"shard"=>100,
+	   		"range"=>array(
+    	    	array("min"=>0,  "max"=>99, "confid"=>1),
+    	    )
+    	),
+        "following" => array(
+        	"type"=>"hash",
+        	"shard"=>100,
+        	"range"=>array(
+            	0=>array("min"=>0,  "max"=>99, "confid"=>1),
+            )
+        ),
+        "user_exp" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+    	"user_task" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0, "max"=>99, "confid"=>1)
+    		)
+    	),
+    	"user_task_logs" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0, "max"=>99, "confid"=>1)
+    		)
+    	)
+    ),
+);
+
+//------------------------------ 经济  --------------------------------
+$MYSQL_CONF_PAYMENT = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "127.0.0.1",
+	        "port"         => "3306",
+	        "username"     => "grape",
+	        "password"     => 'grape2018',
+	        "charset"      => "utf8mb4",
+	        "database"     => "grape_payment",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3),
+        ),
+	),
+	"sharding"=>array(
+    	"account" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+        "journal" => array(
+	   		"type"=>"hash",
+	   		"shard"=>100,
+	   		"range"=>array(
+    	    	array("min"=>0,  "max"=>99, "confid"=>1),
+    	    )
+    	),
+
+    	"red_packet_log" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0, "max"=>99, "confid"=>1)
+    		)
+    	)
+	),
+);
+
+//------------------------------ 宝贝  --------------------------------
+$MYSQL_CONF_ADMIN = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "127.0.0.1",
+	        "port"         => "3306",
+	        "username"     => "grape",
+	        "password"     => 'grape2018',
+	        "charset"      => "utf8mb4",
+	        "database"     => "grape_admin",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3),
+        ),
+	)
+);
+
+//------------------------------ 消息  --------------------------------
+$MYSQL_CONF_MESSAGE = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "127.0.0.1",
+	        "port"         => "3306",
+	        "username"     => "grape",
+	        "password"     => 'grape2018',
+	        "charset"      => "utf8mb4",
+	        "database"     => "grape_message",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3),
+        ),
+	),
+	"sharding"=>array(
+    	"message" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+    ),
+);
+
+//------------------------------ 商城  --------------------------------
+$MYSQL_CONF_MALL = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "127.0.0.1",
+	        "port"         => "3306",
+	        "username"     => "grape",
+	        "password"     => 'grape2018',
+	        "charset"      => "utf8mb4",
+	        "database"     => "grape_mall",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3),
+        ),
+	)
+);
+
+$REDIS_CONF_CACHE = array(
+	"host" => "127.0.0.1",
+	"port" => 6379,
+	"timeout" => 3,
+	"password" => ""
+);
+
+$REDIS_CONF_SESSION = array(
+	"host" => "127.0.0.1",
+	"port" => 6379,
+	"timeout" => 3,
+	"password" => ""
+);
+
+$REDIS_CONF_USER = array(
+	"host" => "127.0.0.1",
+	"port" => 6379,
+	"timeout" => 3,
+	"password" => ""
+);
+$STORAGE_CONF = array(
+    'region' => 'ap-beijing',
+    'bucket' => 'img-1254705921',
+    'credentials'=> array(
+        'appId'     => '1254705921',
+        'secretId'  => 'AKIDQffPs6EkBMHv1runrfleJn38yZw6mh9M',
+        'secretKey' => 'A6nHVTBdqnVmrhIemjRu86oLceQvAF6i'
+    )
+);
+$ENVIRONMENT = 'dev';
+
+include $ROOT_PATH."/config/server/server_conf.common.php";
+include $ROOT_PATH."/config/server/language_conf.php";
+?>

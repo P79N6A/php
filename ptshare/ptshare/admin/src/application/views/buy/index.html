@@ -1,0 +1,93 @@
+
+
+<div class="rightinfo">
+      <div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/buy/list">
+            <h6>条件搜索</h6>
+            <table class="table">
+                <tr>
+                    <td style="height: 30px; line-height: 40px; text-align: right;">用户id：</td>
+                    <td><input type="text" name="uid" value="<?=$_GET['uid']?>" style="height: 25px"/></td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;订单号：</td>
+                    <td><input type="text" name="orderid" value="<?=$_GET['orderid']?>" style="height: 25px"/></td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;状态：</td>
+                    <td>
+                        <select name="status" style="height: 15px;width: 100px;'">
+                          <option value="-1" <?php if($_GET['status'] == '-1') {echo 'selected="selected"';}?>>所有</option>
+                          <option value="101" <?php if($_GET['status'] == '101') {echo 'selected="selected"';}?>>待支付</option>
+                            <option value="102" <?php if($_GET['status'] == '102') {echo 'selected="selected"';}?>>待发货</option>
+                          <option value="103" <?php if($_GET['status'] == '103') {echo 'selected="selected"';}?>>已发货</option>
+                          <option value="401" <?php if($_GET['status'] == '401') {echo 'selected="selected"';}?>>待评价</option>
+                          <option value="402" <?php if($_GET['status'] == '402') {echo 'selected="selected"';}?>>已评价</option>
+                          <option value="403" <?php if($_GET['status'] == '403') {echo 'selected="selected"';}?>>已取消</option>
+                          <option value="404" <?php if($_GET['status'] == '404') {echo 'selected="selected"';}?>>已撤销</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr style="height: 30px;"><td> </td></tr>
+                <tr><td><input type="submit" name="submit" value="查 询" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px"></td></tr>
+            </table>
+        </form>
+    </div>
+          <table id="tfhover" class="tftable">
+            <thead class="thin-border-bottom">
+              <tr>
+              <th align="center" class="text-center">id</th>
+                <th align="center" class="text-center">用户id</th>
+                <th align="center" class="text-center">封面</th>
+				<th align="center" class="text-center">订单号</th>
+				<th align="center" class="text-center">葡萄数</th>
+        <th align="center" class="text-center">支付现金</th>
+				<th align="center" class="text-center">支付代金券</th>
+				<th align="center" class="text-center">商品数</th>
+                <th align="center" class="text-center">状态</th>
+                <th align="center" class="text-center">创建时间</th>
+                <th align="center" class="text-center">包裹号</th>
+				<th align="center" class="text-center">操作</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php if($list) foreach($list as $value) { ?>
+              <tr>
+              <td><center><?php echo $value['buyid'];?></center></td>
+                <td><center><?php echo $value['uid'];?></center></td>
+                <td><center><img style="width:50px;" src="<?=$value['packageCover']?>"/></center></td>
+                <td><center><a href="/orders/detail?orderid=<?php echo $value['orderid'];?>"><?php echo $value['orderid'];?></a></center></td>
+				<td><center><?=$value['grape']?></center></td>
+				<td><center><?php echo $value['pay_price'];?></center></td>
+				<td><center><?php echo $value['pay_coupon'];?></center></td>
+                <td><center><?php echo $value['num'];?></center></td>
+				<td><center><a <?php if ($value['status'] == '101') {?> class="btn2 btn-w-m btn-warning" <?php } elseif ($value['status'] == '102') {?> class="btn2 btn-w-m btn-info" <?php } elseif ($value['status'] == '103') {?>class="btn2 btn-w-m btn-success" <?php } else {?>class="btn2 btn-w-m btn-warning" <?php }?> style="padding: 2px 5px;"><?=$statusData[$value['status']]?></a></center></td>
+                <td><center><?php echo $value['addtime'];?></center></td>
+                <td><center><?php echo $value['packageid'];?></center></td>
+                <td>
+                <center><a href="/express/detail?orderid=<?=$value['orderid']?>">快递</a> | <a href="/buy/view?buyid=<?php echo $value['buyid'];?>">查看</a> | <?php if (!in_array($value['status'],[401,402,403,404]) ) {?>
+                        <a href="/buy/cancel?orderid=<?php echo $value['orderid'];?>" onclick="return confirm('确认撤销')">撤销订单</a>
+                        <?php }else{?>
+                            <a href ="javascript:void();" style="cursor: default;"><i class="edit" style="opacity: 0.2">撤销订单</i></a>
+                        <?php }?></center>
+          		</td>
+              </tr>
+		<?php } else { ?>
+            <tr style="height: 20px;"><td colspan="12"> <center>列表信息为空！ </center></td></tr>
+        <?php } ?>
+
+        <tr style="height: 20px;"><td colspan="12"> </td></tr>
+            <style>
+                .pagination{float: none}
+            </style>
+        <?php if ($page) {?>
+            <tr style="text-align: center; background: #FFF; height: 40px;">
+                <td colspan="10"><?=$page?></td>
+                <td colspan="2">总数=<?=$total?></td>
+            </tr>
+        <?php }?>
+            </tbody>
+          </table>
+
+
+</div>

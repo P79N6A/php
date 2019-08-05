@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type">
+		<meta content="text/html; charset=utf-8">
+		<meta charset="utf-8">
+		<title>加入VIP</title>
+		<meta name="divport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/rem.js"></script>
+		<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	</head>
+
+	<body>
+    <article>
+
+		<div>
+		<img class='banner' src='images/vip_banner.png'/>
+
+		<div class='vip_box box1'>
+		  <div class='vip_box_tilte'>| VIP特权一</div>
+		  <div class='vip_box_main'>
+		    <div class='vip_box_img'><img src='images/vip_img1.png' /></div>
+		    <div class='vip_box_txt'>
+		      <div>精品无限租</div>
+		      <div>VIP专享精品全年 1 葡萄租用</div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class='vip_box box2'>
+		  <div class='vip_box_tilte'>| VIP特权二</div>
+		  <div class='vip_box_main'>
+		    <div class='vip_box_img'><img src='images/vip_img2.png' /></div>
+		    <div class='vip_box_txt'>
+		      <div>租用免押金</div>
+		      <div>无需押金，拒绝葡萄不足的尴尬</div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class='vip_box box3'>
+		  <div class='vip_box_tilte'>| VIP特权三</div>
+		  <div class='vip_box_main'>
+		    <div class='vip_box_img'><img src='images/vip_img3.png' /></div>
+		    <div class='vip_box_txt'>
+		      <div>购买享八折</div>
+		      <div>购买闲置享受葡萄八折优惠</div>
+		    </div>
+		  </div>
+		</div>
+
+		<form >
+		  <button form-type='submit' class='btn large'>98元/年，升级VIP立享特权</button>
+		  <!-- <button form-type='submit' class='btn large'>98元/年，续费VIP立享特权</button> -->
+		</form>
+
+
+		<div class='vip_txt'>邀请好友开通可返现  <text id="check">查看邀请进度</text></div>
+
+		</div>
+	<section class="pop">
+		<div class='pop_mask'></div>
+		<div class='pop_wrap'>
+		  <div class='pop_close' >
+		    <img src='images/close.png' />
+		  </div>
+		  <div class='pop_vip_main'>
+		    <div class='pop_title_wrap'>
+		      <div class='pop_title'>开通VIP成功！邀请好友开通可返现</div>
+		      <div class='pop_txt1'>累计邀请3个好友开通VIP，即可获得49元返现</div>
+		    </div>
+		    <div class='headimg'>
+		        <div class='head'>
+			        <img class="head_3" src="images/avatar_default.png" />
+			        <text>等待助力</text>
+			    </div>
+			    <div class='head'>
+			        <img class="head_3" src="images/avatar_default.png" />
+			        <text>等待助力</text>
+			    </div>
+			    <div class='head'>
+			        <img class="head_3" src="images/avatar_default.png" />
+			        <text>等待助力</text>
+			    </div>
+		    </div>
+		    <div class="pop_code">
+		    	<img src="images/vip_code.jpg">
+		    	<div>长按识别进入小程序，邀请好友得返现</div>
+		    </div>
+		  </div>
+		  
+		</div>
+	</section>
+
+
+
+
+	</article>
+	<script type="text/javascript">
+		(function($){
+			var evclick = "ontouchend" in window ? "touchend" : "click";
+
+			$('.pop_close').on(evclick,function(){
+				$(this).click(function(){
+					$('.pop').fadeOut()
+				})
+			})
+
+			$('#check').on(evclick,function(){
+				$(this).click(function(){
+					$('.pop').fadeIn()
+				})
+			})
+			
+		})(jQuery)
+	</script>
+	
+	</body>
+</html>
+

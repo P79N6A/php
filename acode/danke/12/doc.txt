@@ -1,0 +1,15 @@
+1、2018-11-22 至 2018-11-24 关注&足迹
+api/v6/user/user-foot
+/api/v6/collect/room-list
+
+2、2018-11-26 至 2018-11-28 首页调整拆分接口
+api/v6/app-index/data?city_id=1
+新接口待定
+3、2018-11-29 至 2018-12-01 搜索加列表&紧迫感&历史搜索&热门搜索
+api/v6/search/list?city_id=1
+api/v6/room/detail/291880842
+api/v4/base-configure/sug-text?city_id=1&q=回龙观
+api/v4/base-configure/hot_search?city_id=1
+4、2018-12-03 至 2018-12-08 搜索&详情迁移到新框架(如果远超那边搞定的话)否则推迟
+api/v6/search/list?city_id=1
+api/v6/room/detail/291880842

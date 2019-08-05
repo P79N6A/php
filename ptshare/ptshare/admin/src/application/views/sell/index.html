@@ -1,0 +1,141 @@
+<script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="rightinfo">
+
+    <div style="margin-bottom: 20px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/sell/index">
+            <h6>条件搜索</h6>
+            <table>
+                <tr>
+                    <td style="height: 30px; line-height: 40px; text-align: right;">手机号：</td>
+                    <td><input type="text" name="phone" value="<?=$_GET['phone']?>" style="height: 25px"/></td>
+
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp;订单号：</td>
+                    <td><input type="text" name="orderid" value="<?=$_GET['orderid']?>" style="height: 25px"/></td>
+
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp;SELL 编号：</td>
+                    <td><input type="text" name="sell_num" value="<?=$_GET['sell_num']?>" style="height: 25px"/></td>
+
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp;SN：</td>
+                    <td><input type="text" name="sn" value="<?=$_GET['sn']?>" style="height: 25px"/></td>
+
+                </tr>
+
+                <tr>
+
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp; 开始时间：</td>
+                    <td>
+                        <input placeholder="请选择开始日期" name="create_start_time" value="<?=$_GET['create_start_time']?>" id="create_start_time" class="Wdate" type="text" onClick="WdatePicker()" style="padding-left: 5px;"/>
+                    </td>
+
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp; 结束时间：</td>
+                    <td>
+                        <input placeholder="请选择结束日期" name="create_end_time" value="<?=$_GET['create_end_time']?>" id="create_end_time" class="Wdate" type="text" onClick="WdatePicker()" style="padding-left: 5px;"/>
+                    </td>
+
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp;状态：</td>
+                    <td>
+                        <select name="status" style="height: 25px">
+                            <option value="0">--全部--</option>
+                            <?
+                                if ($statusData) { foreach($statusData as $key => $val){
+                            ?>
+                            <option value="<?=$key?>" <?php if ($_GET['status'] == $key) echo "selected='selected'" ?> ><?=$val?></option>
+                            <? } } ?>
+                        </select>
+                    </td>
+					<td> &nbsp;&nbsp;&nbsp;&nbsp;销售方式：</td>
+                    <td>
+                        <select name="sales_type" style="height: 15px;width: 70px;'">
+                        	<option value="-1" <?php if($_GET['sales_type'] == '-1') {echo 'selected="selected"';}?>>所有</option>
+                            <option value="0" <?php if($_GET['sales_type'] == '0') {echo 'selected="selected"';}?>>一口价租售</option>
+                        	<option value="1" <?php if($_GET['sales_type'] == '1') {echo 'selected="selected"';}?>>葡萄夺宝</option>
+                        </select>
+                    </td>
+                    <!--<td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp;分类：</td>-->
+                    <!--<td>-->
+                        <!--<select name="category_id" style="height: 25px; width: 120px;">-->
+                            <!--<option value="1" <?php if ($_GET['status'] == 1) echo "selected='selected'" ?> >服装</option>-->
+                            <!--<option value="2" <?php if ($_GET['status'] == 2) echo "selected='selected'" ?> >图书</option>-->
+                        <!--</select>-->
+                    <!--</td>-->
+
+                </tr>
+                <tr style="height: 30px;"><td> </td></tr>
+                <tr><td><input type="submit" name="submit" value="查 询" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px"></td></tr>
+            </table>
+        </form>
+    </div>
+
+
+
+    <table id="tfhover" class="tftable" border="1">
+        <tr>
+            <th>ID</th>
+            <th>宝贝标题</th>
+            <th>宝贝编号</th>
+            <th>昵称</th>
+            <th>封面</th>
+            <th>手机号</th>
+            <th>订单ID</th>
+            <th>销售方式</th>
+            <th>状态</th>
+            <th>是否免费</th>
+            <th>创建时间</th>
+
+            <th>操作</th>
+        </tr>
+        <?
+            if ($data['list']) foreach($data['list'] as $key => $val){
+        ?>
+
+            <tr align="center">
+                <td><?=$val['id']?></td>
+                <td><?=$val['description']?></td>
+                <td><?=$val['sell_num']?></td>
+                <td><?=$val['nickname']?></td>
+                <td><a href="<?=$val['cover']?>" target="_blank"><img src="<?=$val['cover']?>" width="50" height="50" alt="点击查看大图"></a></td>
+                <td><?php if($val['phone']){?><?=$val['phone']?><?php }else{?>--<?php }?></td>
+                <td><?php if($val['orderid']){?><?=$val['orderid']?><?php }else{?>--<?php }?></td>
+                <td><?php 
+                       if($val['sales_type']==0){?><b>一口价出售</b><?}
+                       if($val['sales_type']==1){?><b>葡萄夺宝</b><?php }
+                 ?></td>
+                <td>
+                    <!--<a class="btn" style="padding: 2px 5px;" href="/sell/index?status=<?=$val['status']?>"><?=$statusData[$val['status']]?></a>-->
+                    <?php if ($val['status'] == 100) {?>
+                    <a href="/sell/index?status=<?=$val['status']?>" class="btn2 btn-w-m btn-warning"><?=$statusData[$val['status']]?></a>
+                    <?php } elseif ($val['status'] == 160) {?>
+                    <a href="/sell/index?status=<?=$val['status']?>" class="btn2 btn-w-m btn-warning"><?=$statusData[$val['status']]?></a>
+                    <?php } elseif ($val['status'] == 120) {?>
+                    <a href="/sell/index?status=<?=$val['status']?>" class="btn2 btn-w-m btn-info"><?=$statusData[$val['status']]?></a>
+                    <?php } else {?>
+                    <a href="/sell/index?status=<?=$val['status']?>" class="btn2 btn-w-m btn-success"><?=$statusData[$val['status']]?></a>
+                    <?php }?>
+                </td>
+                <td><?php if($val['free']=='Y'){?><b>免费</b><?}else{?>不免费<?php }?></td>
+                <td><?=$val['addtime']?></td>
+
+                <td><a href="/sell/detail?id=<?=$val['id']?>">详情</a> </td>
+            </tr>
+        <? } else { ?>
+            <tr style="height: 20px;"><td colspan="12"> <center>列表信息为空！ </center></td></tr>
+        <?php } ?>
+
+        <tr style="height: 20px;"><td colspan="12"> </td></tr>
+
+            <style>
+                .pagination{float: none}
+            </style>
+        <?php if ($mutipage) {?>
+            <tr style="text-align: center; background: #FFF; height: 40px;">
+                <td colspan="10"><?=$mutipage?></td>
+                <td colspan="2">总数=<?=$data['total']?></td>
+            </tr>
+        <?php }?>
+    </table>
+
+
+
+</div>
+

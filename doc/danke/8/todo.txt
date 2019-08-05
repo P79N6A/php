@@ -1,0 +1,34 @@
+西安合伙人
+1、我的合同列表
+2、合同详情
+3、付款计划
+5、账单列表（已缴费）
+6、账单列表（未缴费）
+
+
+合同列表
+$WithCustomerService = app(WithCustomerServiceIf::class);
+$contractsData = $WithCustomerService->getCustomerContracts($customer->id);
+
+
+
+账单列表
+$billFormatList = app(\App\Logics\Pangu\MAPI\Services\BillService::class)->billLists($contract, $channel);
+
+
+付款计划
+$withCustomerService = app(WithCustomerService::class);
+$withCustomerService->getPaymentScheduleByContractId($contract->id);
+
+https://www.danke.com/u/pay/bill/8ac4841f26d8c94630e54bfac148619f?channel=%E5%A8%81%E5%AF%8C%E9%80%9A_%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81
+https://www.danke.com/u/pay/bill/8ac4841f26d8c94630e54bfac148619f?channel=alipay_qr
+
+https://www.danke.com/u/pay/bill/8ac4841f26d8c94630e54bfac148619f?channel=alipay_qr&confirmed=true&charge-code=5cdfd9cd1387bedcdb5cd64e21950631
+
+https://www.danke.com/u/pay/bill/c018ebdc6d0624c5fea5c487be4d786b?channel=%E5%A8%81%E5%AF%8C%E9%80%9A_%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81&confirmed=true&charge-code=b6ec700c0021dc3d1807461da7b1bbe7
+威富通_微信扫码
+trade.charge.active-channels
+兼容
+
+蛋壳app我的合同屏蔽西安合伙人
+支付宝小程序账单屏蔽西安合伙人

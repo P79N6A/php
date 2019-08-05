@@ -1,0 +1,95 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 2 (0x2)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=CH, ST=BEIJING, L=BEIJING, O=dankegongyu, OU=Dk_Dev, CN=dankegongyu CA/name=EasyRSA/emailAddress=wangzhifu@dankegongyu.com
+        Validity
+            Not Before: Jan 16 10:51:04 2018 GMT
+            Not After : Jan 14 10:51:04 2028 GMT
+        Subject: C=CH, ST=BEIJING, L=BEIJING, O=dankegongyu, OU=Dk_Dev, CN=client/name=EasyRSA/emailAddress=wangzhifu@dankegongyu.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:d8:74:16:a3:48:33:96:87:4e:eb:a9:94:41:db:
+                    00:62:b6:5b:c0:d6:14:b1:ce:87:bf:bb:1e:47:0a:
+                    f0:b8:96:f3:0d:04:43:11:e5:75:52:61:62:33:8f:
+                    c3:d0:5e:e7:03:9f:80:55:82:aa:ed:a0:f5:03:59:
+                    4b:8b:05:3e:bf:56:64:40:97:71:5c:ba:88:14:d9:
+                    63:7d:91:7d:a9:b6:c9:f7:af:04:c8:af:b1:9d:66:
+                    45:bc:52:6c:88:db:e7:82:eb:77:8e:f5:7e:2e:a2:
+                    c2:be:7a:f4:a7:f3:0e:57:13:87:8d:83:f6:ae:be:
+                    46:c6:5f:d1:53:35:57:e2:78:ea:7b:f6:ee:b3:0b:
+                    21:bd:06:c2:43:57:4b:0a:2f:d8:fe:a0:1a:5c:69:
+                    10:25:e0:8d:8a:25:06:24:52:b7:20:95:81:ef:70:
+                    10:17:0a:02:fc:f1:e4:20:b2:c1:60:90:9c:f1:55:
+                    be:9f:90:b9:32:80:cf:1b:23:e7:73:a3:ff:71:b1:
+                    fc:55:55:9f:e1:43:a3:32:85:52:fa:fd:32:77:31:
+                    9d:cf:51:f6:36:bb:93:8d:f4:ff:08:11:e9:02:ce:
+                    d3:e4:08:36:70:48:84:3b:a2:54:00:81:a5:a5:a2:
+                    91:9a:b4:da:df:f7:54:c4:34:df:9e:0b:77:40:7c:
+                    30:dd
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                Easy-RSA Generated Certificate
+            X509v3 Subject Key Identifier: 
+                7F:2C:89:93:4F:6D:26:6B:03:80:0D:D6:E9:B1:9F:89:BC:75:F1:EC
+            X509v3 Authority Key Identifier: 
+                keyid:BC:24:97:CF:19:AD:97:39:4C:09:B5:E8:F1:E2:C4:62:63:06:97:8E
+                DirName:/C=CH/ST=BEIJING/L=BEIJING/O=dankegongyu/OU=Dk_Dev/CN=dankegongyu CA/name=EasyRSA/emailAddress=wangzhifu@dankegongyu.com
+                serial:D5:00:FC:99:60:B5:EC:87
+
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication
+            X509v3 Key Usage: 
+                Digital Signature
+    Signature Algorithm: sha256WithRSAEncryption
+         78:97:da:3b:9c:bb:b1:b0:de:60:8e:3d:09:f9:6e:d2:d1:c9:
+         bd:65:5c:5f:f2:fb:87:6b:dc:b4:e3:17:89:ff:ef:98:a6:9f:
+         13:fe:24:f0:a6:cc:88:dd:34:b2:7a:83:5d:24:45:d6:1e:de:
+         30:ff:5d:3a:05:56:87:1b:7c:6b:bc:e0:d5:5f:c7:21:24:b4:
+         d0:e1:fb:96:ec:4e:d8:8e:6e:95:4f:de:6a:3c:65:9f:a7:47:
+         c1:2f:f0:52:4a:1d:da:69:00:b2:d4:09:8b:ff:fc:60:96:a5:
+         50:d3:f6:ca:c0:aa:e2:67:e1:6b:64:20:a5:ff:e2:a7:9f:54:
+         7a:30:e4:05:03:fc:7c:ce:9e:ad:b8:6d:60:13:91:9b:05:db:
+         89:60:4c:5e:da:3a:ed:33:23:d9:d3:d2:0b:16:b7:4c:be:dc:
+         be:98:44:02:ec:af:2d:8e:bb:ca:03:6c:9d:7e:ca:3a:49:f8:
+         b2:88:84:24:1a:e5:70:1d:b4:8d:8e:34:0d:21:fa:cf:bd:2e:
+         7b:86:2b:6a:a0:75:71:c9:16:7b:8c:67:b7:a8:6b:25:3b:e4:
+         38:70:65:d1:73:71:f2:43:a7:39:46:a0:ba:ea:88:e5:19:50:
+         67:0e:a2:24:05:41:67:0c:20:38:30:64:f9:02:64:e5:71:ec:
+         ae:f3:99:b6
+-----BEGIN CERTIFICATE-----
+MIIFNTCCBB2gAwIBAgIBAjANBgkqhkiG9w0BAQsFADCBrTELMAkGA1UEBhMCQ0gx
+EDAOBgNVBAgTB0JFSUpJTkcxEDAOBgNVBAcTB0JFSUpJTkcxFDASBgNVBAoTC2Rh
+bmtlZ29uZ3l1MQ8wDQYDVQQLFAZEa19EZXYxFzAVBgNVBAMTDmRhbmtlZ29uZ3l1
+IENBMRAwDgYDVQQpEwdFYXN5UlNBMSgwJgYJKoZIhvcNAQkBFhl3YW5nemhpZnVA
+ZGFua2Vnb25neXUuY29tMB4XDTE4MDExNjEwNTEwNFoXDTI4MDExNDEwNTEwNFow
+gaUxCzAJBgNVBAYTAkNIMRAwDgYDVQQIEwdCRUlKSU5HMRAwDgYDVQQHEwdCRUlK
+SU5HMRQwEgYDVQQKEwtkYW5rZWdvbmd5dTEPMA0GA1UECxQGRGtfRGV2MQ8wDQYD
+VQQDEwZjbGllbnQxEDAOBgNVBCkTB0Vhc3lSU0ExKDAmBgkqhkiG9w0BCQEWGXdh
+bmd6aGlmdUBkYW5rZWdvbmd5dS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQDYdBajSDOWh07rqZRB2wBitlvA1hSxzoe/ux5HCvC4lvMNBEMR5XVS
+YWIzj8PQXucDn4BVgqrtoPUDWUuLBT6/VmRAl3FcuogU2WN9kX2ptsn3rwTIr7Gd
+ZkW8UmyI2+eC63eO9X4uosK+evSn8w5XE4eNg/auvkbGX9FTNVfieOp79u6zCyG9
+BsJDV0sKL9j+oBpcaRAl4I2KJQYkUrcglYHvcBAXCgL88eQgssFgkJzxVb6fkLky
+gM8bI+dzo/9xsfxVVZ/hQ6MyhVL6/TJ3MZ3PUfY2u5ON9P8IEekCztPkCDZwSIQ7
+olQAgaWlopGatNrf91TENN+eC3dAfDDdAgMBAAGjggFkMIIBYDAJBgNVHRMEAjAA
+MC0GCWCGSAGG+EIBDQQgFh5FYXN5LVJTQSBHZW5lcmF0ZWQgQ2VydGlmaWNhdGUw
+HQYDVR0OBBYEFH8siZNPbSZrA4AN1umxn4m8dfHsMIHiBgNVHSMEgdowgdeAFLwk
+l88ZrZc5TAm16PHixGJjBpeOoYGzpIGwMIGtMQswCQYDVQQGEwJDSDEQMA4GA1UE
+CBMHQkVJSklORzEQMA4GA1UEBxMHQkVJSklORzEUMBIGA1UEChMLZGFua2Vnb25n
+eXUxDzANBgNVBAsUBkRrX0RldjEXMBUGA1UEAxMOZGFua2Vnb25neXUgQ0ExEDAO
+BgNVBCkTB0Vhc3lSU0ExKDAmBgkqhkiG9w0BCQEWGXdhbmd6aGlmdUBkYW5rZWdv
+bmd5dS5jb22CCQDVAPyZYLXshzATBgNVHSUEDDAKBggrBgEFBQcDAjALBgNVHQ8E
+BAMCB4AwDQYJKoZIhvcNAQELBQADggEBAHiX2jucu7Gw3mCOPQn5btLRyb1lXF/y
++4dr3LTjF4n/75imnxP+JPCmzIjdNLJ6g10kRdYe3jD/XToFVocbfGu84NVfxyEk
+tNDh+5bsTtiObpVP3mo8ZZ+nR8Ev8FJKHdppALLUCYv//GCWpVDT9srAquJn4Wtk
+IKX/4qefVHow5AUD/HzOnq24bWATkZsF24lgTF7aOu0zI9nT0gsWt0y+3L6YRALs
+ry2Ou8oDbJ1+yjpJ+LKIhCQa5XAdtI2ONA0h+s+9LnuGK2qgdXHJFnuMZ7eoayU7
+5DhwZdFzcfJDpzlGoLrqiOUZUGcOoiQFQWcMIDgwZPkCZOVx7K7zmbY=
+-----END CERTIFICATE-----

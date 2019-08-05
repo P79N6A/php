@@ -1,0 +1,71 @@
+<style>
+    .linkage_hide{display:none;}
+</style>
+
+<div class="content">
+    <!-- Main content -->
+
+    <div class="panel panel-default">
+        <div  class="panel-heading">
+            <h3>添加广告</h3>
+        </div>
+        <div class="panel-body text-center">
+            <form action="/AppCover/setCover" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">平台</label>
+                    <div class="col-sm-8 row">
+                        <label class="col-sm-2"><input type="radio" <?if($platform=='ios'){echo 'checked';}?> name="platform" value="ios" onclick="window.location.href='/AppCover/getcover/?platform=ios'">ios</label>
+                        <label class="col-sm-2"><input type="radio" <?if($platform=='android'){echo 'checked';}?> name="platform" value="android" onclick="window.location.href='/AppCover/getcover/?platform=android'"; >android</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="image" class="col-sm-2 control-label">图片</label>
+                    <div class="col-sm-6">
+                        <input type="file" name="image" class="form-control" id="image">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="image" class="col-sm-2 control-label">原图</label>
+                    <div class="col-sm-6">
+                        <img src="<?=$image?>" height="100">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="url" class="col-sm-2 control-label">链接</label>
+                    <div class="col-sm-6">
+                    <input type="text" name="url" class="form-control" id="url" placeholder="请输入ID号或带http的完整链接地址" value="<?=$thumbnail?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="url" class="col-sm-2 control-label">跳转时间（秒）</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="jumptime" class="form-control" id="jumptime" placeholder="缓存时间" value="<?=$outtime?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="url" class="col-sm-2 control-label">缓存</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="expire" class="form-control" id="expire" placeholder="缓存时间" value="<?=$outtime?>">
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <input type="hidden" name="id" value="<?=$id?>">
+                    <input type="hidden" name="name" value="cover">
+                    <input type="hidden" name="tag" value="通用">
+                    <button class="btn btn-primary">提交</button>
+                    <a href="javascript:;" class="btn btn-info btn-sm" id="clean_button" role="button">清理</a>
+                  </div>
+            </form>
+        </div>
+    </div>
+  </div>
+  <script>
+    $("#clean_button").on('click',function(){
+      if($('input:radio:checked').val()=='android'){
+        window.location.href="/AppCover/cleanCover?platform=android&id=311";
+      }else{
+        window.location.href="/AppCover/cleanCover?platform=ios&id=310";
+      }
+
+    })
+  </script>

@@ -1,0 +1,17 @@
+<?php isset($data['pager']) && $pager = $data['pager']; if (isset($pager) && $pager->getTotalPages() > 1):?>
+<ul class="pagination pull-right">
+	<?php if (!$pager->isFirstPage()):?>
+	<li><a href="<?php echo $pager->getFirstPage('url')?>">&laquo;</a></li>
+	<?php endif;?>
+<?php foreach ($pager->getPages() as $pageInfo):?>
+	<?php if ($pager->isCurrentPage($pageInfo['page'])):?>
+	<li class="active"><a href="javascript:void(0)"><?php echo $pageInfo['page'];?></a></li>
+	<?php else:?>
+	<li><a href="<?php echo $pageInfo['url'];?>"><?php echo $pageInfo['page'];?></a></li>
+	<?php endif;?>
+<?php endforeach;?>
+	<?php if (!$pager->isLastPage()):?>
+	<li><a href="<?php echo $pager->getLastPage('url');?>">&raquo;</a></li>
+	<?php endif;?>
+</ul>
+<?php endif;?>

@@ -1,0 +1,1202 @@
+{
+    "code": "0000",
+    "msg": "",
+    "data": {
+        "id": "291880842",
+        "name": "潘家园 华威西里-主卧 朝南 C室",
+        "district": "朝阳区",
+        "block": "潘家园",
+        "map_address": "华威西里",
+        "bedroom_type": "主卧",
+        "direction": "南",
+        "room_num": "C室",
+        "bedroom_num": 3,
+        "parlor": 1,
+        "floor_num": 5,
+        "floor_total_num": 18,
+        "area": "建筑面积约23㎡",
+        "price": 4130,
+        "price_unit": "元/月",
+        "list_tags": [
+            "近地铁",
+            "独立阳台",
+            "集中供暖",
+            "品质公寓",
+            "可立即入住",
+            "北欧宜家",
+            "已通风30天"
+        ],
+        "list_pic": "http://public.wutongwan.org/public-20180803-FoFT7L9ycR7zggw85G5JHZzH6T0W-roomPcList.jpg",
+        "rent_type": 3,
+        "rent_type_label": 2,
+        "brand_type": 1,
+        "nearest_subway_title": "距10号线潘家园站650米",
+        "has_3d": false,
+        "panorama_url": "",
+        "status": "可出租",
+        "payment_type": "分期月付",
+        "payment_type_url": "http://172.16.31.54:3333/payment-type/291880842?rent_type=3",
+        "payment_type_detail": [
+            {
+                "payment_type": "月付",
+                "rent": "4130元/月",
+                "deposit": "4130元",
+                "service_repair": "330元/月",
+                "furniture_leasing": "¥0元/月",
+                "is_cost_effective": false
+            }
+        ],
+        "payment_instruction": "",
+        "roommates": [
+            {
+                "id": "1048346308",
+                "roomName": "A室",
+                "gender": "女",
+                "area": "12㎡",
+                "price": "-",
+                "status": "已出租",
+                "status_font_color": "b5b5b5",
+                "rent_type": 3,
+                "can_jump": false
+            },
+            {
+                "id": "652779051",
+                "roomName": "B室",
+                "gender": "女",
+                "area": "11㎡",
+                "price": "-",
+                "status": "已出租",
+                "status_font_color": "b5b5b5",
+                "rent_type": 3,
+                "can_jump": false
+            },
+            {
+                "id": "291880842",
+                "roomName": "C室",
+                "gender": "-",
+                "area": "23㎡",
+                "price": "4130元/月",
+                "status": "当前房源",
+                "status_font_color": "666666",
+                "rent_type": 3,
+                "can_jump": false
+            }
+        ],
+        "detail_pic": [
+            {
+                "label_name": "卧室",
+                "pic_count": 7,
+                "pics": [
+                    "http://public.wutongwan.org/public-20180803-FoFT7L9ycR7zggw85G5JHZzH6T0W-roomMobileDetail.jpg",
+                    "http://public.wutongwan.org/public-20180803-FkaHXzOAVxe8gpZycUxfNgvgpSnu-roomMobileDetail.jpg",
+                    "http://public.wutongwan.org/public-20180803-FhTQONRQ4sozGhPiw3l1-DIY_TKi-roomMobileDetail.jpg",
+                    "http://public.wutongwan.org/public-20180803-Fh8TslbGR8bN3LVP62ZKZTFcwdZR-roomMobileDetail.jpg",
+                    "http://public.wutongwan.org/public-20180803-FidcM6mpcsVY-mEHJv4P4LKwPMj8-roomMobileDetail.jpg",
+                    "http://public.wutongwan.org/public-20180803-FuJ8goFuaF-SpIqmPhQYNRWG-lSq-roomMobileDetail.jpg",
+                    "http://public.wutongwan.org/public-20180803-Fj4Hx3tIjlkv06Fof9_LmkR_EwBS-roomMobileDetail.jpg"
+                ]
+            },
+            {
+                "label_name": "卫生间",
+                "pic_count": 1,
+                "pics": [
+                    "http://public.wutongwan.org/public-20180803-FnMWg4wSKuqt01FSo_PUrAqFS3dQ-roomMobileDetail.jpg"
+                ]
+            },
+            {
+                "label_name": "厨房",
+                "pic_count": 1,
+                "pics": [
+                    "http://public.wutongwan.org/public-20180803-Fu3blIuEKUqBvHKwuQKJysW59sgC-roomMobileDetail.jpg"
+                ]
+            },
+            {
+                "label_name": "小区",
+                "pic_count": 1,
+                "pics": [
+                    "http://public.wutongwan.org/public-20180803-FtUG6ipSxhLZERZOqLH-_AQCeYps-roomMobileDetail.jpg"
+                ]
+            }
+        ],
+        "you_like": [
+            {
+                "id": 796862506,
+                "public_id": 796862506,
+                "name": "四惠 都会华庭-主卧 朝南",
+                "map_address": "都会华庭",
+                "direction": "南",
+                "district": "朝阳区",
+                "block": "四惠",
+                "bedroom_num": 4,
+                "parlor": 1,
+                "floor_num": 2,
+                "floor_total_num": 25,
+                "area": "建筑面积约17㎡",
+                "price": 3790,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "集中供暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20161130-FsMiygBRQsyyAMuQWdNnI9EpVkmc?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距1号线,八通线四惠站步行约17分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 125117259,
+                "public_id": 125117259,
+                "name": "高碑店 兴隆家园-主卧 朝南",
+                "map_address": "兴隆家园",
+                "direction": "南",
+                "district": "朝阳区",
+                "block": "高碑店",
+                "bedroom_num": 5,
+                "parlor": 1,
+                "floor_num": 6,
+                "floor_total_num": 6,
+                "area": "建筑面积约12㎡",
+                "price": 3590,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "近地铁",
+                    "可月租",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20161009-Fvu05qEDlcQVJbjmorKKviwBni0t?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距八通线高碑店站步行约9分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 677401910,
+                "public_id": 677401910,
+                "name": "西二旗 融泽嘉园1号院-主卧 朝东南",
+                "map_address": "融泽嘉园1号院",
+                "direction": "东南",
+                "district": "海淀区",
+                "block": "西二旗",
+                "bedroom_num": 4,
+                "parlor": 1,
+                "floor_num": 7,
+                "floor_total_num": 22,
+                "area": "建筑面积约13㎡",
+                "price": 3260,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "集中供暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20160726-luwnPOIKmSJLZ-dvmXTHKqozT8s1?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距13号线龙泽站步行约29分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 1233267752,
+                "public_id": 1233267752,
+                "name": "西二旗 金域华府-主卧 朝南",
+                "map_address": "金域华府",
+                "direction": "南",
+                "district": "海淀区",
+                "block": "西二旗",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 27,
+                "floor_total_num": 29,
+                "area": "建筑面积约12㎡",
+                "price": 3060,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "集中供暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20160125-Fr_8ZcCUJhtmj0ALaWmj5pVhk6M3?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距13号线龙泽站步行约25分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 291880842,
+                "public_id": 291880842,
+                "name": "潘家园 华威西里-主卧 朝南",
+                "map_address": "华威西里",
+                "direction": "南",
+                "district": "朝阳区",
+                "block": "潘家园",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 5,
+                "floor_total_num": 18,
+                "area": "建筑面积约23㎡",
+                "price": 4130,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "近地铁",
+                    "可月租",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20180803-FoFT7L9ycR7zggw85G5JHZzH6T0W?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距10号线潘家园站步行约13分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 1958647500,
+                "public_id": 1958647500,
+                "name": "成寿寺 中海城圣朝菲-主卧 朝北",
+                "map_address": "中海城圣朝菲",
+                "direction": "北",
+                "district": "朝阳区",
+                "block": "成寿寺",
+                "bedroom_num": 4,
+                "parlor": 1,
+                "floor_num": 15,
+                "floor_total_num": 23,
+                "area": "建筑面积约13㎡",
+                "price": 3300,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "集中供暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20170214-FuqXWlcQ3HJqQCiBzNNrU-zQxodM?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距亦庄线肖村站步行约16分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 86656887,
+                "public_id": 86656887,
+                "name": "双桥 金隅康惠园-主卧 朝西",
+                "map_address": "金隅康惠园",
+                "direction": "西",
+                "district": "朝阳区",
+                "block": "双桥",
+                "bedroom_num": 4,
+                "parlor": 1,
+                "floor_num": 9,
+                "floor_total_num": 25,
+                "area": "建筑面积约22㎡",
+                "price": 3500,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "近地铁",
+                    "可月租",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20170208-FvRgA9xz4Z3xl7_06fPjaaSKKTSm?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距八通线双桥站步行约11分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 1342096707,
+                "public_id": 1342096707,
+                "name": "青年路 金隅汇星苑-主卧 朝南",
+                "map_address": "金隅汇星苑",
+                "direction": "南",
+                "district": "朝阳区",
+                "block": "青年路",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 13,
+                "floor_total_num": 19,
+                "area": "建筑面积约15㎡",
+                "price": 3530,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "独立阳台",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20160516-FpqNAFyPHp1FWVhjLOUhpfHyClST?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距八通线高碑店站步行约22分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 1898805129,
+                "public_id": 1898805129,
+                "name": "回龙观东大街 紫金新干线二期-主卧 朝南",
+                "map_address": "紫金新干线二期",
+                "direction": "南",
+                "district": "昌平区",
+                "block": "回龙观东大街",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 10,
+                "floor_total_num": 10,
+                "area": "建筑面积约19㎡",
+                "price": 3390,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "独立阳台",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20151229-FlJgk40wDLziMMM6nBOURwnRqRwE?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距8号线回龙观东大街站步行约23分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 1931932150,
+                "public_id": 1931932150,
+                "name": "高碑店 白领家园-主卧 朝东",
+                "map_address": "白领家园",
+                "direction": "东",
+                "district": "朝阳区",
+                "block": "高碑店",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 4,
+                "floor_total_num": 19,
+                "area": "建筑面积约18㎡",
+                "price": 4060,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "近地铁",
+                    "可月租",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20161029-Fv6InNO-zj8HbenBdsf2kJvQJLzJ?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距八通线高碑店站步行约13分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 680340015,
+                "public_id": 680340015,
+                "name": "青年路 姚家园东里8号院-主卧 朝南",
+                "map_address": "姚家园东里8号院",
+                "direction": "南",
+                "district": "朝阳区",
+                "block": "青年路",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 3,
+                "floor_total_num": 21,
+                "area": "建筑面积约18㎡",
+                "price": 3730,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "独立阳台",
+                    "自采暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20170216-Fm5iyxONP8EUf3Q03xF09ei0UKQ1?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 807906244,
+                "public_id": 807906244,
+                "name": "通州北苑 天时名苑-主卧 朝南",
+                "map_address": "天时名苑",
+                "direction": "南",
+                "district": "通州区",
+                "block": "通州北苑",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 13,
+                "floor_total_num": 28,
+                "area": "建筑面积约19㎡",
+                "price": 3060,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "近地铁",
+                    "可月租",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20180629-FrHCuq_TVqMiCnLlHORXbyEpV8tW?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距八通线通州北苑站步行约5分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 56241694,
+                "public_id": 56241694,
+                "name": "青年路 金隅汇星苑-主卧 朝南",
+                "map_address": "金隅汇星苑",
+                "direction": "南",
+                "district": "朝阳区",
+                "block": "青年路",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 4,
+                "floor_total_num": 29,
+                "area": "建筑面积约12㎡",
+                "price": 3230,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "集中供暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20160705-Fp4zitRBQGvEGck7IkYMPxGyEgDl?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距八通线高碑店站步行约22分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 205621613,
+                "public_id": 205621613,
+                "name": "成寿寺 中海城圣朝菲-主卧 朝南",
+                "map_address": "中海城圣朝菲",
+                "direction": "南",
+                "district": "朝阳区",
+                "block": "成寿寺",
+                "bedroom_num": 4,
+                "parlor": 1,
+                "floor_num": 15,
+                "floor_total_num": 23,
+                "area": "建筑面积约17㎡",
+                "price": 3430,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "集中供暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20161109-FjdBKpqzkwQngHlTVY2UeOjmHlSH?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距亦庄线肖村站步行约16分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 1956006039,
+                "public_id": 1956006039,
+                "name": "褡裢坡 定福景园-主卧 朝南",
+                "map_address": "定福景园",
+                "direction": "南",
+                "district": "朝阳区",
+                "block": "褡裢坡",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 5,
+                "floor_total_num": 12,
+                "area": "建筑面积约15㎡",
+                "price": 3430,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "近地铁",
+                    "可月租",
+                    "独立阳台"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20160123-FkHk-M7C2IcqSWrCpZw-gOGRjHum?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距6号线褡裢坡站步行约5分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 329836839,
+                "public_id": 329836839,
+                "name": "达官营 荣丰2008-主卧 朝西",
+                "map_address": "荣丰2008",
+                "direction": "西",
+                "district": "西城区",
+                "block": "达官营",
+                "bedroom_num": 4,
+                "parlor": 1,
+                "floor_num": 15,
+                "floor_total_num": 17,
+                "area": "建筑面积约19㎡",
+                "price": 4930,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "独立卫生间",
+                    "近地铁",
+                    "可月租"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20160722-FqENbqgcfj7usthz0gDrBPobeCD-?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距7号线达官营站步行约10分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 582279647,
+                "public_id": 582279647,
+                "name": "平西府 公园悦府-主卧 朝南",
+                "map_address": "公园悦府",
+                "direction": "南",
+                "district": "昌平区",
+                "block": "平西府",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 20,
+                "floor_total_num": 22,
+                "area": "建筑面积约16㎡",
+                "price": 3190,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "近地铁",
+                    "可月租",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20180613-FrNmhX2855IHyp1AsjW5fPSva7OU?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距8号线平西府站步行约6分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 483141805,
+                "public_id": 483141805,
+                "name": "平西府 公园悦府-主卧 朝南",
+                "map_address": "公园悦府",
+                "direction": "南",
+                "district": "昌平区",
+                "block": "平西府",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 17,
+                "floor_total_num": 18,
+                "area": "建筑面积约16㎡",
+                "price": 3030,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "近地铁",
+                    "可月租",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20160105-FlFv1VLm8jCSl4xyCWymJcTTtuwM?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距8号线平西府站步行约6分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 1192709195,
+                "public_id": 1192709195,
+                "name": "望京 望京西园一区-主卧 朝南",
+                "map_address": "望京西园一区",
+                "direction": "南",
+                "district": "朝阳区",
+                "block": "望京",
+                "bedroom_num": 5,
+                "parlor": 2,
+                "floor_num": 6,
+                "floor_total_num": 6,
+                "area": "建筑面积约27㎡",
+                "price": 4460,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "独立阳台",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20180819-FpuVRJKwkYL7gu9glb7hM-SN0aYQ?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距14号线,15号线望京站步行约17分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 553267894,
+                "public_id": 553267894,
+                "name": "回龙观东大街 紫金新干线二期-主卧 朝南",
+                "map_address": "紫金新干线二期",
+                "direction": "南",
+                "district": "昌平区",
+                "block": "回龙观东大街",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 8,
+                "floor_total_num": 10,
+                "area": "建筑面积约16㎡",
+                "price": 2830,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "集中供暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20151214-Fk79z5i7ep6AhrBdrpw9grPGzEKk?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距8号线回龙观东大街站步行约23分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 1264635858,
+                "public_id": 1264635858,
+                "name": "天通苑 天通苑北三区-主卧 朝南",
+                "map_address": "天通苑北三区",
+                "direction": "南",
+                "district": "昌平区",
+                "block": "天通苑",
+                "bedroom_num": 6,
+                "parlor": 1,
+                "floor_num": 6,
+                "floor_total_num": 6,
+                "area": "建筑面积约29㎡",
+                "price": 3060,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "独立阳台",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20180816-FlFjUbwINrFMUIXKiGf1J3DTv_Ve?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 451485263,
+                "public_id": 451485263,
+                "name": "管庄 管庄新村-主卧 朝南",
+                "map_address": "管庄新村",
+                "direction": "南",
+                "district": "朝阳区",
+                "block": "管庄",
+                "bedroom_num": 4,
+                "parlor": 1,
+                "floor_num": 3,
+                "floor_total_num": 18,
+                "area": "建筑面积约13㎡",
+                "price": 2190,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "近地铁",
+                    "可月租",
+                    "自采暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20161202-Fk40U5I2w1jDrOZFMD1s1QXEkcdq?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距八通线管庄站步行约8分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 985043149,
+                "public_id": 985043149,
+                "name": "天通苑 天通中苑-主卧 朝南",
+                "map_address": "天通中苑",
+                "direction": "南",
+                "district": "昌平区",
+                "block": "天通苑",
+                "bedroom_num": 4,
+                "parlor": 1,
+                "floor_num": 4,
+                "floor_total_num": 6,
+                "area": "建筑面积约19㎡",
+                "price": 3230,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "独立阳台",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20170517-FpGnADrAVBSnXLmeXgnx7dxjQ1-y?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距5号线天通苑站步行约24分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 842691438,
+                "public_id": 842691438,
+                "name": "天通苑 天通中苑-主卧 朝南",
+                "map_address": "天通中苑",
+                "direction": "南",
+                "district": "昌平区",
+                "block": "天通苑",
+                "bedroom_num": 4,
+                "parlor": 1,
+                "floor_num": 4,
+                "floor_total_num": 6,
+                "area": "建筑面积约22㎡",
+                "price": 3830,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "独立卫生间",
+                    "可月租",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20170720-FrsZrBW3sLh_45vv0qGCtKR9uyM2?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距5号线天通苑站步行约24分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 976779629,
+                "public_id": 976779629,
+                "name": "朱辛庄 领秀慧谷D区-次卧 朝南",
+                "map_address": "领秀慧谷D区",
+                "direction": "南",
+                "district": "昌平区",
+                "block": "朱辛庄",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 7,
+                "floor_total_num": 11,
+                "area": "建筑面积约10㎡",
+                "price": 2590,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "自采暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20180530-Fu1AXK4E1by7gcPuHyYgMOhRqFSV?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距昌平线,8号线朱辛庄站步行约24分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 944701184,
+                "public_id": 944701184,
+                "name": "青年路 阿曼寓所-主卧 朝北",
+                "map_address": "阿曼寓所",
+                "direction": "北",
+                "district": "朝阳区",
+                "block": "青年路",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 5,
+                "floor_total_num": 15,
+                "area": "建筑面积约13㎡",
+                "price": 3300,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "自采暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20161209-FjBwdjAGKvY5f62LZc9ur3HER5nh?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距6号线青年路站步行约19分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 1446796077,
+                "public_id": 1446796077,
+                "name": "草房 保利嘉园1号院-主卧 朝南",
+                "map_address": "保利嘉园1号院",
+                "direction": "南",
+                "district": "朝阳区",
+                "block": "草房",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 4,
+                "floor_total_num": 24,
+                "area": "建筑面积约22㎡",
+                "price": 3590,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "自采暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20151217-Fti6AZIgQlqMB7cf_uvg611bm8AK?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距6号线草房站步行约15分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 1717007659,
+                "public_id": 1717007659,
+                "name": "西二旗 融泽嘉园6号院-主卧 朝南",
+                "map_address": "融泽嘉园6号院",
+                "direction": "南",
+                "district": "海淀区",
+                "block": "西二旗",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 17,
+                "floor_total_num": 34,
+                "area": "建筑面积约19㎡",
+                "price": 3130,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "独立阳台",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20170114-FshZv95HO5XeaTfmityzQSwzLDsJ?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距13号线龙泽站步行约25分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 182526825,
+                "public_id": 182526825,
+                "name": "西二旗 融泽嘉园6号院-主卧 朝南",
+                "map_address": "融泽嘉园6号院",
+                "direction": "南",
+                "district": "海淀区",
+                "block": "西二旗",
+                "bedroom_num": 4,
+                "parlor": 1,
+                "floor_num": 4,
+                "floor_total_num": 28,
+                "area": "建筑面积约14㎡",
+                "price": 2990,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "集中供暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20160121-FvBGXNrQGivl_YY24nJK1AXs0UbZ?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距13号线龙泽站步行约25分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 2041351157,
+                "public_id": 2041351157,
+                "name": "天通苑 天通苑北三区-主卧 朝北",
+                "map_address": "天通苑北三区",
+                "direction": "北",
+                "district": "昌平区",
+                "block": "天通苑",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 3,
+                "floor_total_num": 6,
+                "area": "建筑面积约17㎡",
+                "price": 2990,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "可月租",
+                    "集中供暖",
+                    "品质公寓"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20160409-Fu4CPW5IFpWpFYQCnCxbkTFDP3hL?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "",
+                "has_3d": false,
+                "promotion_info": null
+            }
+        ],
+        "nearby_house": [
+            {
+                "id": 1667053671,
+                "public_id": 1667053671,
+                "name": "蒲黄榆 芳城园一区-次卧 朝西",
+                "map_address": "芳城园一区",
+                "direction": "西",
+                "district": "丰台区",
+                "block": "蒲黄榆",
+                "bedroom_num": 4,
+                "parlor": 1,
+                "floor_num": 7,
+                "floor_total_num": 28,
+                "area": "建筑面积约9㎡",
+                "price": 3060,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "近地铁",
+                    "可月租",
+                    "集中供暖"
+                ],
+                "list_pic": "http://public.wutongwan.org/public-20160421-FlulwSyX_YFIWeax_aESAzk1LVp8?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距14号线方庄站步行约11分钟",
+                "has_3d": false,
+                "promotion_info": null
+            },
+            {
+                "id": 688072708,
+                "public_id": 688072708,
+                "name": "成寿寺 金第润苑-主卧 朝北",
+                "map_address": "金第润苑",
+                "direction": "北",
+                "district": "朝阳区",
+                "block": "成寿寺",
+                "bedroom_num": 3,
+                "parlor": 1,
+                "floor_num": 11,
+                "floor_total_num": 22,
+                "area": "建筑面积约18㎡",
+                "price": 3500,
+                "price_unit": "元/月",
+                "list_tags": [
+                    "近地铁",
+                    "可月租",
+                    "集中供暖"
+                ],
+                "list_pic": "http:///img/room/no-picture.jpg?imageView2/1/w/380/h/285",
+                "rent_type": 3,
+                "rent_type_label": 2,
+                "brand_type": 0,
+                "nearest_subway_title": "距10号线成寿寺站步行约11分钟",
+                "has_3d": false,
+                "promotion_info": null
+            }
+        ],
+        "suite_ambitus": {
+            "suite": "华威便民超市 清大学习吧 北京贾顺中医诊所",
+            "travel": "向东直行560米到潘家园站乘坐地铁10号线。公交车次有：34路; 36路; 378路; 674路; 特12内"
+        },
+        "facility_config": [
+            {
+                "title": "空调",
+                "icon": "http://public.wutongwan.org/public-20171023-FvABPgpXSal9QCKo1_00FP_9TJ_D",
+                "url": ""
+            },
+            {
+                "title": "床",
+                "icon": "http://public.wutongwan.org/public-20171021-FrkrYtMMKrPBbUptM4TBny4rVoYC",
+                "url": ""
+            },
+            {
+                "title": "床垫",
+                "icon": "http://public.wutongwan.org/public-20171021-Fm-_i4sdcDP6Sln_kOmcIy-TlGpJ",
+                "url": ""
+            },
+            {
+                "title": "书桌",
+                "icon": "http://public.wutongwan.org/public-20171021-FqQDB-xIX8rs255ol4feAWJNeUhJ",
+                "url": ""
+            },
+            {
+                "title": "更多",
+                "icon": "http://public.wutongwan.org/public-20171021-FikJFp3bPxi4SGTL8WbaGHfcRN9Z",
+                "url": "http://172.16.31.54:3333/api-page/room-facility-config"
+            }
+        ],
+        "facility_config_share": [
+            {
+                "title": "空调",
+                "icon": "http://public.wutongwan.org/public-20171023-FvABPgpXSal9QCKo1_00FP_9TJ_D",
+                "url": ""
+            },
+            {
+                "title": "床",
+                "icon": "http://public.wutongwan.org/public-20171021-FrkrYtMMKrPBbUptM4TBny4rVoYC",
+                "url": ""
+            },
+            {
+                "title": "床垫",
+                "icon": "http://public.wutongwan.org/public-20171021-Fm-_i4sdcDP6Sln_kOmcIy-TlGpJ",
+                "url": ""
+            },
+            {
+                "title": "书桌",
+                "icon": "http://public.wutongwan.org/public-20171021-FqQDB-xIX8rs255ol4feAWJNeUhJ",
+                "url": ""
+            },
+            {
+                "title": "衣柜",
+                "icon": "http://public.wutongwan.org/public-20171021-FmAoB_J79jij19v2NvPGkuGY0bMK",
+                "url": ""
+            }
+        ],
+        "facility_config_share_180": [
+            {
+                "label_name": "卧室配置",
+                "label_list": [
+                    {
+                        "title": "空调",
+                        "icon": "http://public.wutongwan.org/public-20180808-FoLqoC7kSFjmgDfJ4VCCIONdNLdh",
+                        "url": ""
+                    },
+                    {
+                        "title": "床",
+                        "icon": "http://public.wutongwan.org/public-20180808-FqgL3kmMMzcaR2Ukh4G4lFswniIL",
+                        "url": ""
+                    },
+                    {
+                        "title": "床垫",
+                        "icon": "http://public.wutongwan.org/public-20180808-FgRGVjfxnaZut5C-1OxGNZSnlxds",
+                        "url": ""
+                    },
+                    {
+                        "title": "书桌",
+                        "icon": "http://public.wutongwan.org/public-20180808-FgzJdCK8arLubzssjRo-f3PFXebO",
+                        "url": ""
+                    },
+                    {
+                        "title": "智能锁",
+                        "icon": "http://public.wutongwan.org/public-20180808-FtLTYSevwYmPXcGMfrYx4uaGf-CN",
+                        "url": ""
+                    }
+                ]
+            },
+            {
+                "label_name": "公共区域",
+                "label_list": [
+                    {
+                        "title": "衣柜",
+                        "icon": "http://public.wutongwan.org/public-20180808-FhML58584Grk5TenaURrMWa75gOg",
+                        "url": ""
+                    },
+                    {
+                        "title": "抽油烟机",
+                        "icon": "http://public.wutongwan.org/public-20180808-FpOxaITiaIKtHT1n7AP11o925gL1",
+                        "url": ""
+                    },
+                    {
+                        "title": "燃气灶",
+                        "icon": "http://public.wutongwan.org/public-20180808-FnKpzM781TNoSUXVS-RxHEXpZWFP",
+                        "url": ""
+                    },
+                    {
+                        "title": "热水器",
+                        "icon": "http://public.wutongwan.org/public-20180808-Fuj0jTj8mynTifOnj9WKnORJ8q4C",
+                        "url": ""
+                    },
+                    {
+                        "title": "洗衣机",
+                        "icon": "http://public.wutongwan.org/public-20180808-FpDPQcomV8TXabp3r6OBcFyJbHMr",
+                        "url": ""
+                    },
+                    {
+                        "title": "台灯",
+                        "icon": "http://public.wutongwan.org/public-20180808-Fnl9fUNehzNXKOcjRrYF4ekj-MA8",
+                        "url": ""
+                    },
+                    {
+                        "title": "垃圾桶",
+                        "icon": "http://public.wutongwan.org/public-20180808-FhmuGSWJzkPuqC4bw3zpoPc9_18c",
+                        "url": ""
+                    },
+                    {
+                        "title": "冰箱",
+                        "icon": "http://public.wutongwan.org/public-20180808-FsZ8eh8hlqkOPsqgkgsr7EJ9nZHV",
+                        "url": ""
+                    }
+                ]
+            }
+        ],
+        "order_phone": "400-057-8788",
+        "service_info": [
+            {
+                "title": "极速wifi",
+                "icon": "http://public.wutongwan.org/public-20171021-FgdsQ4XpIxSNjaf4tdqVO_A2PGV2",
+                "describe": "高速宽带+高品质路由器，网络精彩不断线"
+            },
+            {
+                "title": "维修服务",
+                "icon": "http://public.wutongwan.org/public-20171021-FqCsUW6c85MwYYT0LAUSMeLro-Rc",
+                "describe": "设施坏了App提交报修，一站式解决问题"
+            },
+            {
+                "title": "双周保洁",
+                "icon": "http://public.wutongwan.org/public-20171021-FihY9Q8Zz5uLQ3atN6YWWXWpoEh6",
+                "describe": "公共区域定期保洁，清除卫生死角"
+            },
+            {
+                "title": "智能密码锁",
+                "icon": "http://public.wutongwan.org/public-20171021-FgTtXBMn_NUr4VgbBOHjj62JeC6v",
+                "describe": "更私密、更安全"
+            },
+            {
+                "title": "高档家居",
+                "icon": "http://public.wutongwan.org/public-20171021-FruiV2mtoV1Uyz1Jk8ktLIAAb0FS",
+                "describe": "高档品牌家具及家电，保障品质生活"
+            },
+            {
+                "title": "原创设计",
+                "icon": "http://public.wutongwan.org/public-20171021-FrRDDykbLob6vO-U3fLcdGbmwT2V",
+                "describe": "80后设计师倾力打造的温馨环境"
+            }
+        ],
+        "share_icon": "https://public.wutongwan.org/public-20180803-FoFT7L9ycR7zggw85G5JHZzH6T0W-roomPcList.jpg",
+        "share_sub_title": "3室1厅 - 建筑面积约23㎡ - 4130元 \n让租房变得简单和快乐",
+        "share_url": "http://172.16.31.54:3333/duanzu/291880842.html",
+        "latitude": "39.879541",
+        "longitude": "116.460139",
+        "promotion_info": null,
+        "can_appointment": true,
+        "expact_checkin": null,
+        "air_detection": {
+            "desc": "房屋空气质量说明",
+            "h5_link": "https://www.dankegongyu.com/"
+        }
+    }
+}

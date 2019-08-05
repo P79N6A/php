@@ -1,0 +1,54 @@
+<div class="rightinfo">
+        <input type="button" class="cancel" value="《 点击返回" onclick="history.go(-1);"/>
+        <div class="formbody">
+            <div class="formtitle"><span style="color: #ff0000;">购买详情</span></div>
+            <table id="tfhover" class="tftable" border="1" >
+                <tbody>
+                <tr>
+                    <td colspan="4" style="background-color: #acc8cc;"><center><h2>订单和用户</h2></center></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">订单号:</td>
+                    <td><a href="/orders/detail?orderid=<?php echo $buyDetail['orderid'];?>"><?php echo $buyDetail['orderid']?></a></td>
+                     <td align="right" width="100">下单时间:</td>
+                    <td><?php echo $buyDetail['addtime']?></td>
+                </tr>
+
+                <tr>
+                    <td align="right" width="100">订单状态:</td>
+                    <td><?php echo $statusData[$buyDetail['status']]?></td>
+                    <td align="right" width="100">最后修改时间:</td>
+                    <td><?php echo $buyDetail['modtime']?></td>
+                </tr>
+
+                <tr>
+                    <td align="right" width="100">用户id:</td>
+                    <td><?php echo $buyDetail['uid']?></td>
+                    <td align="right" width="100">用户昵称:</td>
+                    <td><?php echo $userDetail['nickname']?></td>
+                </tr>
+
+                <tr>
+                    <td align="right" width="100">消耗葡萄:</td>
+                    <td><?php echo $buyDetail['grape']?></td>
+                    <td align="right" width="100">支付金额:</td>
+                    <td><?php echo $buyDetail['pay_price']?></td>
+                </tr>
+
+                <tr>
+                    <td align="right" width="100">支付代金券:</td>
+                    <td><?php echo $buyDetail['pay_coupon']?></td>
+                    <td align="right" width="100">包裹数量:</td>
+                    <td><?php echo $buyDetail['num']?></td>
+                </tr>
+
+                <tr>
+                    <td align="right" width="100">包裹号:</td>
+                    <td><?php echo $buyDetail['packageid']?></td>
+                    <td align="right" width="100">包裹sn:</td>
+                    <td><?php echo $buyDetail['sn']?></td>
+                </tr>
+
+                </tbody></table>
+        </div>
+</div>

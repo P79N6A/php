@@ -1,0 +1,86 @@
+<div class="rightinfo">
+        
+        <div class="formbody">
+            <div class="formtitle"><span style="color: #ff0000;">七星彩 <?=$param['issue']?> 期</span></div>
+            
+           
+            <table id="tfhover" class="tftable" border="1" >
+                <tbody>
+                <tr>
+                    <td colspan="2" style="background-color: #acc8cc;"> </td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">七星彩期号:</td>
+                    <td><?php echo $data['issue']?></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">葡萄期号:</td>
+                    <td><?php echo $data['pt_issue']?></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">开奖号码:</td>
+                    <td><?php echo $data['number']?></td>
+                </tr>
+                
+                <tr>
+                    <td align="right" width="100">开始时间:</td>
+                    <td><?=$data['startime']?date("Y-m-d H:i:s", $data['startime']):""?></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">结束时间:</td>
+                    <td><?=$data['endtime']?date("Y-m-d H:i:s", $data['endtime']):""?></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">状态:</td>
+                    <td><?php echo $this->config_status[$data['status']]?> 
+                        <!-- <?php if ($data['status'] == 'Y') {?>
+                            <a href="/lottery/close?issue=<?=$data['issue']?>" onclick="return confirm('确认关闭')" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">关闭</a>
+                            
+                        <?php }else{?>
+                            <a href="/lottery/open?issue=<?=$data['issue']?>" onclick="return confirm('确认开启')" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">开启</a>
+                        <?php }?>
+             -->
+                    </td>
+                    
+                </tr>
+                </tbody>
+            </table>
+            <br />
+            <?php if(!$data['number']){?>
+            <div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+                <form name="search" method="get" action="/lottery/setNumber">
+                    <h6>添加开奖号码</h6>
+                    <table>
+                        <tr>
+                            <td height="30" style="line-height: 40px">开奖号码：</td>
+                            <td><input type="text" name="number" value="" style="height: 25px"/></td>
+        
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="hidden" name="issue" value="<?php echo $param['issue']?>"/>
+                                <input type="submit" name="submit" value="添加" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+           
+            <?php }else if($data['status'] == 'N'){?>
+            <div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+                <center>
+                <a href="/lottery/run?issue=<?=$data['issue']?>" onclick="return confirm('确认中奖号码<?= $data['number']?>')" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">开奖</a>
+                </center>
+            </div>
+            <?php }else if($data['status'] == 'Y'){?>
+            <div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+                <center>
+                <a href="/lottery/list?issue=<?=$data['issue']?>" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">查看中奖用户</a>
+                </center>
+            </div>
+            <?php } ?>
+
+               
+        </div>
+</div>
+

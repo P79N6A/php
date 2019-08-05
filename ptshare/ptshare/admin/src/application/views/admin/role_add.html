@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="/css/common/bootstrap.min.css" type="text/css" />
+<div class="rightinfo">
+    <form id='form'  action="/role/addRole" method="post" enctype="multipart/form-data">
+        <div class="formbody">
+            <div class="formtitle"><span>角色信息</span></div>
+            <ul class="forminfo">
+                <li><label>角色名称</label><input name="name" type="text" class="dfinput" value="" /></li>
+            </ul>
+
+            <ul class="forminfo">
+                <ul id="test" class="ztree"></ul>
+                <li><label>&nbsp;</label><input type="hidden" id="auths" name="auths" value="" /><input name="" type="submit" class="btn btn-primary" value="添加新角色" id='btn'/></li>
+            </ul>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,23 @@
+<?
+device_foot 按device_id hash后对abs(substr($device_id, - 3)) % 20
+取模，
+
+room_collect 对room_id hash对100取模
+
+
+contract_with_customers
+logistic_associate_items
+prepare_config_bill_items
+prepare_config_bills
+supple_configs
+supple_config_items
+bi_communitiy_ext_infos
+
+$appRoom = new SearchRoom();
+        $a = [];
+        $a['xiaoquLonLat'] = '39.936207,116.190006';
+        $a['subwayLonLat'] = '39.932391,116.18407';
+        $a['subwayTitle'] = '苹果园';
+        $a['subwayLines'] = '1号线,6号线,S1线';
+        $string = $appRoom->nearestSubwayTitleEs($a);
+        var_dump($string);exit;

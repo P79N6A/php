@@ -1,0 +1,15 @@
+ALTER TABLE `Laputa`.`app_banners` CHANGE COLUMN `type` `type` enum('index','active','start_page','landlord','popup','school_partner') NOT NULL DEFAULT 'index' COMMENT 'banner类型';
+http://172.16.31.54:3437
+select * from app_banners where city_id like '%|1|%' and status = '启用' and effective_begin <= '2019-03-12' and effective_end >= '2019-03-12' and  type = 'school_partner' and sort < 100  order by `sort` desc
+
+h2-z2
+
+ALTER TABLE `Mapiactivity`.`starling_user` CHANGE COLUMN `channel` `channel` varchar(20) NOT NULL DEFAULT '官网线上' COMMENT '渠道';
+
+select id,uid,status,name,idcard,audit_result,attachment from starling_user;
+select id,uid,mobile,status,name,idcard,audit_result,attachment,auto from Mapiactivity.starling_user where uid = 763358;
+
+select uid,number,status,query,addtime,modtime from Mapiactivity.starling_task where uid = 2543488;
+
+select uid,number,status,query,addtime,modtime from Mapiactivity.starling_task where number = 'A8AQJBHJ67D1L23Q'
+select id,uid,mobile,status,name,idcard,audit_result,attachment,auto from Mapiactivity.starling_user where uid = 2543488;

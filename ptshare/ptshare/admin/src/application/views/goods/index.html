@@ -1,0 +1,138 @@
+<div class="rightinfo">
+    <script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
+
+
+
+    <script>
+        lay('#version').html('-v'+ laydate.v);
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#create_start_time' //指定元素
+        });
+        laydate.render({
+            elem: '#create_end_time' //指定元素
+        });
+    </script>
+    <div style="margin-bottom: 20px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/goods/index">
+            <h6>条件搜索</h6>
+            <table>
+                <tr>
+                    <td height="30" style="height: 30px; line-height: 40px; text-align: right;">分享 ID：</td>
+                    <td><input type="text" name="sellid" value="<?=$_GET['sellid']?>" style="height: 25px"/></td>
+
+
+                    <!--<td> &nbsp;&nbsp;&nbsp;&nbsp; 分类：</td>-->
+                    <!--<td><input type="text" name="category" value="<?=$_GET['category']?>" style="height: 25px"/></td>-->
+
+
+
+
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp;状态：</td>
+                    <td>
+                        <select name="status" style="height: 25px; width: 100px">
+                            <option value="0">默认不选</option>
+                            <?
+                                if ($statusData) { foreach($statusData as $key => $val){
+                            ?>
+                            <option value="<?=$key?>" <?php if ($_GET['status'] == $key) echo "selected='selected'" ?> ><?=$val?></option>
+                            <? } } ?>
+                        </select>
+                    </td>
+                                        <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp; 开始时间：</td>
+                    <td>
+                        <input placeholder="请选择开始日期" name="create_start_time" value="<?=$_GET['create_start_time']?>" id="create_start_time" class="Wdate" type="text" onClick="WdatePicker()" style="padding-left: 5px;"/>
+                    </td>
+                    <td style="height: 30px; line-height: 40px; text-align: right;"> &nbsp;&nbsp;&nbsp;&nbsp; 结束时间：</td>
+                    <td>
+                        <input placeholder="请选择结束日期" name="create_end_time" value="<?=$_GET['create_end_time']?>" id="create_end_time" class="Wdate" type="text" onClick="WdatePicker()" style="padding-left: 5px;"/>
+                    </td>
+
+                </tr>
+                <tr style="height: 10px;"><td> </td></tr>
+                <tr>
+                    <td colspan="10">
+                        <input type="submit" name="submit" value="查 询" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">
+                    </td>
+
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <!-- Row Highlight Javascript -->
+    <script>
+        window.onload=function(){
+            var tfrow = document.getElementById('tfhover').rows.length;
+            var tbRow=[];
+            for (var i=1;i<tfrow;i++) {
+                tbRow[i]=document.getElementById('tfhover').rows[i];
+                tbRow[i].onmouseover = function(){
+                    this.style.backgroundColor = '#f3f8aa';
+                };
+                tbRow[i].onmouseout = function() {
+                    this.style.backgroundColor = '#ffffff';
+                };
+            }
+        };
+    </script>
+    <style type="text/css">
+        table.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+        table.tftable th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}
+        table.tftable tr {background-color:#ffffff;}
+        table.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}
+    </style>
+
+    <table id="tfhover" class="tftable" border="1">
+        <tr>
+            <th width="20px;">ID</th>
+            <th>SELLID</th>
+            <th>状态</th>
+            <th>价格</th>
+            <th>价值</th>
+            <!--<th>分类</th>-->
+            <th>类型</th>
+            <th>图片</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+            <th>操作</th>
+        </tr>
+        <?
+            if ($data['list']) foreach($data['list'] as $key => $val){
+        ?>
+
+        <tr align="center">
+            <td><?=$val['id']?></td>
+            <td><a href="/sell/index?id=<?=$val['sellid']?>"><?=$val['sellid']?></td>
+            <td><?=$statusData[$val['status']]?></td>
+            <td><?=$val['show_grape']?></td>
+            <td><?=$val['worth_grape']?></td>
+            <!--<td><?=$val['category']?></td>-->
+            <td><?php if ($val['type'] == 'image'){?>图片<?php } else { ?>视频<?php } ?></td>
+            <td><a href="<?=$val['file']?>" target="_blank"><img src="<?=$val['file']?>" width="50" height="50" alt="点击查看大图"></a></td>
+            <td><?=$val['addtime']?></td>
+            <td><?=$val['modtime']?></td>
+            <td><a href="/goods/detail?id=<?=$val['id']?>">详情</a></td>
+        </tr>
+        <? } else { ?>
+        <tr style="height: 20px;"><td colspan="12"> <center>列表信息为空！</center> </td></tr>
+        <?php } ?>
+
+        <tr style="height: 20px;"><td colspan="12"> </td></tr>
+
+        <style>
+            .pagination{float: none}
+        </style>
+        <?php if ($mutipage) {?>
+        <tr style="text-align: center; background: #FFF; height: 40px;">
+            <td colspan="7"><?=$mutipage?></td>
+            <td colspan="5">总数=<?=$data['total']?></td>
+        </tr>
+        <?php }?>
+    </table>
+
+
+
+</div>
+

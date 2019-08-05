@@ -1,0 +1,306 @@
+<script src="/js/jsoneditor.min.js"></script>
+<script src="/js/template.js"></script>
+
+<h2 class="navbar-default">配置管理</h2>
+<div class="content">
+    <!-- Main content -->
+    <ol class="breadcrumb">
+    	<li><a href="/AppConfig/list">全部</a></li>
+        <?php foreach($data['tags'] as $tag):?>
+        <li<?php if($tag == $data['currentTag']):?> class="active"<?php endif;?>>
+        <a href="/AppConfig/list?tag=<?php Util::S($tag);?>"><?php Util::S($tag);?></a></li>
+        <?php endforeach;?>
+    </ol>
+	<div style="margin-bottom: 10px">
+		<div class="col-md-3">
+			<form action="/AppConfig/name">
+				<div class="input-group">
+					<input type="text" name="name" class="form-control" placeholder="按key查找配置"> <span class="input-group-btn">
+						<button class="btn btn-default" type="submit">按key检索</button>
+					</span>
+				</div>
+			</form>
+		</div>
+		<div class="col-md-3">
+			<form action="/AppConfig/search">
+				<div class="input-group">
+					<input type="text" name="keyword" class="form-control" placeholder="查找配置值、备注中包含关键词的配置"> <span class="input-group-btn">
+						<button class="btn btn-default" type="submit">按关键词搜索</button>
+					</span>
+				</div>
+			</form>
+		</div>
+		<a href="/AppConfig/add" class="btn btn-primary">新增配置</a>
+		<a href="http://www.kjson.com/jsoneditor/" style="cursor:help;margin-left:20px" target="_blank" title="复制左侧内容，粘贴到编辑器左侧，点击中间向右箭头，进行编辑，编辑完成后，点击向左箭头同步成json字符串。复制到后台，点击修改即可完成修改操作。">json在线编辑器</a>
+	</div>
+
+	<div class="panel panel-default">
+		<style>
+			#table td{vertical-align:middle}
+		</style>
+        <table class="table table-bordered table-hover table-condensed" id="table">
+           <thead> <tr>
+                <th>key</th>
+                <th>区域</th>
+                <th>平台</th>
+                <th width="100">最小版本</th>
+                <th width="100">最大版本</th>
+                <th>值</th>
+                <th width="80">缓存时间</th>
+                <th>备注</th>
+                <th>操作</th></tr>
+           </thead>
+            <?php foreach ($data['combined'] as $config):?>
+            <tr>
+                <td>
+                	<?php Util::S($config['name']);?><br>
+                	<a href="/AppConfig/list?tag=<?php Util::S($config['tag']);?>"><span style="color:#ccc"><?php Util::S($config['tag']);?></span></a><br>
+                	<span style="color:#ccc;font-size:12px">创建人：<input name="adduser" type="text" value="<?php Util::S($config['adduser']);?>" placeholder="未填写" style="min-width:90px;border:none"></span><br>
+                </td>
+                <td class="regions">
+                  <?php $i = 0; foreach ($config['regions'] as $k => $p):?>
+                    <select name="region[<?php Util::S($config['ids'][$k]);?>]" class="form-control splitable split_<?php echo $i++;?>">
+                        <?php foreach ($data['regions'] as $region):?>
+                        <option value="<?php Util::S($region);?>"
+                        <?php if($region == $p):?> selected="selected"<?php endif;?>><?php Util::S($region);?></option>
+                        <?php endforeach;?>
+                    </select>
+                    <?php endforeach;?>
+                </td>
+                <td class="platforms">
+                    <?php $i = 0; foreach ($config['platforms'] as $k => $p):?>
+                    <select name="platform[<?php Util::S($config['ids'][$k]);?>]" class="form-control splitable split_<?php echo $i++;?>">
+                        <?php foreach ($data['platforms'] as $platform):?>
+                        <option value="<?php Util::S($platform);?>"
+                        <?php if($platform == $p):?> selected="selected"<?php endif;?>><?php Util::S($platform);?></option>
+                        <?php endforeach;?>
+                    </select>
+                    <?php endforeach;?>
+                </td>
+                <td class="min_versions">
+                    <?php $i = 0; foreach ($config['minversions'] as $k => $minversion):?>
+                    <input type="text" name="version[<?php Util::S($config['ids'][$k]);?>][min]" value="<?php Util::S($minversion);?>" placeholder="最小版本号，留空不限" class="form-control splitable split_<?php echo $i++;?>">
+                    <?php endforeach;?>
+                </td>
+                <td class="max_versions">
+                    <?php $i = 0; foreach ($config['maxversions'] as $k => $maxversion):?>
+                    <input type="text" name="version[<?php Util::S($config['ids'][$k]);?>][max]" value="<?php Util::S($maxversion);?>" placeholder="最大版本号，留空不限" class="form-control splitable split_<?php echo $i++;?>">
+                    <?php endforeach;?>
+                </td>
+                <td>
+                	<?php if ($config['jsonschema']):?>
+                	<textarea class="form-control" name="value" rows="2" cols="40" placeholder="配置值" id="json-value-<?php Util::S($config['ids'][0]);?>" readonly="readonly"><?php Util::S($config['value']);?></textarea>
+                	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-json-<?php Util::S($config['ids'][0]);?>" style="margin-top:10px">图形界面编辑</button>
+                	<textarea name="schema" style="display:none"><?php Util::S($config['jsonschema']);?></textarea>
+
+                	<div class="modal inmodal" id="modal-json-<?php Util::S($config['ids'][0]);?>" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content animated flipInY">
+                                <div class="modal-body">
+                                    <div id="json-editor-holder-<?php Util::S($config['ids'][0]);?>"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                    <button type="button" class="btn btn-primary" id="btn-save-<?php Util::S($config['ids'][0]);?>">确定</button>
+                                    <span class="text-danger">此确定不是直接更新配置，仍需确定后，点击修改才能真正生效</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+						var editor<?php Util::S($config['ids'][0]);?> = new JSONEditor(document.getElementById('json-editor-holder-<?php Util::S($config['ids'][0]);?>'), {
+							theme: 'bootstrap3',
+							iconlib: 'bootstrap3',
+							disable_properties: true,
+							disable_array_delete_all_rows: true,
+							disable_array_delete_last_row: true,
+							schema: '<?php echo $config['jsonschema'];?>'
+						});
+
+						<?php if ($config['value']): ?>
+						editor<?php Util::S($config['ids'][0]);?>.setValue('<?php echo $config['value'];?>');
+						<?php endif;?>
+
+						$('#btn-save-<?php Util::S($config['ids'][0]);?>').click(function(){
+							$('#json-value-<?php Util::S($config['ids'][0]);?>').val(JSON.stringify(editor<?php Util::S($config['ids'][0]);?>.getValue()));
+							$('#modal-json-<?php Util::S($config['ids'][0]);?>').modal('hide');
+						});
+					</script>
+					<?php else:?>
+					<textarea class="form-control" name="value" rows="3" cols="60" placeholder="配置值" id="json-value-<?php Util::S($config['ids'][0]);?>"><?php Util::S($config['value']);?></textarea>
+                	<?php endif;?>
+                </td>
+                <td><input class="form-control" type="text" name="expire" value="<?php Util::S($config['expire']);?>" placeholder="客户端允许最大缓存时间 单位：秒"></td>
+                <td><textarea class="form-control" name="remark" rows="3" cols="30" placeholder="备注 相同的分组标签、key、配置值、备注会聚合展示，方便同时修改"><?php Util::S($config['remark']);?></textarea></td>
+                <td>
+                    <?php $i = 0; foreach ($config['ids'] as $id):?>
+                    <input type="hidden" name="id[<?php Util::S($id);?>]" value="<?php Util::S($id);?>" class="splitable split_<?php echo $i++;?>">
+                    <?php endforeach;?>
+                    <input type="hidden" name="name" value="<?php Util::S($config['name']);?>">
+                    <input type="hidden" name="tag" value="<?php Util::S($config['tag']);?>">
+                    <button class="btn btn-primary btn-save">修改</button>
+                    <button class="btn btn-danger btn-delete">删除</button>
+                    <?php if (count($config['platforms']) > 1): ?>
+                    <button class="btn btn-warning btn-split">拆分</button>
+                    <?php endif;?>
+                    <button class="btn btn-info btn-history" data-id="<?php Util::S($config['ids'][0]);?>">历史</button>
+                </td>
+            </tr>
+            <?php endforeach;?>
+        </table>
+    </div>
+    <div>
+    <?php echo $mutipage;?>
+    </div>
+</div><!-- /.content-wrapper -->
+
+<div class="modal inmodal" id="modal-history" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content animated flipInY">
+            <div class="modal-body">
+                <div id="box-history"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.clearfix{
+	clear:both;
+}
+.history{
+	padding:0;
+	margin:0;
+}
+.history li{
+	padding-bottom:5px;
+	border-bottom:1px solid red;
+}
+.history .value{
+	width:80%;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	word-break:break-all;
+}
+.history .addtime{
+	float:right;
+}
+.history .btn-recovery{
+	float:right;
+}
+.notice{
+	background-color: #fc3;
+	transition: background 2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+</style>
+<script type="text/html" id="tpl-history">
+	<ol class="history">
+		{{each list as v}}
+		<li><p class="value">{{v.value}}</p> <span class="addtime"><code>{{v.addtime}}</code></span> <button type="button" class="btn btn-primary btn-xs btn-recovery" data-id="{{v.config_id}}">恢复</button><div class="clearfix"></div></li>
+		{{/each}}
+	</ol>
+</script>
+
+<script>
+    $('body').on('click', '.btn-save', function () {
+        var data = {};
+
+        $(this).parents('tr').find('input').each(function (i, d) {
+            data[$(d).attr('name')] = $(d).val();
+        });
+        $(this).parents('tr').find('textarea').each(function (i, d) {
+            data[$(d).attr('name')] = $(d).val();
+        });
+        $(this).parents('tr').find('select').each(function (i, d) {
+            data[$(d).attr('name')] = $(d).val();
+        });
+
+        $.post('/AppConfig/update', data, function (d) {
+            alert(d.errmsg);
+        }, 'json');
+    });
+
+    $('body').on('click', '.btn-delete', function () {
+        if (!confirm('你确定要删除此条配置么？删除后无法恢复！')) {
+            return false;
+        }
+
+        var data = {};
+        var t = $(this);
+
+        $(this).parents('tr').find('input').each(function (i, d) {
+            data[$(d).attr('name')] = $(d).val();
+        });
+        $(this).parents('tr').find('textarea').each(function (i, d) {
+            data[$(d).attr('name')] = $(d).val();
+        });
+        $(this).parents('tr').find('select').each(function (i, d) {
+            data[$(d).attr('name')] = $(d).val();
+        });
+
+        $.post('/AppConfig/delete', data, function (d) {
+            if (d.errno == 0) {
+                t.parents('tr').remove();
+            } else {
+                alert(d.errmsg);
+            }
+        }, 'json');
+    });
+
+    $('body').on('click', '.btn-split', function () {
+        if (!confirm('拆分后可单独针对每个平台进行配置，确定要这么操作么？')) {
+            return false;
+        }
+
+        var t = $(this);
+        var p = t.parents('tr');
+        var count = p.children('.platforms').children('select').length;
+
+        if (count < 2){
+        	alert('没法拆了');
+        	return false;
+        }
+
+        for(var i = 0; i < count; i++){
+	       	var clone = p.clone();
+	       	clone.css('background-color', '#eeeeee');
+	       	clone.children('td').each(function(k, td){
+        		$(td).find('.splitable').each(function(_, d){
+            		if (!$(d).hasClass('split_' + i)){
+            			$(d).remove();
+            		}
+            	});
+	       	});
+	       	clone.find('.btn-split').remove();
+	       	p.after(clone);
+        }
+        p.remove();
+    });
+
+    $('body').on('click', '.btn-history', function () {
+        var data = {};
+		data['id'] = $(this).data('id');
+        $.post('/AppConfig/history', data, function (d) {
+        	if (d.data.list.length > 0){
+	            document.getElementById('box-history').innerHTML = template('tpl-history', d.data);
+	            $('#modal-history').modal('show');
+        	}else{
+        		alert('无历史记录');
+        	}
+        }, 'json');
+    });
+
+    $('body').on('click', '.btn-recovery', function () {
+    	alert('点击恢复并非直接生效，仍需点击修改按钮才能生效');
+        var data = {};
+        var t = $(this);
+        var li = t.parents('li');
+        var value = li.find('.value').text();
+        $("#json-value-" + t.data('id')).val(value).addClass('notice');
+        $('#modal-history').modal('hide');
+    });
+</script>

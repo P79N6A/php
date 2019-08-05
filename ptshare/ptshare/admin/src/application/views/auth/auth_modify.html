@@ -1,0 +1,16 @@
+<div class="rightinfo">
+    <form id='form'  action="/auth/update" method="post">
+        <div class="formbody">
+
+            <div class="formtitle"><span>修改权限</span></div>
+
+            <ul class="forminfo">
+                <li><label>权限码</label><input name="name" type="text" value="<?=$auth_info['code']?>" class="dfinput" disabled=disabled /><i>&nbsp;</i></li>
+                <li><label>权限名称</label><input name="name" type="text" value="<?=$auth_info['name']?>" class="dfinput" /><i>&nbsp;</i></li>
+                <li><label>&nbsp;</label><input id="_saveBtn" name="" type="submit" class="btn" value="确认保存"/></li>
+            </ul>
+
+        </div>
+        <input type="hidden" name="authid" value="<?=$auth_info['authid'];?>">
+    </form>
+</div>

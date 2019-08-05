@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="widget-box transparent">
+	  <div class="widget-header widget-header-flat">
+                <div class="col-sm-1">
+                    <h4 class="lighter">
+                        系统帐号
+                    </h4>
+                </div>
+                <div class="col-sm-11">
+                    <form class="form-inline" action="" method="get">
+						<div class="form-group">
+                            <label for="begin_time">开始时间</label>
+                            <input type="text" class="form-control" id="begin_time" name="begin_time"
+                                  value="<?php echo $search['begin_time'];?>" onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
+                        </div>
+                        <div class="form-group">
+                            <label for="end_time">结束时间</label>
+                            <input type="text" class="form-control" id="end_time" name="end_time"
+                                   value="<?php echo $search['end_time'];?>" onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="uid">
+									系统帐号
+							</label>
+							<input type="text" id="uid" name="uid" placeholder="用户ID/用户昵称" class='ipt' value="<?php echo $search['uid'];?>"/>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-info">搜索</button>
+						总额: <?=$sum;?>
+                    </form>
+                </div>
+            </div>
+
+      <div class="widget-body">
+        <div class="widget-main no-padding">
+          <table id="tfhover" class="tftable">
+            <thead class="thin-border-bottom">
+              <tr>
+                <th class="text-center">id</th>
+				<th class="text-center">申请人</th>
+				<th class="text-center">理由</th>
+                <th class="text-center">转出id</th>
+                <th class="text-center">转入id</th>
+				 <th class="text-center">数量</th>
+				  <th class="text-center">申请时间</th>
+				  <th class="text-center">批准时间</th>
+				<th class="text-center">操作</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php foreach($list as $value):?>
+              <tr>
+                <td><center><?php echo $value['id'];?></center></td>
+				<td><center><?php echo $value['adminid'];?></center></td>
+                <td><center><?php echo $value['title'];?></center></td>
+                <td><center><?php echo $value['sourceid'];?></center></td>
+                <td><center><?php echo $value['targetid'];?></center></td>
+				<td><center><?php echo $value['amount'];?></center></td>
+				<td><center><?php echo $value['addtime'];?></center></td>
+				<td><center><?php echo $value['modtime'];?></center></td>
+                <td><center><?php if($value['status']==1){ ?><font color='#00ff00'>成功</font><?php } else { ?><a href="#" onclick="if(confirm('确定批准<?php echo $value['id'];?><?php echo $value['title'];?>')){self.location='/account/applylist/?id=<?php echo $value['id'];?>'};">批准</a><?php }?></center></td>
+              </tr>
+              <?php endforeach;?>
+            </tbody>
+          </table>
+        </div><!-- /widget-main -->
+        <div>
+          <?php echo $mutipage;?>
+        </div>
+      </div><!-- /widget-body -->
+    </div><!-- /widget-box -->
+  </div>
+
+</div>
+
+<script src="/js/My97DatePicker/WdatePicker.js"></script>
+

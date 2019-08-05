@@ -1,0 +1,24 @@
+<table id="tfhover" class="tftable" border="1" >
+<tbody>
+<tr>
+    <th>ID</th>
+    <th>类型</th>
+    <th>完成时间</th>
+    <th>合成数</th>
+    <th>创建时间</th>
+</tr>
+<?php foreach($data as $key => $item){?>
+<tr align="center">
+    <td><?=$item['id']?></td>
+    <td><?=$item['type']?></td>
+    <td><?=$item['finish_time']?></td>
+    <td><?=$item['hisx']?></td>
+    <td><?=$item['addtime']?></td>
+
+</tr>
+ <?php }?>
+</tbody>
+</table>
+<br/>
+<br/>
+<center><h3><font color="red">以上数据之和为：</font> <font color="green"><?=$remark['sum']?> </font>  ;除以总数:</font> <font color="green"><?=$lottery['total']?></font> <font color="red">;余数是：</font><font color="green"><?=$remark['yushu']?></font> <font color="red">加上100001; 等于</font> <font color="green"><?=$lottery['wincode']?></font> </h3></center>

@@ -1,0 +1,32 @@
+App\ServiceApi\CSG\User\Entity\Human Object
+(
+[id] => 2422
+[userId] => 145914
+[ccc] => 86
+[mobile] => 18519958906
+[country] => 中国
+[idType] => 身份证
+[idName] => 王小萍
+[idNumber] => 622722198106251423
+[pretenderId] =>
+[gender] => 女
+[address] => 甘肃省泾川县党原乡党原街9号
+[zmxyOpenId] =>
+[overdueLabel] =>
+[birthday] => 1981-06-25 00:00:00
+[verifyBy] =>
+[balance] => 1000000
+[region] => 内地
+[nation] => 汉族
+[education] => 本科
+[job] => 职员
+[email] =>
+[company] => 北京单位
+[isMarried] => 已婚
+[note] => 老9数据批量导入
+[images] =>
+{"证件照片":["private-20161011-lhreLzFKdJmKxrV1wtJelSQusCPr","private-20161011-lr5SqN4OJITGImou7D4FB656g11h","private-20161011-FtzsDlCqouq4I1usQ62waekn4Gbd"],"免冠照片":["private-20171024-FvxMg1gZO3mjA6xrFZpZqNmQdwcg"]}
+[createdAt] => 2016-03-04 16:11:33
+[updatedAt] => 2017-12-18 20:16:14
+[iszOriginInfo] =>
+)

@@ -1,0 +1,2 @@
+http://172.18.130.18:8190/inside/passenger-c-app/passenger-quick-at
+测试地址已经配置好了

@@ -1,0 +1,126 @@
+<style>
+	.imgtable{width:100%;border:0; }
+	.imgtable th{background:none; height:34px; line-height:34px; border-bottom:solid 1px #b6cad2; text-indent:0; text-align: center;}
+	.imgtable td{line-height:20px; text-indent:0; border-right: dotted 1px #c7c7c7;}
+	.imgtable td img {margin: 0;}
+	.imgtable td p {color:#919191;}
+	.imgtable td i {font-style:normal; color:#ea2020;}
+	.imgtd {text-indent:0;}
+</style>
+<link rel="stylesheet" href="/css/common/public.css">
+<style>
+	.btns-area {padding: 20px 0 0; line-height: 30px;}
+	.table-list td { padding: 7px;}
+
+	.pagination li {
+		background: none; border: 0;
+	}
+</style>
+
+<div class="rightinfo">
+	<div class="btns-area">
+	    <table style="width:100%">
+	        <thead>
+	            	<tr>
+		                <td colspan="9">
+		                <form id="search_form" method="GET" action="" style="padding-bottom: 40px;">
+		                    <select id="operate_type" name="operate_type" class="input slct">
+		                        <option value="">无分类</option>
+		                        <?foreach($operate_type as $type=>$name){?>
+		                        <option value="<?=$type?>" <?php if($type==$_GET['operate_type'])echo "selected='selected'"; else echo "";?> ><?=$name?></option>
+		                        <?}?>
+		                    </select>
+		                    <input type="text" id="uid" name="uid" placeholder="用户名id" value="<?php
+		                            if($get_data['uid'])echo $get_data['uid'];
+		                    ?>" class="input ipt" />
+		                    <input type="text" id="admin_name" name="admin_name" placeholder="后台用户名" value="<?php
+		                            if($get_data['admin_name'])echo $get_data['admin_name'];
+		                    ?>" class="input ipt" />
+		                    <input type="text" id="relateid" name="relateid" placeholder="资源ID" value="<?php
+		                            if($get_data['relateid'])echo $get_data['relateid'];
+		                    ?>" class="input ipt" />
+		                   	 资源类型：<select id="relate_type" name="relate_type" class="input slct">
+		                        <option value="">无分类</option>
+		                        <?foreach($data['relate_type'] as $type=>$name){?>
+		                        <option value="<?=$type?>" <?php if($type==$_GET['relate_type'])echo "selected='selected'"; else echo "";?> ><?=$name?></option>
+		                        <?}?>
+		                    </select>
+		                    <br />
+		                                                           时间起点：<input name="sTime" value=" <?php
+		                            if($get_data['stime'])echo $get_data['stime'];
+		                            else echo date("Y-m-d 00:00:00",time());
+		                    ?>"
+		                    class="Wdate ipt" placeholder="请选择时间起点" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd 00:00:00'})">
+		                    时间终点：<input name="eTime" value="<?php
+		                            if($get_data['etime'])echo $get_data['etime'];
+		                            else echo date("Y-m-d 23:59:59",time());
+		                    ?>" class=" ipt Wdate" placeholder="请选择时间终点" type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd 23:59:59'})">
+		                    <input id="_saveBtn" type="submit" class="grey_btn" value="搜索" onclick="search_form_submit();">
+		                </form>
+		                </td>
+	                </tr>
+	                <tr style="text-align: center; background: #FFF;">
+		                <td colspan="4" style="text-align:right;"><?=$mutipage?></td>
+		                <td colspan="5">总数=<?=$data['total']?></td>
+	                </tr>
+	            </tr>
+	        </thead>
+	    </table>
+    </div>
+
+    <table  class="imgtable table-list">
+        <thead>
+            <tr>
+                <th style="width: 120px;">ID</th>
+                <th style="width: 120px;">管理员名称</th>
+                <th style="width: 120px;">管理员ID</th>
+                <th style="width: 120px;">日志属性</th>
+                <th style="width: 120px;">操作类型</th>
+                <th style="width: 120px;">资源类型</th>
+                <th style="width: 120px;">资源id</th>
+                <th style="width: 120px;">用户id</th>
+                <th style="width: 140px;">操作时间</th>
+                <th>操作内容</th>
+            </tr>
+        </thead>
+        <tbody>
+           <? if ($data) foreach($data['list'] as $key=>$val){ ?>
+            <tr>
+                <td><?=$val['operateid']?></td>
+                <td><?=$val['realname']?>(<?=$val['admin_name']?>)</td>
+                <td><?=$val['adminid']?></td>
+                <td><?=$val['name']?></td>
+                <td><?=$val['operate_type']?></td>
+                <td><?=$val['type_name']?></td>
+                <td><?=$val['relateid']?></td>
+                <td><?=$val['uid']?></td>
+                <td><?=$val['addtime']?></td>
+                <td>
+                    <?php
+                    $_context = json_decode($val['context'],true);
+                    $_content = json_decode($val['content'],true);
+                    if($val['name']=='user_score'){
+                    echo $_content['msg']." 原因:".$val['reason']."<br />";
+                    echo $_content['info'];
+                    if($_context['user_current_type']){
+                        echo "打分之前级别是:".$_context['user_current_type'];
+                    }
+                    }elseif($val['name']=='live_lock_rank'){
+                            echo $_content['msg']." 备注:".$_content['note']."<br />";
+                            echo "解锁时间:".$_content['expire_time']."<br />";
+                            if($_content['user']){
+                                echo $_content['user'];
+                            }
+
+                        }else{
+                            $json=(($json=json_decode($val['content'],true)) && $json['msg'] ? $json['msg'].$json['reason'] : '' );
+                            if(empty($json))echo $val['reason'];
+                        }
+                    ?>
+                </td>
+            </tr>
+            <? } ?>
+        </tbody>
+    </table>
+</div>
+<script src="/js/My97DatePicker/WdatePicker.js"></script>

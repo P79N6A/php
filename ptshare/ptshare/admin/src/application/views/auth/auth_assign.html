@@ -1,0 +1,46 @@
+<div class="rightinfo">
+    <form id='form'  action="/auth/save" method="post">
+        <div class="formbody">
+            <div class="formtitle"><span>权限分配</span></div>
+			<table class="imgtable">
+		        <tbody>
+		            <tr><td></td></tr>
+		        </tbody>
+			</table>
+            <ul class="forminfo">
+            	<li></li>
+            	<li>
+            		<label>用户角色</label>
+            		<label>
+		            	<select name="roleid" style="height:30px" onchange="self.location='/auth/assign?roleid=' + this.value">
+		            	<option>请选择角色</option>
+		            	<?php foreach($role_list as $role_info) {?>
+		            	<option value="<?=$role_info["roleid"]?>" <?=$role_info["roleid"] == $roleid ? "selected" : ""?>><?=$role_info["name"]?></option>
+		            	<?php } ?>
+		            	</select>
+	            	</label>
+            	</li>
+                <li>
+	                <label>权限设置</label>
+	                <label style="width:600px">
+	                	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	                	<?php foreach($auth_list as $auth_group) {?>
+						    <tr>
+						    	<td height="30"><?=$auth_group["module"]["name"]?></td>
+						  	</tr>
+						  	<tr>
+						    	<td height="30">
+						    	<?php foreach($auth_group["authes"] as $auth_info) {?>
+						    	<input type="checkbox" name="authids[]" value="<?=$auth_info["authid"]?>" <?=in_array($auth_info["code"], $auth_code) ? "checked" : ""?> /><?=$auth_info["name"]?>
+						    	<?php } ?>
+						    	</td>
+						  	</tr>
+	                	<?php } ?>
+	                	</table>
+	                </label>
+                </li>         
+	            <li><label>&nbsp;</label><input id="_saveBtn" name="" type="submit" class="btn" value="确认保存"/></li>
+            </ul>
+        </div>
+    </form>
+</div>

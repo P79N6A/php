@@ -1,0 +1,18 @@
+v1.2版本sql修改
+
+ALTER TABLE `grape_mall`.`sell` ADD COLUMN `cardid` int UNSIGNED NOT NULL DEFAULT '0' COMMENT '小卡片id' AFTER `modtime`, ADD COLUMN `grape_forward` tinyint UNSIGNED NOT NULL DEFAULT '1' COMMENT '1自己用，2吸粉使用，3捐给平台' AFTER `cardid`;
+
+增加商家吸粉功能
+src/application/controllers/TaskController.php
+src/application/models/Account.php
+src/application/models/Attract.php
+src/application/models/Follow.php
+src/application/models/Task.php
+
+ALTER TABLE `grape_mall`.`package` ADD COLUMN `cardid` int UNSIGNED NOT NULL DEFAULT '0' COMMENT '小卡片id' AFTER `modtime`, ADD COLUMN `grape_forward` tinyint UNSIGNED NOT NULL DEFAULT '1' COMMENT '1自己用，2吸粉使用，3捐给平台' AFTER `cardid`;
+
+INSERT INTO `task` (`taskid`, `type`, `name`, `title`, `totallimit`, `daylimit`, `totalamount`, `dayamount`, `begintime`, `endtime`, `active`, `extend`, `addtime`, `modtime`, `score`, `dependid`, `level`, `schema`, `describe`, `status`)
+VALUES
+	(8, 10008, '粉丝红包', 'follower_redpacket', 0, 5, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Y', '{\"award\":{\"grape\":{\"num\":1,\"type\":\"normal\"}},\"condition\":[]}', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1000, 0, 1, '去关注', '首次关注这些用户即可获得', 'Y'),
+	(9, 10009, '租用购买', 'renting_buying', 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Y', '{\"award\":{\"exp\":{\"num\":0.1,\"type\":\"rate\"}},\"condition\":[]}', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1000, 0, 1, '', '租用购买', 'N'),
+	(10, 10010, '分享闲置', 'share_goods', 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Y', '{\"award\":{\"exp\":{\"num\":0.05,\"type\":\"rate\"}},\"condition\":[]}', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1000, 0, 1, '', '完成分享闲置物品即可获得', 'N');

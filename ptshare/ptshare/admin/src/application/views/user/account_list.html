@@ -1,0 +1,46 @@
+
+<div class="rightinfo">
+		<a style="padding: 3px 5px; background-color: #f8ac59; color:#FFFFFF; width: 70px" class="btn-blue" href="/user/addAccount?uid=<?=$_REQUEST['uid']?>" target="_blank">添加</a>
+          <table id="tfhover" class="tftable" >
+            <thead class="thin-border-bottom">
+              <tr>
+                <th align="center" class="text-center">帐号id</th>
+				<th align="center" class="text-center">类型</th>
+				<th align="center" class="text-center">余额</th>
+        		<th align="center" class="text-center">添加时间</th>
+        		<th align="center" class="text-center">修改时间</th>
+				<th align="center" class="text-center">操作</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php foreach($list as $value) { ?>
+              <tr>
+                <td><center><?php echo $value['uid'];?></center></td>
+                <td><center><?php if ($value['currency'] == 1) { echo "葡萄"; } elseif ($value['currency'] == 3) { echo "代金券";} elseif ($value['currency'] == 2) { echo "冻结葡萄";}elseif ($value['currency'] == 4) { echo "冻结代金券";}elseif ($value['currency'] == 5) { echo "奖励账户";};?></center></td>
+                <td><center><?php echo $value['balance'];?></center></td>
+                <td><center><?php echo $value['addtime'];?></center></td>
+                <td><center><?php echo $value['modtime'];?></center></td>
+                <td>
+                <center>
+          <a href="/user/addAccount?uid=<?=$value['uid']?>&currency=<?=$value['currency']?>" class=" grey_btn">修改</a>
+          </center>
+          </td>
+              </tr>
+              <?php } ?>
+
+              <tr style="height: 20px;"><td colspan="9"> </td></tr>
+
+            <style>
+                .pagination{float: none}
+            </style>
+        <?php if ($mutipage) {?>
+            <tr style="text-align: center; background: #FFF; height: 40px;">
+                <td colspan="7"><?=$mutipage?></td>
+                <td colspan="2">总数=<?=$total?></td>
+            </tr>
+        <?php }?>
+            </tbody>
+          </table>
+
+</div>

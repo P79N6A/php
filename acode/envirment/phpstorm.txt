@@ -1,0 +1,20 @@
+phpstorm破解
+https://blog.csdn.net/wm9028/article/details/82700221
+https://www.codecasts.com/series/master-phpstorm
+http://idea.lanyus.com
+
+https://api.dankegongyu.com/api/v6/search/list?city_id=1&rent_type=z0&timestamp=1545278491&isnewformat=1&page=1
+/**
+     * @param $esItemData
+     * @return mixed
+     */
+    public function getEffectiveRentTypeEsV6($esItemData)
+    {
+        if (StaticRoomObj::isOverallRent($esItemData['rentType'])) {//$esItemData['rentType'] === NewRooms::RENT_TYPE_整租
+            $rentTypes = NewRooms::APP_RENT_TYPE_整租;
+        } else {
+            $rentTypes = NewRooms::APP_RENT_TYPE_合租;
+        }
+
+        return $rentTypes;
+    }

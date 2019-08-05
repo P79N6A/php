@@ -1,0 +1,137 @@
+<script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
+<div class="rightinfo">
+<div style="margin-bottom: 20px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/package/list">
+            <h6>条件搜索</h6>
+            <table>
+                <tr>
+                    <td style="height: 30px; line-height: 40px; text-align: right;">包裹号码：</td>
+                    <td><input type="text" name="packageid" value="<?=$_GET['packageid']?>" style="height: 25px"/></td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;追踪号：</td>
+                    <td><input type="text" name="sn" value="<?=$_GET['sn']?>" style="height: 25px"/></td>
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;状态：</td>
+                    <td>
+                        <select name="status" style="height: 15px;width: 70px;'">
+                        	<option value="" <?php if($_GET['status'] == '') {echo 'selected="selected"';}?>>所有</option>
+                            <option value="PREPARE" <?php if($_GET['status'] == 'PREPARE') {echo 'selected="selected"';}?>>待编辑</option>
+                        	<option value="ONLINE" <?php if($_GET['status'] == 'ONLINE') {echo 'selected="selected"';}?>>上架中</option>
+                        	<option value="OFFLINE" <?php if($_GET['status'] == 'OFFLINE') {echo 'selected="selected"';}?>>已下架</option>
+                        	<option value="SELLOUT" <?php if($_GET['status'] == 'SELLOUT') {echo 'selected="selected"';}?>>已售罄</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+					<td> &nbsp;&nbsp;&nbsp;&nbsp;销售方式：</td>
+                    <td>
+                        <select name="sales_type" style="height: 15px;width: 70px;'">
+                        	<option value="-1" <?php if($_GET['sales_type'] == '-1') {echo 'selected="selected"';}?>>所有</option>
+                            <option value="0" <?php if($_GET['sales_type'] == '0') {echo 'selected="selected"';}?>>一口价租售</option>
+                        	<option value="1" <?php if($_GET['sales_type'] == '1') {echo 'selected="selected"';}?>>葡萄夺宝</option>
+                        </select>
+                    </td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;租售方式：</td>
+                    <td>
+                        <select name="type" style="height: 15px;width: 70px;'">
+                            <option value="-1" <?php if($_GET['type'] == '-1') {echo 'selected="selected"';}?>>所有</option>
+                            <option value="1" <?php if($_GET['type'] == '1') {echo 'selected="selected"';}?>>出售</option>
+                            <option value="2" <?php if($_GET['type'] == '2') {echo 'selected="selected"';}?>>出租</option>
+                        </select>
+                    </td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;vip独享：</td>
+                    <td>
+                        <select name="vip" style="height: 15px;width: 70px;'">
+                            <option value="-1" <?php if($_GET['vip'] == '-1') {echo 'selected="selected"';}?>>所有</option>
+                            <option value="0" <?php if($_GET['vip'] == '0') {echo 'selected="selected"';}?>>否</option>
+                            <option value="1" <?php if($_GET['vip'] == '1') {echo 'selected="selected"';}?>>是</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr style="height: 30px;"><td> </td></tr>
+                <tr>
+                <td><input type="submit" name="submit" value="查 询" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px"></td>
+                </tr>
+                <tr style="height: 30px;"><td> </td></tr>
+                <tr> <td> <a style="padding: 3px 5px; background-color: #a00; color:#FFFFFF; width: 70px"  href="/package/create" target="_blank">创建包裹</a></td></tr>
+            </table>
+        </form>
+    </div>
+
+
+    <table id = "tfhover" class="tftable" border="1">
+            <tr>
+                <th>编号</th>
+                <th>包裹号码</th>
+                <th>宝贝描述</th>
+                <th>数量</th>
+                <th>图片</th>
+                <th>押金</th>
+                <th>租金</th>
+                <th>销售方式</th>
+                <th>租售</th>
+                <th>vip专享</th>
+                <th>状态</th>
+                <th>收藏</th>
+                <th>观看</th>
+                <th>创建时间</th>
+                <!-- <th>修改时间</th> -->
+                <th>操作</th>
+            </tr>
+        <?php if($list)foreach($list as $key=>$val){ ?>
+            <tr class="replay_item" node-type="replayItem" data-uid="<?=$val[uid]?>">
+
+                <td><center><?=$val['id']?></center></td>
+                <td><center><?=$val['packageid']?></center></td>
+                <td><center><?=$val['description']?></center></td>
+                <td><center><?=$val['num']?></center></td>
+                <td><a href="<?=$val['cover']?>" target="_blank"><img src="<?=$val['cover']?>" width="50" height="50" alt="点击查看大图"></a></td>
+                <!-- <td><center><?=$val['location']?></center></td> -->
+                <td><center><?=$val['deposit_price']?></center></td>
+                <td><center><?=$val['rent_price']?></center></td>
+               <td><?php
+                       if($val['sales_type']==0){?><b>一口价出售</b><?}
+                       if($val['sales_type']==1){?><b>葡萄夺宝</b><?php }
+                 ?></td>
+                 <td><center><a <?php if ($val['type'] == '1') {?> class="btn2 btn-w-m btn-green"<?php } else {?>class="btn2 btn-w-m btn-blue" <?php } ?> style="padding: 2px 5px;" href="/package/list?type=<?=$val['type']?>" ><?=$typeStatus[$val['type']]?></a></center></td>
+                <td><center><a <?php if ($val['vip'] == '0') {?> class="btn2 btn-w-m btn-pink"<?php } else {?>class="btn2 btn-w-m btn-red" <?php } ?> style="padding: 2px 5px;" href="/package/list?vip=<?=$val['vip']?>" ><?=$vipStatus[$val['vip']]?></a></center></td>
+                <td><center><a <?php if ($val['status'] == 'PREPARE') {?> class="btn2 btn-w-m btn-warning" <?php } elseif ($val['status'] == 'ONLINE') {?> class="btn2 btn-w-m btn-info" <?php } elseif ($val['status'] == 'OFFLINE') {?>class="btn2 btn-w-m btn-success" <?php } else {?>class="btn2 btn-w-m btn-warning" <?php }?> style="padding: 2px 5px;" href="/package/list?status=<?=$val['status']?>"><?=$statusData[$val['status']]?></a></center></td>
+                <td><center><?=$val['favorite_num']?></center></td>
+                <td><center><?=$val['view_num']?></center></td>
+                <td><center><?=$val['addtime']?></center></td>
+                <!-- <td><center><?=$val['modtime']?></center></td> -->
+                <td width="10%">
+                	<center>
+                	<a href="/package/modify?id=<?php echo $val['id'];?>">修改</a> |
+                	<?php if ($val['status'] == 'ONLINE') {?>
+                	<a href="/package/offline?id=<?php echo $val['id'];?>" onclick="return confirm('您确定下架么？');" >下架</a>
+                	<?php } elseif ($val['status'] == 'OFFLINE' || $val['status'] == 'PREPARE') {?>
+                	<a href="/package/online?id=<?php echo $val['id'];?>" onclick="return confirm('您确定上架么？');" >上架</a>
+                	<?php } ?>
+                	</center>
+                	<!-- <a href="/package/del?id=<?=$val['id']?>" onclick="return confirm('您确定删除么？');"  class="grey_btn">删除</a> -->
+                </td>
+            </tr>
+        <?php } else { ?>
+            <tr style="height: 20px;"><td colspan="15"> <center>列表信息为空！ </center></td></tr>
+        <?php } ?>
+		<tr style="height: 20px;"><td colspan="15"> </td></tr>
+
+            <style>
+                .pagination{float: none}
+            </style>
+        <?php if ($page) {?>
+            <tr style="text-align: center; background: #FFF; height: 40px;">
+                <td colspan="12"><?=$page?></td>
+                <td colspan="3">总数=<?=$total?></td>
+            </tr>
+        <?php }?>
+    </table>
+</div>
+<script>
+function search_form_submit(){
+    $("#search_form").submit();
+}
+</script>
+<script src="/js/My97DatePicker/WdatePicker.js"></script>

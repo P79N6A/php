@@ -1,0 +1,89 @@
+
+
+CREATE TABLE `group` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `nickname` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '用户昵称',
+  `avatar` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '头像',
+  `act_id` int(11) NOT NULL DEFAULT '0' COMMENT '活动类型',
+  `startime` datetime NOT NULL COMMENT '开始时间',
+  `endtime` datetime NOT NULL COMMENT '结束时间',
+  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `updated_at` datetime NOT NULL COMMENT '修改时间',
+  `total` int(11) NOT NULL DEFAULT '0' COMMENT '目前下级数量',
+  `finish_total` int(11) NOT NULL DEFAULT '0' COMMENT '完成数量',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `type&user_id` (`act_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='邀请人表';
+
+CREATE TABLE `group_member` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) NOT NULL DEFAULT '0' COMMENT '组队id',
+  `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '成员id',
+  `user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '成员名称',
+  `openid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '第三方(微信id)',
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '头像',
+  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `updated_at` datetime NOT NULL COMMENT '修改时间',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态',
+  PRIMARY KEY (`id`),
+  KEY `group_id&status` (`group_id`,`status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='被邀请人表';
+
+CREATE TABLE `starling_bank_card` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `card_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '卡号',
+  `card_info` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '卡信息',
+  `card_city` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '开户城市',
+  `bank_branch` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '支行名称',
+  `user_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '开户姓名',
+  `idcard` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '身份证号',
+  `card_mobile` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '开户手机号',
+  `created_at` datetime NOT NULL COMMENT '添加时间',
+  `updated_at` datetime NOT NULL COMMENT '修改时间',
+  `is_deleted` enum('Y','N') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'N' COMMENT '是否删除',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='校园合伙人银行卡绑定表';
+
+CREATE TABLE `starling_program` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '姓名',
+  `idcard` varchar(20) NOT NULL DEFAULT '' COMMENT '身份证',
+  `gender` enum('M','F') NOT NULL DEFAULT 'M' COMMENT '性别',
+  `college_name` varchar(100) NOT NULL DEFAULT '' COMMENT '学校名称',
+  `department` varchar(100) NOT NULL DEFAULT '' COMMENT '院系',
+  `major` varchar(100) NOT NULL DEFAULT '' COMMENT '专业',
+  `graduation_date` varchar(20) NOT NULL DEFAULT '' COMMENT '毕业日期',
+  `is_abroad` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否是海外',
+  `attachment` varchar(255) NOT NULL DEFAULT '' COMMENT '认证图片',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态，0未审核，1已审核',
+  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `updated_at` datetime NOT NULL COMMENT '修改时间',
+  `audit_result` tinyint(1) NOT NULL DEFAULT '0' COMMENT '审核结果,1通过，2审核失败',
+  `sign_status` enum('已签约','未签约') NOT NULL DEFAULT '未签约' COMMENT '签约状态',
+  `sign_date` varchar(20) NOT NULL DEFAULT '' COMMENT '签约时间',
+  `contract_no` varchar(100) NOT NULL DEFAULT '' COMMENT '合同号码',
+  `contract_status` enum('未生效','有效','待签约','签约待确认','已签约','期满','甲方违约终止','乙方违约终止','双方协商终止','未签约') NOT NULL DEFAULT '未签约' COMMENT '合同状态',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='椋鸟计划表';
+
+CREATE TABLE `starling_withdraw` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `card_number` varchar(20) NOT NULL DEFAULT '' COMMENT '卡号',
+  `card_info` varchar(20) NOT NULL DEFAULT '' COMMENT '卡信息',
+  `card_city` varchar(20) NOT NULL DEFAULT '' COMMENT '开户城市',
+  `bank_branch` varchar(100) NOT NULL DEFAULT '' COMMENT '开户支行',
+  `user_name` varchar(50) NOT NULL DEFAULT '' COMMENT '开户人',
+  `idcard` varchar(20) NOT NULL DEFAULT '' COMMENT '身份证号',
+  `mobile` varchar(15) NOT NULL DEFAULT '' COMMENT '开户手机号',
+  `money` float(10,2) NOT NULL COMMENT '提现金额',
+  `status` enum('已申请','待打款','打款成功','审核失败','打款失败') NOT NULL DEFAULT '已申请' COMMENT '提现状态',
+  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `updated_at` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='提现表';

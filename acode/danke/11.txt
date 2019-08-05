@@ -1,0 +1,159 @@
+1、标题 朝向和 居室位置调换
+2、合租比整租面积多2m去掉
+3、配置中的房源列表图片和详情图片不一致
+4、去掉"建筑面积约"5个字
+5、房屋筛选条件去掉优惠永远置顶的逻辑
+6、预约看房增加上午，下午，晚上维度
+7、rank数据收集
+http://172.16.31.54:3333/api/v6/room/detail/1842512119?rent_type=2&timestamp=1542076431
+# MAPI_读取用户及 HOST
+DB_MAPI_READ_HOST=172.16.31.52
+DB_MAPI_READ_USERNAME=mapi_user
+DB_MAPI_READ_PASSWORD=hA2nN3Yp6bpan
+
+# MAPI_写入用户及 HOST
+DB_MAPI_WRITE_HOST=172.16.31.52
+DB_MAPI_WRITE_USERNAME=mapi_user
+DB_MAPI_WRITE_PASSWORD=hA2nN3Yp6bpan
+rooms
+suites
+xiaoqus
+subways
+areas
+
+172.18.100.11
+https://www.dankegongyu.com/web-api/wechat-applets/list?city_id=1&app_id=wx024695259e1a68cb&sign=65acdf9e4ccd6d06933bd795e45d252a2a88331d&page=1&rent_type=1&search_text=
+
+        $start_time = microtime(true);
+\Log::info('CITY CONSUME '. round((microtime(true) - $start_time) * 1000));
+
+
+https://api.dankegongyu.com/api/v1/base-configure/check-upgrade?timestamp=1541505570
+<?php
+switch ($v['builderType']) {
+                case '地铁':
+                    $type_picurl = 'https://public.wutongwan.org/public-20180621-FqxhNzKvq8UemIF3k5eEJVnQlQ-P';
+                    break;
+                case '小区':
+                    $type_picurl = 'https://public.wutongwan.org/public-20180621-FmMgCDDpfej5y4oLnqXlwBJR2ZnA';
+                    break;
+                case '写字楼':
+                    $type_picurl = 'https://public.wutongwan.org/public-20180621-FsQEuWedmm3OYDkkISu0B5HWBX4A';
+                    break;
+            }
+
+?>
+
+modified:   app/Libs/CommonData/SearchData.php
+	modified:   app/Logics/Pangu/MAPI/SuiteRoom/Rooms.php
+	modified:   app/Logics/Pangu/MAPI/Traits/Room/RoomImagesTrait.php
+	modified:   app/Logics/Pangu/MAPI/V3/Room.php
+	modified:   app/Logics/Pangu/MAPI/V4/BaseConfigure.php
+/**
+     * add by xbg 20181106 位置名称修改
+     * @param $suite
+     * @return array
+     * @throws \Exception
+     */
+    public function prepareFacilityNewConfigV5($suite)
+    {
+        $room = $this->room;
+        $publicRentType = $this->getEffectiveRentType($suite);
+        $labelName = ($publicRentType == self::APP_RENT_TYPE_整租 || $publicRentType == self::APP_RENT_TYPE_整租) ? '其他区域' : '公共区域';
+        $mainLabelName = '卧室配置';
+        /** @var TYPE_NAME $e */
+        try {
+            if (in_array($suite->status, array(\Suite::STATUS_配置中, \Suite::STATUS_现房)) && $room->rentType != self::RENT_TYPE_蛋壳轻松_整租) {
+                if ($room->hasToilet == self::ROOM_TOILET_有) {
+                    $mainLabelName = '卧室及独卫';
+                }
+                if ($room->rentType == self::RENT_TYPE_蛋壳租房_整租) {
+                    $labelName = '其他区域';
+                } else {
+                    $labelName = '公共区域';
+                }
+            }
+        } catch(\Exception $e) {
+
+        }
+        $result = [
+            ['label_name' => $mainLabelName,
+                'label_list' => [
+                    [
+                        'title' => '空调',
+                        'icon' => (new Image())->url('public-20180808-FoLqoC7kSFjmgDfJ4VCCIONdNLdh'),
+                        'url' => '',
+                    ],
+                    [
+                        'title' => '床',
+                        'icon' => (new Image())->url('public-20180808-FqgL3kmMMzcaR2Ukh4G4lFswniIL'),
+                        'url' => '',
+                    ],
+                    [
+                        'title' => '床垫',
+                        'icon' => (new Image())->url('public-20180808-FgRGVjfxnaZut5C-1OxGNZSnlxds'),
+                        'url' => '',
+                    ],
+                    [
+                        'title' => '书桌',
+                        'icon' => (new Image())->url('public-20180808-FgzJdCK8arLubzssjRo-f3PFXebO'),
+                        'url' => '',
+                    ],
+                    [
+                        'title' => '智能锁',
+                        'icon' => (new Image())->url('public-20180808-FtLTYSevwYmPXcGMfrYx4uaGf-CN'),
+                        'url' => '',
+                    ],
+                ],
+            ],
+            ['label_name' => $labelName,
+                'label_list' => [
+                    [
+                        'title' => '衣柜',
+                        'icon' => (new Image())->url('public-20180808-FhML58584Grk5TenaURrMWa75gOg'),
+                        'url' => '',
+                    ],
+                    [
+                        'title' => '抽油烟机',
+                        'icon' => (new Image())->url('public-20180808-FpOxaITiaIKtHT1n7AP11o925gL1'),
+                        'url' => '',
+                    ],
+                    [
+                        'title' => '燃气灶',
+                        'icon' => (new Image())->url('public-20180808-FnKpzM781TNoSUXVS-RxHEXpZWFP'),
+                        'url' => '',
+                    ],
+                    [
+                        'title' => '热水器',
+                        'icon' => (new Image())->url('public-20180808-Fuj0jTj8mynTifOnj9WKnORJ8q4C'),
+                        'url' => '',
+                    ],
+                    [
+                        'title' => '洗衣机',
+                        'icon' => (new Image())->url('public-20180808-FpDPQcomV8TXabp3r6OBcFyJbHMr'),
+                        'url' => '',
+                    ],
+                    [
+                        'title' => '台灯',
+                        'icon' => (new Image())->url('public-20180808-Fnl9fUNehzNXKOcjRrYF4ekj-MA8'),
+                        'url' => '',
+                    ],
+                    [
+                        'title' => '垃圾桶',
+                        'icon' => (new Image())->url('public-20180808-FhmuGSWJzkPuqC4bw3zpoPc9_18c'),
+                        'url' => '',
+                    ],
+                    [
+                        'title' => '冰箱',
+                        'icon' => (new Image())->url('public-20180808-FsZ8eh8hlqkOPsqgkgsr7EJ9nZHV'),
+                        'url' => '',
+                    ]
+                ]
+            ]
+
+        ];
+
+        return $result;
+    }
+
+find app/ServiceApi -type f -name '*.thrift'

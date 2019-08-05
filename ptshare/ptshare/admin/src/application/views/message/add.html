@@ -1,0 +1,26 @@
+<div class="rightinfo">
+    <input type="button" class="cancel" value="《 点击返回" onclick="history.go(-1);"/>
+    <form id="form" action="/message/add/" method="post" enctype="multipart/form-data">
+        <div class="formbody">
+            <div class="formtitle"><span>模板消息</span></div>
+            <ul class="forminfo">
+
+                <li>
+                    <label>标题</label>
+                    <input name="title" type="text" class="dfinput" /><i>*</i>
+                </li>
+                <li>
+                    <label>内容</label>
+                    <textarea rows=10 cols="46" name="content"></textarea>
+
+
+                    <i>* </i>
+                </li>
+
+                <li><label>&nbsp;</label><input id="_saveBtn" name="submit" type="submit" class="btn" value="保存"></li>
+
+            </ul>
+
+        </div>
+    </form>
+</div>

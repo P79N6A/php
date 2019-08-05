@@ -1,0 +1,18 @@
+整租逻辑：有一个房间有数据说明是新风寓select * from purchasing_tasks
+ where suite_id = 公寓id and type = '新风' order by id desc limit 1
+
+合租逻辑：除了查整租逻辑还要查
+房间编号A,B,C是否存在于表中
+   SELECT room_number FROM supple_config_items
+WHERE supple_config_id = (select prepare_id from purchasing_tasks
+ where suite_id = 公寓id and type = '新风' order by id desc limit 1)
+getSaleInfo
+
+room_id=2106745259&city_id=1&rent_type=2
+
+
+
+
+room_id=2106745259&city_id=1&rent_type=2
+
+

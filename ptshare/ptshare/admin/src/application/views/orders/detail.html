@@ -1,0 +1,100 @@
+<div class="rightinfo">
+        <input type="button" class="cancel" value="《 点击返回" onclick="history.go(-1);"/>
+        <div class="formbody">
+            <div class="formtitle"><span style="color: #ff0000;">订单详情</span></div>
+            <table id="tfhover" class="tftable" border="1" >
+                <tbody>
+                <tr>
+                    <td colspan="4" style="background-color: #acc8cc;"><center><h2>订单和用户</h2></center></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">订单号:</td>
+                    <td><?php echo $orderDetail['orderid']?></td>
+                     <td align="right" width="100">下单时间:</td>
+                    <td><?php echo $orderDetail['addtime']?></td>
+                </tr>
+
+                <tr>
+                    <td align="right" width="100">订单状态:</td>
+                    <td><?php echo $statusData[$orderDetail['status']]?></td>
+                    <td align="right" width="100">最后修改时间:</td>
+                    <td><?php echo $orderDetail['modtime']?></td>
+                </tr>
+
+                <tr>
+                    <td align="right" width="100">用户id:</td>
+                    <td><?php echo $orderDetail['uid']?></td>
+                    <td align="right" width="100">用户昵称:</td>
+                    <td><?php echo $userDetail['nickname']?></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4" style="background-color: #acc8cc;"><center><h2>支付信息</h2></center></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">支付状态:</td>
+                    <td><?php echo $payStatusData[$orderDetail['pay_status']]?></td>
+                     <td align="right" width="100">支付时间:</td>
+                    <td><?php echo $orderDetail['pay_time']?></td>
+                </tr>
+
+                <tr>
+                    <td align="right" width="100">支付方式:</td>
+                    <td><?php echo $payMethodData[$orderDetail['pay_type']]?></td>
+                    <td align="right" width="100">支付金额:</td>
+                    <td><?php echo $orderDetail['pay_price']?></td>
+                </tr>
+
+                <tr>
+                    <td align="right" width="100">支付交易号:</td>
+                    <td><?php echo $orderDetail['pay_no']?></td>
+                    <td align="right" width="100">代金券金额:</td>
+                    <td><?php echo $orderDetail['pay_coupon']?></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4" style="background-color: #acc8cc;" ><center><h2>物流信息</h2></center></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">物流状态:</td>
+                    <td><?php echo $expressStatusData[$orderDetail['express_status']]?></td>
+                    <td align="right" width="100">签发时间:</td>
+                    <td><?php echo $orderDetail['express_time']?></td>
+                </tr>
+
+                <tr>
+                <td align="right" width="100">物流价格:</td>
+                    <td><?php echo $orderDetail['express_price']?></td>
+                    <td align="right" width="100">签收时间:</td>
+                    <td><?php echo $orderDetail['receive_time']?></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: #acc8cc;"><center><h2>联系人地址</h2></center></td>
+                </tr>
+                 <tr>
+                    <td align="right" width="100">联系人姓名:</td>
+                    <td><?php echo $orderDetail['contact_name']?></td>
+                    <td align="right" width="100">联系人邮编:</td>
+                    <td><?php echo $orderDetail['contact_zipcode']?></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">联系人省份:</td>
+                    <td><?php echo $orderDetail['contact_province']?></td>
+                    <td align="right" width="100">联系人城市:</td>
+                    <td><?php echo $orderDetail['contact_city']?></td>
+                </tr>
+                 <tr>
+                    <td align="right" width="100">联系人县市:</td>
+                    <td><?php echo $orderDetail['contact_county']?></td>
+                    <td align="right" width="100">联系人地址:</td>
+                    <td><?php echo $orderDetail['contact_address']?></td>
+                </tr>
+                 <tr>
+                    <td align="right" width="100">联系人国籍:</td>
+                    <td><?php echo $orderDetail['contact_national']?></td>
+                    <td align="right" width="100">联系人电话:</td>
+                    <td><?php echo $orderDetail['contact_phone']?></td>
+                </tr>
+                </tbody></table>
+        </div>
+</div>

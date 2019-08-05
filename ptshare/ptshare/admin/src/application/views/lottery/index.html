@@ -1,0 +1,95 @@
+
+<script>
+    window.onload=function(){
+        var tfrow = document.getElementById('tfhover').rows.length;
+        var tbRow=[];
+        for (var i=1;i<tfrow;i++) {
+            tbRow[i]=document.getElementById('tfhover').rows[i];
+            tbRow[i].onmouseover = function(){
+                this.style.backgroundColor = '#f3f8aa';
+            };
+            tbRow[i].onmouseout = function() {
+                this.style.backgroundColor = '#ffffff';
+            };
+        }
+    };
+</script>
+<style type="text/css">
+    table.imgtable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+    table.imgtable th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:center;}
+    table.imgtable tr {background-color:#ffffff;}
+    text-center{text-align:center;}
+    table.imgtable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}
+</style>
+<center ><h1><?=$title?></h1></center>
+<div class="wrapper">
+<div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/lottery/qxc">
+            <h6>条件搜索</h6>
+            <table>
+                <tr>
+                    <td height="30" style="line-height: 40px">七星彩期号：</td>
+                    <td><input type="text" name="issue" value="<?=$param['issue']?>" style="height: 25px"/></td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;葡萄期号：</td>
+                    <td>
+                        <input type="text" name="pt_issue" value="<?=$param['pt_issue']?>" style="height: 25px"/>
+                    </td>
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>
+                        <input type="submit" name="submit" value="查 询" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">
+                    </td>
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>
+                            <a href="/lottery/addQxc">添加新期号</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                            
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <table id = "tfhover" class="tftable" border="1">
+            <tr>
+                <th>葡萄期号</th>
+                <th>七星彩期号</th>
+                <th>开奖号码</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        <?php if($data['data'])foreach($data['data'] as $key=>$val){ ?>
+            <tr class="replay_item" node-type="replayItem" data-uid="<?=$val[uid]?>">
+                <td><center><?=$val['pt_issue']?></center></td>
+                <td><center><?=$val['issue']?></center></td>
+                <td><center><?=$val['number']?></center></td>
+                <td><center><?=$val['startime']?date("Y-m-d H:i:s", $val['startime']):""?></center></td>
+                <td><center><?=$val['endtime']?date("Y-m-d H:i:s", $val['endtime']):""?></center></td>
+                <td><center><?=$this->config_status[$val['status']]?></center></td>
+                <td width="30%">
+                	<center>
+                        <a href="/lottery/detail?issue=<?=$val['issue']?>">设置</a>
+
+                        <a href="/lottery/list?issue=<?=$val['issue']?>">查看用户投注</a>
+                	</center>
+                </td>
+            </tr>
+        <?php } else { ?>
+            <tr style="height: 20px;"><td colspan="7"> <center>列表信息为空！ </center></td></tr>
+        <?php } ?>
+
+    </table>
+    <div>
+    <?php echo $data['mutipage'];?>
+    </div>
+</div>
+<script>
+
+</script>
+<script src="/js/My97DatePicker/WdatePicker.js"></script>

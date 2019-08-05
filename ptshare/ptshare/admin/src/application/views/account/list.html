@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="widget-box transparent">
+      <div class="widget-header widget-header-flat">
+        <div class="col-sm-3">
+          <h4 class="lighter">
+          系统帐号
+          </h4>
+        </div>
+        <div class="col-sm-9">
+        </div>
+      </div>
+      <div class="widget-body">
+        <div class="widget-main no-padding">
+          <table id="tfhover" class="tftable">
+            <thead class="thin-border-bottom">
+              <tr>
+                <th class="text-center">帐号id</th>
+				<th class="text-center">用途</th>
+				<th class="text-center">充值总额</th>
+				<th class="text-center">上月充值总额</th>
+				<th class="text-center">本月充值总额</th>
+                <th class="text-center">钻可用额度</th>
+				<th class="text-center">葡萄可用额度</th>
+                <th class="text-center">代金券可用额度</th>
+				<th class="text-center">操作</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php foreach($list as $value) { ?>
+              <tr>
+                <td><center><a href='/account/applylist?uid=<?php echo $value['uid'];?>'><?php echo $value['uid'];?></a></center></td>
+                <td><center><?php echo $value['title'];?></center></td>
+				<td><center><?php echo $value['sum'];?></center></td>
+				<td><center><?php echo $value['pre_sum'];?></center></td>
+				<td><center><?php echo $value['current_sum'];?></center></td>
+                <td><center><?php echo $value['amount'];?></center></td>
+				<td><center><?php echo $value['amount2'];?></center></td>
+                <td><center><?php echo $value['amount1'];?></center></td>
+                <td><center><?php if($value['uid']==10000){ ?> 不可转入<?php } elseif($value['uid']==20000 || $value['uid']==4001){ ?>不可转入<?php }else { ?><a href="/account/tran?uid=<?php echo $value['uid'];?>">申请转入</a><?php }?></center></td>
+              </tr>
+              <?php } ?>
+            </tbody>
+          </table>
+        </div><!-- /widget-main -->
+        <div>
+          <?php echo $mutipage;?>
+        </div>
+      </div><!-- /widget-body -->
+    </div><!-- /widget-box -->
+  </div>
+
+</div>
+

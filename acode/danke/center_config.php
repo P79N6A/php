@@ -1,0 +1,1 @@
+http://172.16.31.54:3333/api/v5/base-configure/center-config?timestamp=1541470391&type=default

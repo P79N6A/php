@@ -1,0 +1,28 @@
+server {
+    listen 80;
+    server_name  yq.api.ptshare.com yq.static.ptshare.com yq.upload.ptshare.com;
+    root /home/yangqing/work/ptshare/service/src/www/;
+
+    gzip on;
+    gzip_min_length 1k;
+    gzip_buffers 16 64k;
+    gzip_http_version 1.1;
+    gzip_comp_level 9;
+    gzip_types text/plain application/json application/x-javascript text/css application/xml;
+    gzip_vary on;
+	
+    if ($request_filename ~ .*) {
+        rewrite ^/(.*)$ /index.php last;
+    }
+    
+    location ~ \.php$ {
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        fastcgi_pass  unix:/tmp/php-cgi.sock;
+        include fastcgi_params;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+    }
+    
+    access_log logs/yq.api.ptshare.com.access.log;
+    error_log  logs/yq.api.ptshare.com.error.log;
+}

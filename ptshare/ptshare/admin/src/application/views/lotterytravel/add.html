@@ -1,0 +1,72 @@
+<script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
+<div class="rightinfo">
+    <input type="button" class="cancel" value="《 点击返回" onclick="history.go(-1);"/>
+    <form id="form" action="/lotteryTravel/create/" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?=$_REQUEST['id']?>" />
+        <div class="formbody">
+            <div class="formtitle"><span>组队抽奖基本信息</span></div>
+            <ul class="forminfo">
+                <li>
+                    <label>开始时间</label>
+                    <input name="startime" placeholder="请选择开始日期" type="text" value="<?=$data['startime']?>"  class="dfinput" onClick="WdatePicker()" >
+                </li>
+                <li>
+                    <label>结束时间</label>
+                    <input name="endtime" placeholder="请选择结束日期" type="text" value="<?=$data['endtime']?>" class="dfinput" onClick="WdatePicker()" >
+                </li>
+                <li>
+                    <label>活动名称</label>
+                    <input type="text" name="name" value="<?=$data['name']?>" class="dfinput" >
+                </li>
+                <li>
+                    <label>奖品信息</label>
+                    <input name="award" type="text" value="<?=$data['award']?>"  class="dfinput" >
+                </li>
+                <li>
+                    <label>组队总数</label>
+                    <input name="total" type="text" value="<?=$data['total']?>"  class="dfinput" >
+                </li>
+                <li>
+                    <label>每组人数</label>
+                    <input name="num" type="text" value="<?=$data['num']?>"  class="dfinput" >
+                </li>
+
+                <li>
+                    <label>列表封面图</label>
+                    <input name="list_cover" type="file" class="dfinput" />
+                    <?php if ($data['list_cover']) {?>
+                    <a href="<?=$data['list_cover']?>" target="_blank">列表图：<img src="<?=$data['list_cover']?>" width="150" height="100" alt="点击查看大图"></a>
+                	<?php }?>
+                </li>
+
+				<li>
+                    <label>详情封面图</label>
+                    <input name="detail_cover" type="file" class="dfinput" />
+                    <?php if ($data['detail_cover']) {?>
+                    <a href="<?=$data['detail_cover']?>" target="_blank">详情图：<img src="<?=$data['detail_cover']?>" width="150" height="100" alt="点击查看大图"> </a>
+                	<?php }?>
+                </li>
+                
+                <li>
+                    <label>分享封面图</label>
+                    <input name="share_cover" type="file" class="dfinput" />
+                    <?php if ($data['share_cover']) {?>
+                    <a href="<?=$data['share_cover']?>" target="_blank">分享图：<img src="<?=$data['share_cover']?>" width="150" height="100" alt="点击查看大图"></a>
+                	<?php }?>
+                </li>
+                
+                <li>
+                    <label>入口封面图</label>
+                    <input name="gate_cover" type="file" class="dfinput" />
+                    <?php if ($data['gate_cover']) {?>
+                    <a href="<?=$data['gate_cover']?>" target="_blank">入口图：<img src="<?=$data['gate_cover']?>" width="150" height="100" alt="点击查看大图"></a>
+                	<?php }?>
+                </li>
+                
+                
+                <li><label>&nbsp;</label><input id="_saveBtn" name="" type="submit" class="btn" value="提交"> <input type="button" class="btn" value="返回" onclick="history.go(-1);"/></li>
+            </ul>
+
+        </div>
+    </form>
+</div>

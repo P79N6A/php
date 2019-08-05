@@ -1,0 +1,73 @@
+<div class="rightinfo">
+    <input type="button" class="cancel" value="《 点击返回" onclick="history.go(-1);"/>
+    <form id="form" action="/package/modify/" method="post">
+        <input type="hidden" name="packageid" value="<?=$_REQUEST['packageid']?>" />
+        <div class="formbody">
+            <div class="formtitle"><span>包裹基本信息</span></div>
+            <ul class="forminfo">
+                <li>
+                    <label>创建时间</label>
+                    <input type="text" value="<?=$package_info['addtime']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>最后修改时间</label>
+                    <input type="text" value="<?=$package_info['modtime']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>ID</label>
+                    <input type="text" value="<?=$package_info['id']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>包裹编号</label>
+                    <input name="packageid" type="text" value="<?=$package_info['packageid']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>系统唯一标识符</label>
+                    <input name="sn" type="text" value="<?=$package_info['sn']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+
+                <li>
+                    <label>地址</label>
+                    <input name="location" type="text" value="<?=$package_info['location']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+
+                <li>
+                    <label>宝贝数量</label>
+                    <input name="num" type="text" value="<?=$package_info['num']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>观看数</label>
+                    <input name="view_num" type="text" value="<?=$package_info['view_num']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>收藏数</label>
+                    <input name="favorite_num" type="text" value="<?=$package_info['favorite_num']?>" disabled="disabled" class="dfinput" ><i>* 不可更改</i>
+                </li>
+                <li>
+                    <label>状态</label>
+                    <select name="online" style="height:30px; width: 200px" class="select">
+
+                        <option value="Y" <?php if($package_info['online'] == 'Y') {echo 'selected="selected"';}?>>上架</option>
+                        <option value="N" <?php if($package_info['online'] == 'N') {echo 'selected="selected"';}?>>下架</option>
+                    </select>
+                    <i>* 请勿随意更改状态</i>
+                </li>
+                <li>
+                    <label>租金</label>
+                    <input name="rent_price" type="text" value="<?=$package_info['rent_price']?>" class="dfinput" ><i></i>
+                </li>
+                <li>
+                    <label>押金</label>
+                    <input name="deposit_price" type="text" value="<?php echo $package_info['deposit_price'] ?>"  class="dfinput" ><i></i>
+                </li>
+                <li>
+                    <label>描述</label>
+                    <textarea name="description" rows="10" cols="100"><?php echo $package_info['description'];?></textarea>
+                    <i></i>
+                </li>
+                <li><label>&nbsp;</label><input id="_saveBtn" name="" type="submit" class="btn" value="保存"> <input type="button" class="btn" value="返回" onclick="history.go(-1);"/></li>
+            </ul>
+
+        </div>
+    </form>
+</div>

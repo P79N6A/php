@@ -1,0 +1,29 @@
+<div class="rightinfo">
+    <form id='form'  action="/admin/update/" method="post">
+        <div class="formbody">
+            <div class="formtitle"><span>基本信息</span></div>
+
+            <ul class="forminfo">
+                <li><label>名称</label><input disabled=disabled name="username" type="text" value="<?=$admin_info['username']?>" class="dfinput" /></li>
+                <li><label>真实姓名</label><input name="realname" type="text" value="<?=$admin_info['realname']?>" class="dfinput" /><i>&nbsp;</i></li>
+                <li><label>超级权限</label><cite><input name="super" type="radio" value="N" <?php if($admin_info['super'] == 'N') echo "checked='checked'";  ?> />&nbsp;否&nbsp;&nbsp;&nbsp;&nbsp;<input name="super" type="radio" value="Y" <?php if($admin_info['super'] == 'Y') echo "checked='checked'";  ?> />&nbsp;是</cite></li>
+                <li><label>用户角色</label><cite>
+                <?php
+                $roleids = explode(',', $admin_info['roleid']);
+
+                foreach($role_list as $v){
+                	$checked = '';
+                	if(in_array($v['roleid'],$roleids)) {
+                		$checked='checked';
+                	}
+                    echo '&nbsp;<input '.$checked.' type="checkbox" value="'.$v['roleid'].'" name="roleids[]" />&nbsp;'.$v['name'];
+                }
+                ?>
+                </cite></li>
+                <li><label>手机号码</label><input name="mobile" type="text" value="<?=$admin_info["mobile"]?>" class="dfinput" /><i>11位数字，如13888888888</i></li>
+                <li><label>&nbsp;</label><input id="_saveBtn" name="" type="submit" class="btn" value="确认修改"/></li>
+            </ul>
+            <input type="hidden" value="<?php echo $admin_info['adminid'];?>" name="adminid" />
+        </div>
+    </form>
+</div>

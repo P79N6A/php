@@ -1,0 +1,89 @@
+<div class="rightinfo">
+        <input type="button" class="cancel" value="《 点击返回" onclick="history.go(-1);"/>
+        <div class="formbody">
+            <div class="formtitle"><span style="color: #ff0000;">物流详情</span></div>
+            <?php if(!$data['number']){?>
+            <div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+                <form name="search" method="get" action="/Express/sentdown">
+                    <h6>添加物流单号</h6>
+                    <table>
+                        <tr>
+                            <td height="30" style="line-height: 40px">快递公司编码：</td>
+                            <td><input type="text" name="company" value="" style="height: 25px"/></td>
+        
+                        </tr>
+                        <tr>
+                            <td height="30" style="line-height: 40px">物流单号：</td>
+                            <td><input type="text" name="number" value="" style="height: 25px"/></td>
+        
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="hidden" name="orderid" value="<?php echo $data['orderid']?>"/>
+                                <input type="submit" name="submit" value="添加" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <?php }?>
+            <?php if($data['number']&&$data['company']){?>
+                <div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+                    <a href="/express/query?orderid=<?=$data['orderid']?>" onclick="return confirm('确认更新？')" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">更新物流</a>
+                </div>
+            <?php }?>
+            <table id="tfhover" class="tftable" border="1" >
+                <tbody>
+                <tr>
+                    <td colspan="2" style="background-color: #acc8cc;"> </td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">订单号:</td>
+                    <td><?php echo $data['orderid']?></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">物流公司:</td>
+                    <td><?php echo $data['company']?></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">物流号:</td>
+                    <td><?php echo $data['number']?></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">订单状态:</td>
+                    <td><?php echo $this->status[$data['status']]?> 
+                        <?php if (in_array($data['status'],[0,1]) ) {?>
+                            <a href="/express/deliver?orderid=<?=$data['orderid']?>" onclick="return confirm('确认揽件')" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">揽件</a>
+                           
+                        <?php }else{?>
+                            <a href ="javascript:void();" style="cursor: default;"><i class="edit" style="opacity: 0.2">揽件</i></a>
+                        <?php }?>
+                        <?php if (in_array($data['status'],[0,1,2,3,4]) ) {?>
+                            <a href="/express/receive?orderid=<?=$data['orderid']?>" onclick="return confirm('确认签收')" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">签收</a>
+                           
+                        <?php }else{?>
+                            <a href ="javascript:void();" style="cursor: default;"><i class="edit" style="opacity: 0.2">签收</i></a>
+                        <?php }?>
+                    </td>
+                    
+                </tr>
+                <tr>
+                        <td align="right" width="100">订单详情:</td>
+                        <td><pre>
+<?php print_r( $data['content'])?>
+                            </pre>
+                        </td>
+                        
+                </tr>
+                <tr>
+                        <td align="right" width="100">下单时间:</td>
+                        <td><?php echo $data['addtime']?></td>
+                </tr>
+                <tr>
+                    <td align="right" width="100">最后修改时间:</td>
+                    <td><?php echo $data['modtime']?></td>
+                </tr>
+                </tbody></table>
+        </div>
+</div>
+

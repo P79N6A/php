@@ -1,0 +1,59 @@
+<script language="javascript" type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
+<div class="rightinfo">
+<div style="margin-bottom: 20px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/message/list">
+            <h6> </h6>
+            <table>
+
+                <tr style="height: 30px;"><td> </td></tr>
+                <tr> <td> <a style="padding: 3px 5px; background-color: #a00; color:#FFFFFF; width: 70px"  href="/message/add" target="_blank">创建消息</a></td></tr>
+            </table>
+        </form>
+    </div>
+    <table id = "tfhover" class="tftable" border="1">
+            <tr>
+                <th>编号</th>
+                <th>标题</th>
+                <th>内容</th>
+                <th>添加时间</th>
+                <th>发送时间</th>
+                <th>管理员</th>
+                <th>操作</th>
+            </tr>
+        <?php if($list)foreach($list as $key=>$val){ ?>
+            <tr class="replay_item" node-type="replayItem" data-uid="<?=$val[uid]?>">
+
+                <td><center><?=$val['id']?></center></td>
+                <td><center><?=$val['title']?></center></td>
+                <td><center><?=$val['content']?></center></td>
+                <td><center><?=$val['addtime']?></center></td>
+                <td><center><?=$val['sendtime']?></center></td>
+                <td><center><?=$val['addadmin']?></center></td>
+                <td width="10%">
+                	<center>
+                	<a href="/message/send?id=<?php echo $val['id'];?>">发送</a>
+                	</center>
+                </td>
+            </tr>
+        <?php } else { ?>
+            <tr style="height: 20px;"><td colspan="15"> <center>列表信息为空！ </center></td></tr>
+        <?php } ?>
+		<tr style="height: 20px;"><td colspan="15"> </td></tr>
+
+            <style>
+                .pagination{float: none}
+            </style>
+        <?php if ($page) {?>
+            <tr style="text-align: center; background: #FFF; height: 40px;">
+                <td colspan="12"><?=$page?></td>
+                <td colspan="3">总数=<?=$total?></td>
+            </tr>
+        <?php }?>
+    </table>
+</div>
+<script>
+function search_form_submit(){
+    $("#search_form").submit();
+}
+</script>
+<script src="/js/My97DatePicker/WdatePicker.js"></script>

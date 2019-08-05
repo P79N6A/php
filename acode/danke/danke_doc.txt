@@ -1,0 +1,44 @@
+共享 地址   172.16.30.130  用户名 xubaoguo   密码 danke1102
+vpn用户名都为 xubaoguo   密码 青云 Danke1102    办公室 danke1102
+
+代码
+http://gitlab.danke.life/
+xubaoguo
+xubaoguo1985
+
+我的堡垒机
+ssh xubaoguo@ssh.danke.life  -p 60022
+密码danke@1119
+杨远超堡垒机
+ssh -p60022 yangyuanchao@ssh.danke.life
+Aa111111
+elk
+http://172.21.10.10:5601
+
+100.11数据库连接
+http://mysql.danke.life
+用户名 xubaoguo1  密码 s4POvupsubLuv4y0fBLP
+
+线上100.5数据库连接
+http://mysql.danke.life
+用户名：xubaoguo
+密码：eq5It9LFZwxCoTOoFDfT
+
+
+邮箱帐号
+xubaoguo@dankegongyu.com
+qwer1234xbg_
+
+ssh登录帐号
+172.16.31.54
+xubaoguo
+xubaoguo
+
+172.16.31.54
+xubaoguo
+xubaoguo
+开发数据库已创建库名规范为： Mapi   用户名： mapi_user  密码： hA2nN3Yp6bpan
+172.16.31.52
+dsp_user
+zxABdHG2lfAZ5D
+

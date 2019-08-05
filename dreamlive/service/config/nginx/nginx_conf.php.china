@@ -1,0 +1,106 @@
+server {
+    listen 80;
+    server_name  api.tongyigg.com static.tongyigg.com upload.tongyigg.com report.tongyigg.com api.dreamlive.com upload.dreamlive.com api.htymz.com static.htymz.com upload.htymz.com report.htymz.com api.dreamlive.net source.static.dreamlive.net api.yijianjiaoyou.com static.yijianjiaoyou.com upload.yijianjiaoyou.com report.yijianjiaoyou.com;
+    root /home/dream/codebase/service/src/www/;
+
+    gzip on;
+    gzip_min_length 1k;
+    gzip_buffers 16 64k;
+    gzip_http_version 1.1;
+    gzip_comp_level 9;
+    gzip_types text/plain application/json application/x-javascript text/css application/xml;
+    gzip_vary on;
+	
+    if ($request_filename ~ .*) {
+        rewrite ^/(.*)$ /index.php last;
+    }
+    
+    location ~ \.php$ {
+        if ( $request_uri ~* /game/getGameState.*platform=ios.*version=2\.6\.2.* ) {
+            return 403;
+        }
+        if ( $request_uri ~* /http://static.dreamlive.com/2f58a84c8501f58a59d82a010780cc55\.zip ) {
+
+            return 403;
+        }
+        
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        fastcgi_pass  unix:/tmp/php-cgi.sock;
+        include fastcgi_params;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+    }
+    
+    
+
+    access_log logs/api.dreamlive.tv.access.log;
+    error_log logs/api.dreamlive.tv.error.log;
+}
+
+server {
+    listen 8589;
+    server_name 60.205.82.28;
+    root /home/dream/codebase/service/src/www/;
+
+    gzip on;
+    gzip_min_length 1k;
+    gzip_buffers 16 64k;
+    gzip_http_version 1.1;
+    gzip_comp_level 9;
+    gzip_types text/plain application/json application/x-javascript text/css application/xml;
+    gzip_vary on;
+
+    if ($request_filename ~ .*) {
+        rewrite ^/(.*)$ /index.php last;
+    }
+
+    location ~ \.php$ {
+        if ( $request_uri !~* /d/l* ) {
+            return 403;
+        }
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        fastcgi_pass  unix:/tmp/php-cgi.sock;
+        include fastcgi_params;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+    }
+
+
+
+    access_log logs/ip.dreamlive.tv.access.log;
+    error_log logs/ip.dreamlive.tv.error.log;
+}
+server {
+    listen 443;
+        ssl on;
+    ssl_certificate /etc/ssl/certs/_.dreamlive.net.cer;
+    ssl_certificate_key /etc/ssl/certs/_.dreamlive.net.key;
+    server_name api.bjhdxc.com static.bjhdxc.com upload.bjhdxc.com report.bjhdxc.com api.dreamlive.com static.dreamlive.com upload.dreamlive.com report.dreamlive.com api.dreamlive.net;
+    root /home/dream/codebase/service/src/www/;
+
+    gzip on;
+    gzip_min_length 1k;
+    gzip_buffers 16 64k;
+    gzip_http_version 1.1;
+    gzip_comp_level 9;
+    gzip_types text/plain application/json application/x-javascript text/css application/xml;
+    gzip_vary on;
+	
+    if ($request_filename ~ .*) {
+        rewrite ^/(.*)$ /index.php last;
+    }
+    
+    location ~ \.php$ {
+        if ( $request_uri ~* /game/getGameState.*platform=ios.*version=2\.6\.2.* ) {
+            return 403;
+        }
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        fastcgi_pass  unix:/tmp/php-cgi.sock;
+        include fastcgi_params;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+    }
+
+    access_log logs/api_https.dreamlive.tv.access.log;
+    error_log logs/api_https.dreamlive.tv.error.log;
+}

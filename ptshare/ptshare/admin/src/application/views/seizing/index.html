@@ -1,0 +1,67 @@
+<div class="rightinfo">
+      <div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/seizing/index">
+            <h6>条件搜索</h6>
+            <table class="table">
+                <tr>
+                    <td style="height: 30px; line-height: 40px; text-align: right;">用户id：</td>
+                    <td><input type="text" name="uid" value="<?=$_GET['uid']?>" style="height: 25px"/></td>
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;包裹ID：</td>
+                    <td><input type="text" name="packageid" value="<?=$_GET['packageid']?>" style="height: 25px"/></td>
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;是否开奖：</td>
+                    <td>
+                        <select name="type" style="height: 25px;">
+                            <option value="" <?php if($option['type'] == '') {echo 'selected="selected"';}?>>所有</option>
+                            <option value="Y" <?php if($option['type'] == 'Y') {echo 'selected="selected"';}?>>是</option>
+                            <option value="N" <?php if($option['type'] == 'N') {echo 'selected="selected"';}?>>否</option>
+                        </select>
+                    </td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" name="submit" value="查 询" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+          <table id="tfhover" class="tftable">
+            <thead class="thin-border-bottom">
+              <tr>
+                <th align="center" class="text-center">用户id</th>
+                <th align="center" class="text-center">用户昵称</th>
+                <th align="center" class="text-center">包裹ID</th>
+				<th align="center" class="text-center">号码</th>
+				<th align="center" class="text-center">是否开奖</th>
+				<th align="center" class="text-center">获奖号码</th>
+				<th align="center" class="text-center">时间</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php if($list) foreach($list as $value) { ?>
+              <tr>
+                <td><center><?=$value['uid']?></center></td>
+                <td><center><?=$value['nickname']?></center></td>
+				<td><center><a href="/seizing/index?packageid=<?=$value['packageid']?>"><?=$value['packageid']?></a></center></td>
+				<td><center><?php echo $value['number'];?></center></td>
+				<td><center><?php echo $value['type'];?></center></td>
+                <td><center><?php if($value['win_number']>0){echo $value['win_number'];}else{echo "---";}?></center></td>
+				<td><center><?php echo $value['addtime'].".".$value['msec'];?></center></td>
+              </tr>
+		<?php } else { ?>
+            <tr style="height: 20px;"><td colspan="7"> <center>列表信息为空！ </center></td></tr>
+        <?php } ?>
+
+        <tr style="height: 20px;"><td colspan="7"> </td></tr>
+            <style>
+                .pagination{float: none}
+            </style>
+        <?php if ($page) {?>
+            <tr style="text-align: center; background: #FFF; height: 40px;">
+                <td colspan="6"><?=$page?></td>
+                <td colspan="1">总数=<?=$total?></td>
+            </tr>
+        <?php }?>
+            </tbody>
+          </table>
+
+</div>

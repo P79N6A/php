@@ -1,0 +1,32 @@
+<div class="rightinfo">
+    <table class="imgtable">
+        <thead>
+            <tr>
+            	<th>ID</th>
+                <th width="100px;">代码</th>
+                <th>隶属</th>
+                <th>名称</th>
+                <th>类型</th>
+                <th>添加时间</th>
+                <th>管理操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php if($auth_list)foreach($auth_list as $v){ ?>
+        <tr>
+        	<td><?=$v["authid"]?></td>
+            <td height=30><?=$v['code']?></td>
+            <td><?=$v["pid"]?>
+            <td><?=$v['name']?></td>
+            <td><?=$v["type"] == 1 ? "模块" : "权限"?></td>
+            <td><?=$v['addtime']?></td>
+            <td><a href='/auth/modify?authid=<?php echo $v[authid];?>'>编辑</a>&nbsp;<a href='/auth/delAuth?authid=<?php echo $v[authid];?>' onclick='return window.confirm("您确认删除吗?");'>删除</a></td>
+        </tr>
+        <?php }?>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $('.imgtable tbody tr:odd').addClass('odd');
+</script>

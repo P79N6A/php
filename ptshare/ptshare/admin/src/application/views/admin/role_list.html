@@ -1,0 +1,27 @@
+<div class="rightinfo">
+    <table class="imgtable">
+        <thead>
+            <tr>
+                <th width="100px;">ID</th>
+                <th>名称</th>
+                <th>添加时间</th>
+                <th>修改时间</th>
+                <th>管理操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach($role_list as $v){ ?>
+        <tr>
+            <td height=40><?php echo $v['roleid']; ?></td>
+            <td><?php echo $v['name']; ?></td>
+            <td><?php echo $v['addtime']; ?></td>
+            <td><?php echo $v['modtime']; ?></td>
+            <td><a href='/role/delete/?roleid=<?php echo $v[roleid];?>' onclick='return window.confirm("您确认删除吗?");'>删除</a></td>
+        </tr>
+        <?php }?>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    $('.imgtable tbody tr:odd').addClass('odd');
+</script>

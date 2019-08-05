@@ -1,0 +1,35 @@
+<h3>改变账户</h3>
+<div class="rightinfo">
+
+		<ul class="forminfo">
+			<form action="/user/addAccount?add=true" method="post" class="form-horizontal">
+			
+					
+					<li>
+	  					<input type="hidden" name="edit" value="<?=empty($_REQUEST['currency']) ? 0 : 1; ?>" />
+	                    <input type="hidden" name="uid" value="<?=$_REQUEST['uid'] ?>" />
+	                   
+                	</li>
+					<li>
+						<label class="col-sm-2 control-label">类型</label>
+						<select name="currency">
+						<option value="1" <? if ($_REQUEST['currency'] == 1) {?> selected = "selected" <? }?>> 葡萄币</option>
+						<option value="3" <? if ($_REQUEST['currency'] == 3) {?> selected = "selected" <? }?>> 代金券</option>
+						</select>
+					</li>
+					<li>
+						<label class="col-sm-2 control-label">金额</label>
+						<input type="text" name="balance" class="form-control" >
+					</li>		
+					
+					
+				
+					<button class="btn btn-primary">提交</button>
+			
+			</form>
+			</ul>
+		</div>
+	</div>
+
+<!-- /.content-wrapper -->
+<script src="/js/My97DatePicker/WdatePicker.js"></script>

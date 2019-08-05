@@ -1,0 +1,93 @@
+<div class="rightinfo">
+<form action="/package/create" method="post">
+<center> <input type="button" name="submit" value="选择商品生成包裹" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 100px; height:50px;" /> </center>
+<input type="button" id="CheckAll" value="全选" />
+<input type="button" id="CheckNo" value="全不选" />
+<input type="button" id="CheckRev" value="反选" />
+<table id="tfhover" class="tftable" border="1">
+        <tr>
+            <th width="20px;">ID</th>
+            <th>id</th>
+            <th>SELLID</th>
+            <th>状态</th>
+            <th>价格</th>
+            <th>价值</th>
+            <!--<th>分类</th>-->
+            <th>类型</th>
+            <th>图片</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+        </tr>
+        <?
+            if ($data['list']) foreach($data['list'] as $key => $val){
+        ?>
+
+        <tr align="center">
+            <td><input type="checkbox" name="items[]" value="<?=$val['id']?>" /></td>
+            <td><?=$val['id']?></td>
+            <td><a href="/sell/index?id=<?=$val['sellid']?>"><?=$val['sellid']?></td>
+            <td><?=$statusData[$val['status']]?></td>
+            <td><?=$val['show_grape']?></td>
+            <td><?=$val['worth_grape']?></td>
+            <!--<td><?=$val['category']?></td>-->
+            <td><?php if ($val['type'] == 'image'){?>图片<?php } else { ?>视频<?php } ?></td>
+            <td><a href="<?=$val['file']?>" target="_blank"><img src="<?=$val['file']?>" width="50" height="50" alt="点击查看大图"></a></td>
+            <td><?=$val['addtime']?></td>
+            <td><?=$val['modtime']?></td>
+        </tr>
+        <? } else { ?>
+        <tr style="height: 20px;"><td colspan="12"> <center>列表信息为空！</center> </td></tr>
+        <?php } ?>
+
+        <tr style="height: 20px;"><td colspan="12"> </td></tr>
+
+        <style>
+            .pagination{float: none}
+        </style>
+        <?php if ($mutipage) {?>
+        <tr style="text-align: center; background: #FFF; height: 40px;">
+            <td colspan="8"><?=$mutipage?></td>
+            <td colspan="4">总数=<?=$data['total']?></td>
+        </tr>
+        <?php }?>
+    </table>
+
+	<!-- <p>分类id：<input type="text" name="categoryid" class="dfinput"  /></p> -->
+	<p>租金：<input type="text" name="rent_price"  class="dfinput" /></p>
+	<p>封面商品id：<input type="text" name="cover_id" class="dfinput" size="5" /></p>
+	<p>所在地：<input type="text" name="location" class="dfinput"  /></p>
+	<p>描述：<textarea name="description" rows="10" cols="100"></textarea></p>
+	&nbsp;<br/>
+    <p><label><b><font color="red">租售方式</font></b></label>
+        <select name="type" style="height:30px;" class="select">
+            <option value="1">普通出售</option>
+            <option value="2">普通出租</option>
+        </select>
+        <i>* <font color="red"></font></i>
+    </p>
+    <p><label><b><font color="red">vip独享</font></b></label>
+        <select name="vip" style="height:30px;" class="select">
+            <option value="0">否</option>
+            <option value="1">是</option>
+        </select>
+        <i>* <font color="red"></font></i>
+    </p>
+	<p>地址：<textarea name="contact" rows="10" cols="90">{"contact_name":"曹林","contact_zipcode":"621000","contact_province":"四川","contact_city":"绵阳市","contact_county":"涪城区","contact_address":"跃进路北段圣水一队106-13号","contact_national":"CN","contact_phone":"13691284186"}</textarea></p>
+    <center> <input type="submit" name="submit" value="生成包裹" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 100px; height:50px;" /> </center>
+    </form>
+    </div>
+<script>
+    $(function(){
+        $("#CheckAll").click(function(){
+            $("input:checkbox").prop("checked","checked");
+        });
+        $("#CheckNo").click(function(){
+            $("input:checkbox").removeAttr("checked");
+        });
+        $("#CheckRev").click(function(){
+            $("input:checkbox").each(function(){
+                this.checked=!this.checked;
+            });
+        });
+    });
+</script>

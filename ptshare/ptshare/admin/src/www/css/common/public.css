@@ -1,0 +1,141 @@
+.slct, .ipt {
+	height: 24px; line-height: 24px; border: 1px solid #DDD; margin-right: 10px;
+}
+.ipt {
+	padding: 0 10px;
+}
+.base-btn {
+	display: inline-block;
+	height: 22px;
+	padding: 0 15px;
+	border: 1px #aaa solid;
+	background: #ccc;
+    color: #000;
+	line-height: 22px;
+    text-align: center;
+    vertical-align: middle;
+}
+a.base-btn:hover {
+	background: #DDD;
+}
+
+.small { width: 60px;}
+
+
+.h25 { height: 25px;}
+
+
+
+.btn-blue {
+	color: #0000FF;
+}
+a.btn-blue:hover {
+	color: #0101AC;
+}
+.btn-red {
+	color: #FF0000 !important;
+}
+.btn-green {
+	color: #38A00C !important;
+}
+a.btn-green:hover {
+	color: #267205 !important;
+}
+.btn-gray,  td a.dealing, td a.dealing:hover {
+	color: #CDCDCD !important;
+	cursor: default;
+}
+
+/* 清除浮动  */
+.clearfix {
+    zoom:1;
+}
+.clearfix:after,.clearfix:before {
+    display: block;
+    content: "clear";
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+/* 顶部区域  */
+.top_ribbon_area {
+	padding: 20px 10px;
+	vertical-align: middle;
+	border-bottom: 1px solid #B6CAD2;
+}
+.top_ribbon_area span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* table-list表格 */
+.table-list {
+	width:100%; table-layout: fixed;
+}
+.table-list th,  .table-list td {
+	border: 1px solid #CCC; text-align: center; word-break: break-all; word-wrap: break-word;
+}
+.table-list th {
+	height: 40px; line-height: 40px; background: #F0F5F7;
+}
+.table-list td {
+	padding: 7px 0; line-height: 22px;
+}
+.table-list tr {
+	background: #FFF;
+}
+.table-list  tr.odd {
+	background: #f5f8fa;
+}
+.table-list .route-src-td {
+	padding-left: 5px; padding-right: 5px;
+}
+.table-list .table-list-cnt tr:hover{
+	background:#e5ebee;
+}
+
+
+/* pages页码 */
+.pages {}
+.pages .pagination li {
+	height: 22px;
+	line-height: 22px;
+	background: #f5f8fa;
+	padding: 0;
+	*display: inline;
+	*zoom:1;
+}
+.pages .pagination li a {
+	display: block;
+	padding: 0 8px;
+}
+.pages .pagination li a:hover, .pagination .active a {
+	background: #FFF;
+	color: #FF0000;
+}
+.pages .page-info {
+	float: right;
+	line-height: 24px;
+	margin-left: 5px;
+}
+.pages .page-info span {
+	display: inline;
+	margin-left: 5px;
+}
+.pages .page-info em {
+	color: #F00;
+}
+.pages li.disable a, .pages li.disable a:hover {
+	color: #ccc; cursor: default; background: #f5f8fa;
+}
+
+/* confirm弹框及遮照  */
+.dialog-mark { display:none; width: 100%; height: 100%; background: rgba(0, 0, 0, 0); position: fixed; top: 0; left: 0; z-index: 1000;}
+.dialog-confirm { display: none; width: 300px; padding: 10px 10px 30px; border: 1px solid #CCC; text-align: center; background: #FFF; position: fixed; top: 50%; left: 50%; z-index: 2000; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+.dialog-confirm .cm-cnt { padding: 30px 0; font-size: 14px;}
+.dialog-confirm .cm-btn a { padding: 3px 20px; border:1px solid #BABABA; font-size: 14px; background: #DDD; color: #333; margin: 0 20px;}
+.dialog-confirm .cm-btn a:hover { background: #CCC;}
+.dialog-confirm .cm-btn .cm-btn-cancel { background: #FFF; border-color: #DDD;}
+.dialog-confirm .cm-btn .cm-btn-cancel:hover { background: #EFEFEF;}

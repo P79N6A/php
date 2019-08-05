@@ -1,0 +1,270 @@
+###################################
+##         configuration         ##
+###################################
+
+#### 开发环境 H5网站
+server {
+    charset utf-8;
+    client_max_body_size 128M;
+
+    listen 80; ## listen for ipv4
+
+    server_name dev-toupai-h5.lulutv.net;
+    root        /data/website/toupai/walle-dev/toupai/frontendmini/web;
+    index       index.php;
+
+    listen 443 ssl;
+    ssl on;
+    ssl_certificate /usr/local/nginx/conf/ssl-dev-toupai-h5.lulutv.net/1_dev-toupai-h5.lulutv.net_bundle.crt;
+    ssl_certificate_key /usr/local/nginx/conf/ssl-dev-toupai-h5.lulutv.net/2_dev-toupai-h5.lulutv.net.key;
+
+    access_log /data/logs/dev-toupai-h5.lulutv.net-access.log main;
+    error_log /data/logs/dev-toupai-h5.lulutv.net-error.log;
+
+    if ($request_uri ~* "(cost\()|(concat\()") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]union[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]and[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]select[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]or[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]delete[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]update[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]insert[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+
+    if ($query_string ~ "(<|%3C).*script.*(>|%3E)") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($query_string ~ "GLOBALS(=|\[|\%[0-9A-Z]{0,2})") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($query_string ~ "_REQUEST(=|\[|\%[0-9A-Z]{0,2})") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($query_string ~ "base64_(en|de)code\(.*\)") { rewrite ^ /nginx.php?fromtype=nginx break; }
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ ^/assets/.*\.php$ {
+        deny all;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        set $path_info "";
+        set $real_script_name $fastcgi_script_name;
+        if ($fastcgi_script_name ~ "^(.+?\.php)(/.+)$") {
+            set $real_script_name $1;
+            set $path_info $2;
+        }
+        fastcgi_param SCRIPT_FILENAME $document_root$real_script_name;
+        fastcgi_param SCRIPT_NAME $real_script_name;
+        fastcgi_param PATH_INFO $path_info;
+        fastcgi_intercept_errors on;
+        fastcgi_pass   127.0.0.1:9000;
+    }
+
+    location ~* /\. {
+        deny all;
+    }
+}
+
+#### 开发环境 接口-api
+server {
+    charset utf-8;
+    client_max_body_size 128M;
+
+    listen 80; ## listen for ipv4
+
+    server_name dev-toupai-api.lulutv.net;
+    root        /data/website/toupai/walle-dev/toupai/restapi/web;
+    index       index.php;
+
+	listen 443 ssl;
+	ssl on;
+	ssl_certificate /usr/local/nginx/conf/ssl-dev-toupai-api.lulutv.net/1_dev-toupai-api.lulutv.net_bundle.crt;
+	ssl_certificate_key /usr/local/nginx/conf/ssl-dev-toupai-api.lulutv.net/2_dev-toupai-api.lulutv.net.key;
+
+    access_log /data/logs/dev-toupai-api.lulutv.net-access.log main;
+    error_log /data/logs/dev-toupai-api.lulutv.net-error.log;
+
+    if ($request_uri ~* "(cost\()|(concat\()") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]union[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]and[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]select[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]or[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]delete[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]update[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]insert[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+
+    if ($query_string ~ "(<|%3C).*script.*(>|%3E)") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($query_string ~ "GLOBALS(=|\[|\%[0-9A-Z]{0,2})") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($query_string ~ "_REQUEST(=|\[|\%[0-9A-Z]{0,2})") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($query_string ~ "base64_(en|de)code\(.*\)") { rewrite ^ /nginx.php?fromtype=nginx break; }
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ ^/assets/.*\.php$ {
+        deny all;
+    }
+
+    location ~ \.php$ {
+		include fastcgi_params;
+		set $path_info "";
+		set $real_script_name $fastcgi_script_name;
+		if ($fastcgi_script_name ~ "^(.+?\.php)(/.+)$") {
+		    set $real_script_name $1;
+		    set $path_info $2;
+		}
+		fastcgi_param SCRIPT_FILENAME $document_root$real_script_name;
+		fastcgi_param SCRIPT_NAME $real_script_name;
+		fastcgi_param PATH_INFO $path_info;
+		fastcgi_intercept_errors on;
+		fastcgi_pass   127.0.0.1:9000;
+    }
+
+    location ~* /\. {
+        deny all;
+    }
+}
+
+#### 开发环境 后台
+server {
+    charset utf-8;
+    client_max_body_size 128M;
+
+    listen 80; ## listen for ipv4
+
+    server_name dev-toupai-admin.lulutv.net;
+    root        /data/website/toupai/walle-dev/toupai/backend/web;
+    index       index.php;
+
+    access_log  /data/logs/dev-toupai-admin.lulutv.net-access.log;
+    error_log   /data/logs/dev-toupai-admin.lulutv.net-error.log;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ ^/assets/.*\.php$ {
+        deny all;
+    }
+
+    location ~ \.php$ {
+		include fastcgi_params;
+		set $path_info "";
+		set $real_script_name $fastcgi_script_name;
+		if ($fastcgi_script_name ~ "^(.+?\.php)(/.+)$") {
+		    set $real_script_name $1;
+		    set $path_info $2;
+		}
+		fastcgi_param SCRIPT_FILENAME $document_root$real_script_name;
+		fastcgi_param SCRIPT_NAME $real_script_name;
+		fastcgi_param PATH_INFO $path_info;
+		fastcgi_intercept_errors on;
+		fastcgi_pass   127.0.0.1:9000;
+    }
+
+    location ~* /\. {
+        deny all;
+    }
+}
+
+#### 测试环境 接口-api
+server {
+    charset utf-8;
+    client_max_body_size 128M;
+
+    listen 80; ## listen for ipv4
+
+    server_name test-toupai-api.lulutv.net;
+    root        /data/website/toupai/walle-test/toupai/restapi/web;
+    index       index.php;
+
+    listen 443 ssl;
+    ssl on;
+    ssl_certificate /usr/local/nginx/conf/ssl-test-toupai-api.lulutv.net/1_test-toupai-api.lulutv.net_bundle.crt;
+    ssl_certificate_key /usr/local/nginx/conf/ssl-test-toupai-api.lulutv.net/2_test-toupai-api.lulutv.net.key;
+
+    access_log /data/logs/test-toupai-api.lulutv.net-access.log main;
+    error_log /data/logs/test-toupai-api.lulutv.net-error.log;
+
+    if ($request_uri ~* "(cost\()|(concat\()") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]union[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]and[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]select[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]or[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]delete[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]update[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($request_uri ~* "[+|(%20)]insert[+|(%20)]") { rewrite ^ /nginx.php?fromtype=nginx break; }
+
+    if ($query_string ~ "(<|%3C).*script.*(>|%3E)") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($query_string ~ "GLOBALS(=|\[|\%[0-9A-Z]{0,2})") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($query_string ~ "_REQUEST(=|\[|\%[0-9A-Z]{0,2})") { rewrite ^ /nginx.php?fromtype=nginx break; }
+    if ($query_string ~ "base64_(en|de)code\(.*\)") { rewrite ^ /nginx.php?fromtype=nginx break; }
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ ^/assets/.*\.php$ {
+        deny all;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        set $path_info "";
+        set $real_script_name $fastcgi_script_name;
+        if ($fastcgi_script_name ~ "^(.+?\.php)(/.+)$") {
+            set $real_script_name $1;
+            set $path_info $2;
+        }
+        fastcgi_param SCRIPT_FILENAME $document_root$real_script_name;
+        fastcgi_param SCRIPT_NAME $real_script_name;
+        fastcgi_param PATH_INFO $path_info;
+        fastcgi_intercept_errors on;
+        fastcgi_pass   127.0.0.1:9000;
+    }
+
+    location ~* /\. {
+        deny all;
+    }
+}
+
+#### 测试环境 后台
+server {
+    charset utf-8;
+    client_max_body_size 128M;
+
+    listen 80; ## listen for ipv4
+
+    server_name test-toupai-admin.lulutv.net;
+    root        /data/website/toupai/walle-test/toupai/backend/web;
+    index       index.php;
+
+    access_log  /data/logs/test-toupai-admin.lulutv.net-access.log;
+    error_log   /data/logs/test-toupai-admin.lulutv.net-error.log;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ ^/assets/.*\.php$ {
+        deny all;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        set $path_info "";
+        set $real_script_name $fastcgi_script_name;
+        if ($fastcgi_script_name ~ "^(.+?\.php)(/.+)$") {
+            set $real_script_name $1;
+            set $path_info $2;
+        }
+        fastcgi_param SCRIPT_FILENAME $document_root$real_script_name;
+        fastcgi_param SCRIPT_NAME $real_script_name;
+        fastcgi_param PATH_INFO $path_info;
+        fastcgi_intercept_errors on;
+        fastcgi_pass   127.0.0.1:9000;
+    }
+
+    location ~* /\. {
+        deny all;
+    }
+}

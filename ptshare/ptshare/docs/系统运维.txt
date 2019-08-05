@@ -1,0 +1,60 @@
+﻿1. 免密登录
+useradd ptshare
+passwd ptshare c6bd7aa78b91403c45bc0001e16f604e
+
+login 192.168.1.202
+su ptshare
+ssh-copy-id -i ~/.ssh/id_rsa.pub ptshare@139.199.26.216
+
+IUndhgeoY#%320jind#&
+
+完成代码上传
+
+2.修改主机名
+vim /etc/sysconfig/network
+HOSTNAME=api[x]
+echo 'hostname api[x]' >> /etc/rc.local
+
+微信小程序	https://mp.weixin.qq.com/ 	qiangzeng@live.com	ptshare003viip
+
+服务器	z5yo^%Enx5uiSdoz
+数据库	22f673e54db4e57c
+ptshare	67f58c922dc08545
+Redis	171a4cde6def0124
+开发机123.207.136.29
+测试机123.207.137.156  登录密码67f58c922dc08545
+
+无线密码:oasis6997
+redis连接
+redis-cli -h 172.21.0.4 -p 6379 -a 171a4cde6def0124
+
+svn checkout 地址 svn://123.207.137.156/ptshare
+账户信息 例如：用户名：liuchenguang 密码：liuchenguang@123
+RD开发者
+邮箱：	develop@ptshare.vip
+密码：	rdgroup$1024tb
+
+各类在线协作平台账号：develop@ptshare.vip    ptshare@2018
+石墨(用于共享接口)：https://shimo.im/
+在线流程图：https://www.processon.com/
+
+ALTER TABLE `grape_payment`.`journal_6` CHANGE COLUMN `type` `type` int(11) UNSIGNED NOT NULL DEFAULT '1' COMMENT '交易类型:1葡萄转账2任务奖励3现金奖励4财务现金转账5冻结葡萄6解冻葡萄7财务出账8财务回收9红包奖励10租金扣除11代金券扣除12宝贝丢失扣款13借用订单取消';
+
+
+supt2018
+
+切换分支命令
+git checkout -b version_1.4
+git branch --set-upstream-to=origin/version_1.4
+
+爱享瘦
+[CentOS 7.4]
+host  open.lulutv.net
+root  e6b4daec8deff11bde0b067f915f004e
+
+[MySQL]
+port   3306
+root   123456
+
+[Apache]
+/opt/lampp/bin/apachectl start

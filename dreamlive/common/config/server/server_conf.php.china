@@ -1,0 +1,578 @@
+<?php
+$ROOT_PATH = "/home/dream/codebase/service";
+//------------------------------ 游戏系统  --------------------------------
+$MYSQL_CONF_GAME= array(
+	"hosts"=>array(
+		1=>array(
+			"driver"       => "mysql",
+			"host"         => "rm-2zew801mp5520z0fs.mysql.rds.aliyuncs.com",
+			"port"         => "3306",
+			"username"     => "dlgame",
+			"password"     => "HC%Jzo5(uOsi%6+r",
+			"charset"      => "utf8mb4",
+			"database"     => "dream_game",
+			"persistent"   => false,
+			"unix_socket"  => "",
+			"options"      => array(PDO::ATTR_TIMEOUT => 3)
+		),
+	),
+	"sharding"=>array(
+		/*"account" => array(
+			"type"=>"hash",
+			"shard"=>100,
+			"range"=>array(
+				array("min"=>0,  "max"=>99, "confid"=>1),
+			)
+		),*/
+	),
+);
+//------------------------------ report系统  --------------------------------
+$MYSQL_CONF_DREAM_REPORT= array(
+	"hosts"=>array(
+		1=>array(
+			"driver"       => "mysql",
+			"host"         => "rm-2ze7ast86e7r56j6a.mysql.rds.aliyuncs.com",
+			"port"         => "3306",
+			"username"     => "dlreport",
+			"password"     => 'We*Jzo8)uOsi&6-R',
+			"charset"      => "utf8mb4",
+			"database"     => "dream_report",
+			"persistent"   => false,
+			"unix_socket"  => "",
+			"options"      => array(PDO::ATTR_TIMEOUT => 3)
+		),
+	),
+);
+//------------------------------ 活动系统  --------------------------------
+$MYSQL_CONF_ACTIVITY_JAVA= array(
+	"hosts"=>array(
+		1=>array(
+			"driver"       => "mysql",
+			"host"         => "rm-2zec132a7b32w9uud.mysql.rds.aliyuncs.com",
+			"port"         => "3306",
+			"username"     => "activity",
+			"password"     => 'Dream@Live#2016$',
+			"charset"      => "utf8mb4",
+			"database"     => "dream_activity",
+			"persistent"   => false,
+			"unix_socket"  => "",
+			"options"      => array(PDO::ATTR_TIMEOUT => 3)
+		),
+	),
+);
+//------------------------------ 必胜统计  --------------------------------
+$MYSQL_CONF_REPORT= array(
+	"hosts"=>array(
+		1=>array(
+			"driver"       => "mysql",
+			"host"         => "10.10.10.156",
+			"port"         => "3306",
+			"username"     => "dreamtv2",
+			"password"     => "dreamtv2455",
+			"charset"      => "utf8mb4",
+			"database"     => "datacentor_report",
+			"persistent"   => false,
+			"unix_socket"  => "",
+			"options"      => array(PDO::ATTR_TIMEOUT => 3)
+		),
+	),
+);
+//------------------------------ 直播 --------------------------------
+$MYSQL_CONF_LIVE = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "rm-2zej751hvmz0bbe89.mysql.rds.aliyuncs.com",
+	        "port"         => "3306",
+	        "username"     => "live",
+	        "password"     => 'Dream@Live#2016$',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_live",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3),
+        ),
+	),
+	"sharding"=>array(
+    	"newsfeeds" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+    	"userfeeds" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+     	"reply" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+	),
+);
+//------------------------------ 计数器  --------------------------------
+$MYSQL_CONF_COUNTER = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "rm-2ze6cwmjxy89ee734.mysql.rds.aliyuncs.com",
+	        "port"         => "3306",
+	        "username"     => "counter",
+	        "password"     => 'Dream@Live#2016$',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_counter",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3),
+        ),
+	),
+	"sharding"=>array(
+    	"counter" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	)
+	),
+);
+
+//------------------------------ 消息  --------------------------------
+$MYSQL_CONF_MESSAGE = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "rm-2ze6cwmjxy89ee734.mysql.rds.aliyuncs.com",
+	        "port"         => "3306",
+	        "username"     => "message",
+	        "password"     => 'Dream@Live#2016$',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_message",
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3, PDO::ATTR_PERSISTENT => false),
+        ),
+	),
+	"sharding"=>array(
+    	"message" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+	),
+);
+
+//------------------------------ 用户  --------------------------------
+$MYSQL_CONF_PASSPORT = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "rm-2zeba070d1y7twdw0.mysql.rds.aliyuncs.com",
+	        "port"         => "3306",
+	        "username"     => "passport",
+	        "password"     => 'Dream@Live#2016$',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_passport",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3),
+        ),
+	),
+	"sharding"=>array(
+    	"profile" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+        "follower" => array(
+	   		"type"=>"hash",
+	   		"shard"=>100,
+	   		"range"=>array(
+    	    	array("min"=>0,  "max"=>99, "confid"=>1),
+    	    )
+    	),
+        "following" => array(
+        	"type"=>"hash",
+        	"shard"=>100,
+        	"range"=>array(
+            	0=>array("min"=>0,  "max"=>99, "confid"=>1),
+            )
+        )
+	),
+);
+
+$MYSQL_CONF_TASK = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "rm-2zeo153veq0397569.mysql.rds.aliyuncs.com",
+	        "port"         => "3306",
+	        "username"     => "task",
+	        "password"     => 'Dream@Live#2016$',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_task",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3),
+        ),
+	),
+	"sharding"=>array(
+    	"user_exp" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+    	"user_task" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0, "max"=>99, "confid"=>1)
+    		)
+    	),
+    	"user_task_details" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0, "max"=>99, "confid"=>1)
+    		)
+    	),
+    	"user_task_award" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0, "max"=>99, "confid"=>1)
+    		)
+    	),
+    ),
+);
+
+//------------------------------ 经济系统  --------------------------------
+$MYSQL_CONF_PAYMENT= array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "rm-2ze2405yq0n405xk9.mysql.rds.aliyuncs.com",
+	        "port"         => "3306",
+	        "username"     => "payment",
+	        "password"     => 'Dream@Live#2016$',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_payment",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3)
+        ),
+	),
+	"sharding"=>array(
+	   "account" => array(
+	   		"type"=>"hash",
+	   		"shard"=>100,
+	   		"range"=>array(
+    	    	array("min"=>0,  "max"=>99, "confid"=>1),
+    	    )
+    	),
+        "journal" => array(
+        	"type"=>"hash",
+        	"shard"=>100,
+        	"range"=>array(
+            	0=>array("min"=>0,  "max"=>99, "confid"=>1),
+            )
+        ),
+        "star_journal" => array(//增加配置
+        			"type"=>"hash",
+        			"shard"=>100,
+        			"range"=>array(
+        				0=>array("min"=>0,  "max"=>99, "confid"=>1),
+        			)
+        		),
+        "order" => array(
+        	"type"=>"hash",
+        	"shard"=>100,
+        	"range"=>array(
+            	0=>array("min"=>0,  "max"=>99, "confid"=>1),
+            )
+        ),
+	)
+);
+
+//------------------------------ 家族  --------------------------------
+$MYSQL_CONF_FAMILY= array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "rm-2zeno35ll686wkxip.mysql.rds.aliyuncs.com",
+	        "port"         => "3306",
+	        "username"     => "family",
+	        "password"     => 'Dream@Live#2016$',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_family",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3)
+        ),
+	),
+);
+
+//------------------------------ 社团  --------------------------------
+$MYSQL_CONF_CLUB = array(
+    "hosts"=>array(
+        1=>array(
+            "driver"       => "mysql",
+            "host"         => "rm-2zego8gowem23l266.mysql.rds.aliyuncs.com",
+            "port"         => "3306",
+            "username"     => "dreamclub",
+            "password"     => 'Dream@Live#2016$',
+            "charset"      => "utf8mb4",
+            "database"     => "dream_club",
+            "persistent"   => false,
+            "unix_socket"  => "",
+            "options"      => array(PDO::ATTR_TIMEOUT => 3)
+        ),
+    ),
+);
+
+//------------------------------ 官网  --------------------------------
+$MYSQL_CONF_ACTIVITY= array(
+	"hosts"=>array(
+		1=>array(
+			"driver"       => "mysql",
+			"host"         => "rm-2zeno35ll686wkxip.mysql.rds.aliyuncs.com",
+			"port"         => "3306",
+			"username"     => "dlweb",
+			"password"     => "Wqf%Btkgo=ww6an8*M",
+			"charset"      => "utf8mb4",
+			"database"     => "dream_web",
+			"persistent"   => false,
+			"unix_socket"  => "",
+			"options"      => array(PDO::ATTR_TIMEOUT => 3)
+		),
+	),
+);
+
+//------------------------------ 图床  --------------------------------
+$MYSQL_CONF_UPLOAD= array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "rm-2zeno35ll686wkxip.mysql.rds.aliyuncs.com",
+	        "port"         => "3306",
+	        "username"     => "dlupload",
+	        "password"     => 'Mqf%Btkgo=ww9an8*z',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_upload",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3)
+        ),
+	),
+);
+
+//------------------------------ 渠道  --------------------------------
+$MYSQL_CONF_CHANNEL = [
+    "hosts" => [
+        1 => [
+            "driver" => "mysql",
+            "host" => "rm-2zeno35ll686wkxip.mysql.rds.aliyuncs.com",
+            "port" => "3306",
+            "username" => "channel",
+            "password" => 'Dream@Live#2016$',
+            "charset" => "utf8",
+            "database" => "dream_channel",
+            "persistent" => false,
+            "unix_socket" => "",
+            "options" => [PDO::ATTR_TIMEOUT => 3],
+        ],
+    ],
+];
+
+//------------------------------ 计数器  --------------------------------
+$REDIS_CONF_COUNTER = array(
+	"hosts"=>array(
+		//组
+	    0 => array(
+	        "master" => array("host" => "r-2ze39245d7fe89c4.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016"),
+	        "slave" => array(
+	        0 => array("host" => "r-2ze39245d7fe89c4.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016")
+	        ),
+	    ),
+    ),
+    "sharding"=>array(
+    	"type"=>"hash",
+    )
+);
+
+//------------------------------ USER --------------------------------
+$REDIS_CONF_USER = array(
+	"hosts"=>array(
+		//组
+	    0 => array(
+	        "master" => array("host" => "r-2ze0c81fa9b5c2f4.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016"),
+	        "slave" => array(
+                0 => array("host" => "r-2ze0c81fa9b5c2f4.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016")
+	        ),
+	    ),
+    ),
+    "sharding"=>array(
+    	"type"=>"range",
+    	"range"=>array(
+    		array("min"=>0, "max"=>20000000, "group"=>0)
+    	)
+    )
+);
+
+$REDIS_CONF_SESSION = array(
+        "hosts"=>array(
+            //组
+            0 => array(
+                "master" => array("host" => "r-2ze0c81fa9b5c2f4.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016"),
+                "slave" => array(
+                    0 => array("host" => "r-2ze0c81fa9b5c2f4.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016")
+                    ),
+                ),
+            ),
+        "sharding"=>array(
+            "type"=>"range",
+            "range"=>array(
+                array("min"=>0, "max"=>20000000, "group"=>0)
+                )
+            )
+        );
+
+$REDIS_CONF_FOLLOW = array(
+	"hosts"=>array(
+		//组
+        0 => array(
+            "master" => array("host" => "r-2ze0c81fa9b5c2f4.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016"),
+            "slave" => array(
+                0 => array("host" => "r-2ze0c81fa9b5c2f4.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016")
+                ),
+            ),
+    ),
+    "sharding"=>array(
+    	"type"=>"range",
+    	"range"=>array(
+    		array("min"=>0, "max"=>20000000, "group"=>0)
+    	)
+    )
+);
+
+$REDIS_CONF_FORBIDDEN = array(
+    "hosts"=>array(
+        //组
+        0 => array(
+            "master" => array("host" => "r-2ze0c81fa9b5c2f4.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016"),
+            "slave" => array(
+                0 => array("host" => "r-2ze0c81fa9b5c2f4.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016")
+                ),
+            ),
+        "sharding"=>array(
+            "type"=>"range",
+            "range"=>array(
+                array("min"=>0, "max"=>20000000, "group"=>0)
+                )
+            )
+        )
+);
+
+//------------------------------ 公共  --------------------------------
+$REDIS_CONF_CACHE = array(
+	"hosts"=>array(
+		//组
+	    0 => array(
+	        "master" => array("host" => "r-2zee659972b2a944.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016"),
+            "slave" => array(
+                0 => array("host" => "r-2zee659972b2a944.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016")
+                ),
+	    ),
+    ),
+    "sharding"=>array(
+    	"type"=>"hash",
+    )
+);
+
+//------------------------------ 经济系统  --------------------------------
+$REDIS_CONF_PAYMENT = array(
+	"hosts"=>array(
+		//组
+	    0 => array(
+	        "master" => array("host" => "r-2ze2f18927a2f234.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016"),
+            "slave" => array(
+                0 => array("host" => "r-2ze2f18927a2f234.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016")
+                ),
+	    ),
+    ),
+    "sharding"=>array(
+    	"type"=>"hash",
+    )
+);
+
+//------------------------------ 用户  --------------------------------
+$MYSQL_CONF_ACTIVITY= array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "rm-2zeno35ll686wkxip.mysql.rds.aliyuncs.com",
+	        "port"         => "3306",
+	        "username"     => "dlweb",
+	        "password"     => 'Wqf%Btkgo=ww6an8*M',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_web",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3)
+        ),
+	),
+);
+
+//------------------------------ process  --------------------------------
+$REDIS_CONF_PROCESS = array(
+	"hosts"=>array(
+		//组
+	    0 => array(
+	        "master" => array("host" => "r-2ze20d712cbcab54.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016"),
+            "slave" => array(
+                0 => array("host" => "r-2ze20d712cbcab54.redis.rds.aliyuncs.com","port" => 6379,"timeout" => 3,"password" => "DreamLive2016")
+                ),
+	    ),
+    ),
+    "sharding"=>array(
+    	"type"=>"hash",
+    )
+);
+$STORAGE_CONF = array(
+    "accessKeyId"      => "LTAIorLBnvlkwtYd",
+    "accessKeySecret"  => "U15f9f3bLnd9caBvsCwGKWSY8rb43b",
+    "endpoint"         => "vpc100-oss-cn-beijing.aliyuncs.com",
+    "bucket"           => "image-10",
+);
+
+//------------------------------ sphinx  --------------------------------
+$SPHINX_CONF = array(
+    "host"=>"10.10.10.153",
+    "port"=>9312,
+);
+
+//$STATIC_DOMAIN = "http://static.dreamlive.com";
+$RONGCLOUD_KAFKA_URL = "http://kafkamsgapi.cn.ronghub.com/rtmsg/chatroom/qrymsg.json";
+
+$RONGCLOUD_CONF = array(
+	"appkey" 	=> "p5tvi9dsp61g4",//融云正式appkey
+	"secret"	=> "fbriXz0BjbLVra",//融云密钥
+);
+
+$ENV = 'china';
+
+include $ROOT_PATH."/config/server/server_conf.common.php";
+include $ROOT_PATH."/config/server/language_conf.php";
+?>

@@ -1,0 +1,24 @@
+<div class="rightinfo">
+    <form id='form'  action="/account/tran/" method="post" enctype="multipart/form-data">
+        <div class="formbody">
+
+            <div class="formtitle"><span>转葡萄币申请</span></div>
+
+            <ul class="forminfo">
+			 <li><label>申请理由</label><input name="title" type="text" value="" class="dfinput" /><i>&nbsp;</i></li>
+				<li><label>转出id</label><?php if (in_array($_REQUEST['uid'], [10001,10002,10003])) {echo 10000;} elseif (in_array($_REQUEST['uid'], [20001,20002,10003])) { echo 20000;} ?></li>
+                <li><label>转入用户id</label><input name="uid" type="text" value="<?echo $_REQUEST['uid'];?>" class="dfinput" /></li>
+                <li><label>金额</label><input name="amount" type="text" value="" class="dfinput" /><i>&nbsp;</i></li>
+                <li><label>&nbsp;</label><input id="_saveBtn" name="" type="button" class="btn" value="确认保存"/></li>
+				<!-- <input type='hidden' name="uid" value="<?echo $_REQUEST['uid'];?>"> -->
+            </ul>
+
+        </div>
+    </form>
+</div>
+
+<script>
+        $('div.formbody').on('click','#_saveBtn',function(){
+            $('#form').submit();
+        });
+</script>

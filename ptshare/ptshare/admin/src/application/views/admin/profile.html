@@ -1,0 +1,15 @@
+<style>
+    ul.forminfo label {height:34px;}
+</style>
+<div class="rightinfo">
+    <div class="formbody">
+        <div class="formtitle"><span>基本信息</span></div>
+        <ul class="forminfo">
+            <li><label>名称</label><label><?=$admin_info['username']?></label></li>
+            <li><label>真实姓名</label><label><?=$admin_info['realname']?></label></li>
+            <li><label>超级权限</label><label><?=$admin_info['super'] == "Y" ? "是" : "否"?></label></li>
+            <li><label>是否可用</label><label><?=$admin_info['active'] == "Y" ? "是" : "否"?></label></li>
+            <li><label>手机号码</label><label><?=$admin_info['mobile']?></label></li>
+        </ul>
+    </div>
+</div>

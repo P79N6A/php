@@ -1,0 +1,80 @@
+﻿==================2017-06-01===============
+ 
+ 版本号：
+ 4193 
+ 上线文件：
+ src/application/models/Privacy.php src/application/controllers/PrivacyController.php src/application/controllers/MessageController.php src/application/models/Patroller.php src/application/controllers/LiveController.php src/application/models/Feeds.php src/application/models/Live.php config/server/server_conf.common.php src/application/models/dao/DAOPrivacy.php src/application/models/DispatchStream.php src/application/controllers/VideoController.php src/application/models/NewsFeeds.php src/application/models/UserFeeds.php src/application/models/libs/message_client/RongCloudClient.php src/application/models/libs/Messenger.php src/application/models/Rank.php src/application/models/Live.php src/application/models/Video.php src/application/models/dao/DAOLive.php src/application/models/dao/DAOVideo.php src/application/models/dao/DAOPrivacyJournal.php src/application/models/dao/DAOPrivacyPreview.php src/application/models/Account.php
+ 上线功能:
+ 私密直播，修改回放封面， 大厅直播间, 场控列表加守护标识字段
+ 
+==================2017-06-01===============
+ 
+==================2017-06-06===============
+Revision: 4304
+Author: xubg
+Message:
+私密直播二次合并，解决了，修改私密直播回放价格功能，扣钻加票，回放权限
+----
+Modified : /service/src/application/controllers/LiveController.php
+Modified : /service/src/application/controllers/PrivacyController.php
+Modified : /service/src/application/models/Account.php
+Modified : /service/src/application/models/AccountInterface.php
+Modified : /service/src/application/models/Feeds.php
+Modified : /service/src/application/models/Privacy.php
+Modified : /service/src/application/models/dao/DAOPrivacy.php
+Modified : /service/src/application/models/libs/Messenger.php
+==================2017-06-06===============
+
+==================2017-06-14===============
+Revision: 4304
+Author: yangyuanchao
+Message: 上线游戏优化，也包括守护优化部分代码。有数据库改动，基本不可回滚
+
+
+config/server/server_conf.common.php
+src/application/controllers/HorseracingController.php
+src/application/controllers/GameController.php
+src/application/controllers/AccountController.php
+src/application/models/Account.php
+src/application/models/AccountInterface.php
+src/application/models/UserGuard.php
+src/application/models/Game.php
+src/application/models/Horseracing.php
+src/application/models/HorseracingEngine.php
+src/application/models/HorseracingEngineStar.php
+src/application/models/GameRobots.php
+src/application/models/GameRobotsStar.php
+src/application/models/Star.php
+src/application/models/Gift.php
+src/application/models/UserGuard.php
+src/application/models/dao/DAOGame.php
+src/application/models/dao/DAOGameOperation.php
+src/application/models/dao/DAOGameOperationStar.php
+src/application/models/dao/DAOGameRobotsStar.php
+src/application/models/dao/DAOGameRobots.php
+src/application/models/dao/DAOHorseracingBanker.php
+src/application/models/dao/DAOHorseracingBankerStar.php
+src/application/models/dao/DAOHorseracingLog.php
+src/application/models/dao/DAOHorseracingLogStar.php
+src/application/models/dao/DAOHorseracingRound.php
+src/application/models/dao/DAOHorseracingRoundStar.php
+src/application/models/dao/DAOHorseracingStake.php
+src/application/models/dao/DAOHorseracingStakeStar.php
+src/application/models/dao/DAOGift.php
+src/application/models/dao/DAOGiftLog.php
+src/application/models/dao/DAOGiftStarLog.php
+src/application/models/dao/DAORewardConfig.php
+src/application/models/dao/DAOStarJournal.php
+src/application/models/dao/DAOJournal.php
+src/application/models/dao/DAOCom.php
+src/application/process/run_horse_game.php
+src/application/process/run_horse_game_star.php
+src/application/process/tool_extends_field_repair.php
+src/application/process/game/horseracingstar/run_horse_config.sh
+src/application/process/game/horseracingstar/run_horse_guard_star.sh
+src/application/process/game/horseracingstar/run_horse_tool.sh
+src/application/process/game/horseracing/run_horse_config.sh
+src/application/process/game/horseracing/run_horse_guard.sh
+src/application/process/game/horseracing/run_horse_tool.sh
+==================2017-06-14===============
+

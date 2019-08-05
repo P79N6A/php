@@ -1,0 +1,8 @@
+[2018-11-22 19:03:39] local.INFO: INFO  JavaRequest http://172.18.130.7:8383//dk/es/searchXiaoquAggsV2/1/10%E5%8F%B7%E7%BA%BF GET []
+[2018-11-22 19:03:39] local.INFO: mapi java time spend info: JavaRequest http://172.18.130.7:8383//dk/es/searchXiaoquAggsV2/1/10%E5%8F%B7%E7%BA%BF GET [] SPEND TIME: 0.0637
+[2018-11-22 19:03:39] local.INFO: INFO  JavaRequest http://172.18.130.7:8383//dk/es/searchhs POST {"searchText":"10号线","page":{"pageNum":1,"pageSize":20},"exactQuery":{"city":"北京市"},"type":3}
+[2018-11-22 19:03:39] local.INFO: mapi java time spend info: JavaRequest http://172.18.130.7:8383//dk/es/searchhs POST {"searchText":"10号线","page":{"pageNum":1,"pageSize":20},"exactQuery":{"city":"北京市"},"type":3} SPEND TIME: 0.0292
+[2018-11-22 19:03:39] local.INFO: INFO  JavaRequest http://172.18.130.7:8383//dk/es/searchRecommendHs POST {"searchText":"10号线","page":{"pageNum":1,"pageSize":20},"exactQuery":{"city":"北京市"},"type":3}
+[2018-11-22 19:03:39] local.INFO: mapi java time spend info: JavaRequest http://172.18.130.7:8383//dk/es/searchRecommendHs POST {"searchText":"10号线","page":{"pageNum":1,"pageSize":20},"exactQuery":{"city":"北京市"},"type":3} SPEND TIME: 0.1141
+[2018-11-22 19:03:39] local.INFO: INFO  JavaRequest 172.18.130.13:8080/bs/ext/findActivityListByRoomIds/ POST {"roomIds":"22468,13738,121410,121391,121392,24172,37590,39328,121393,37099,120568,136368,136370,136367,136369,22018,24351,140627,140674,119229"}
+[2018-11-22 19:03:39] local.INFO: mapi java time spend info: JavaRequest 172.18.130.13:8080/bs/ext/findActivityListByRoomIds/ POST {"roomIds":"22468,13738,121410,121391,121392,24172,37590,39328,121393,37099,120568,136368,136370,136367,136369,22018,24351,140627,140674,119229"} SPEND TIME: 0.0588

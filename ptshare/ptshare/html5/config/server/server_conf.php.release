@@ -1,0 +1,9 @@
+<?php
+$ROOT_PATH = "/home/ptshare/codebase/html5";
+
+$ENVIRONMENT = 'release';
+
+
+include $ROOT_PATH."/config/server/server_conf.common.php";
+include $ROOT_PATH."/config/server/language_conf.php";
+?>

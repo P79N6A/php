@@ -1,0 +1,3 @@
+<?php
+
+define(CLIENT_API_HOST, 'test.putaofenxiang.com');

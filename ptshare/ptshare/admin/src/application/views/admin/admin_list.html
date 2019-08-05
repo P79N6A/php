@@ -1,0 +1,66 @@
+<div class="rightinfo">
+    <table class="imgtable">
+        <thead>
+            <tr>
+                <th width="100px;">ID</th>
+                <th>名称</th>
+                <th>真实姓名</th>
+                <th>角色</th>
+                <th>超级权限</th>
+                <th>状态</th>
+                <th>管理操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?
+            if ($admin_list) foreach($admin_list as $key=>$val){
+                $roleid = explode(",",$val['roleid']);
+            ?>
+            <tr>
+                <td><?=$val['adminid']?></td>
+                <td><?=$val['name']?>
+                    <p>添加时间：<?=$val['addtime']?></p>
+                </td>
+                <td><?=$val['realname']?>
+                    <p>修改时间：<?=$val['modtime']?></p>
+                </td>
+                <td style='text-align:center;text-indent:0px;'>
+				<?php
+					foreach($roleid as $rid){
+						echo $role_list[$rid]."<br />";
+					}
+				?>
+                </td>
+                <td><?=$val['super']?></td>
+                <td><? if ($val['active']=='Y') {echo '开启';} else { echo '<i>停用</i>';} ?></td>
+                <td><? if($val['active']=='Y'){ ?>
+                    <a href="/admin/deladmin/?adminid=<?=$val['adminid']?>" class="grey_btn">停用</a>
+                    <? } else{ ?>
+                    <a href="/admin/restoreadmin/?adminid=<?=$val['adminid']?>" class="grey_btn">恢复</a>
+                    <? } ?>
+                    <a href="/admin/editadmin/?adminid=<?=$val['adminid']?>" class="grey_btn">编辑</a>
+					<a href="javascript:void(0);" adminid="<?=$val['adminid']?>" class="grey_btn resetpwd">重置密码</a>
+                    <? } else{ ?>
+                </td>
+            </tr>
+            <? } ?>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+$('.imgtable tbody tr:odd').addClass('odd');
+$(function(){
+	$('.resetpwd').click(function(){
+		if(!confirm('密码将被重置为:123456xxxxxx(x为随意字符)')) return false;
+		var adminid = parseInt($(this).attr('adminid'));
+		$.post("/admin/reset", {adminid:adminid}, function(result){
+			if(result && !result.errno){
+				alert('重置成功');
+			}else{
+				alert('重置失败:'+result.err);
+			}
+
+		})
+	})
+})
+</script>

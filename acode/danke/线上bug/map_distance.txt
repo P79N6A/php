@@ -1,0 +1,8 @@
+$appRoom = new SearchRoom();
+        $a = [];
+        $a['xiaoquLonLat'] = '39.936207,116.190006';
+        $a['subwayLonLat'] = '39.932391,116.18407';
+        $a['subwayTitle'] = '苹果园';
+        $a['subwayLines'] = '1号线,6号线,S1线';
+        $string = $appRoom->nearestSubwayTitleEs($a);
+        var_dump($string);exit;

@@ -1,0 +1,27 @@
+<div class="rightinfo">
+    <input type="button" class="cancel" value="《 点击返回" onclick="history.go(-1);"/>
+    <form id="form" action="/goods/addGoods/" method="post" enctype="multipart/form-data">
+        <div class="formbody">
+            <div class="formtitle"><span>宝贝基本信息</span></div>
+            <ul class="forminfo">
+
+                <li>
+                    <label>价格</label>
+                    <input name="show_grape" type="text" class="dfinput" /><i>* 请填写宝贝价格（整数）</i>
+                </li>
+                <li>
+                    <label>描述</label>
+                    <input name="description" type="text" class="dfinput" /><i>* 请填写宝贝描述</i>
+                </li>
+                <li>
+                    <label>图片</label>
+                    <input name="file" type="file" class="dfinput" />
+                </li>
+
+                <li><label>&nbsp;</label><input id="_saveBtn" name="submit" type="submit" class="btn" value="提 交"></li>
+
+            </ul>
+
+        </div>
+    </form>
+</div>

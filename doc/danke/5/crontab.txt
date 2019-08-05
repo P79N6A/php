@@ -1,0 +1,32 @@
+mapi-dkzoo定时任务
+
+## 合伙人活动合同状态同步（杨远超交接给徐宝国)
+0 */2 * * * php /home/web/bin/crontab partner_contract_sign_check
+## 合伙人活动合同满30天审核（杨远超交接给徐宝国)
+0 22 */1 * * php /home/web/bin/crontab partner_contract_30day_audit
+## 把提现账单同步到财务中台（杨远超交接给徐宝国)
+*/2 * * * * php /home/web/bin/crontab partner_sync_to_finance
+## 同步财务中台的提现状态（杨远超交接给徐宝国)
+*/10 * * * * php /home/web/bin/crontab partner_sync_from_finance
+## 同步财务中台的提现状态(失败状态同步)（杨远超交接给徐宝国)
+30 1 */1 * * php /home/web/bin/crontab partner_sync_from_finance_pay_failed
+##订阅push（每天下午12点）（徐宝国）
+0 12 * *  * php /home/web/bin/crontab subscribe_push
+##订阅push（每周一下午12点）（徐宝国）
+0 12 * * 1  php /home/web/bin/crontab thirty_days_ago_subscribe_push
+##地铁缓存刷新（每天凌晨5点）（徐宝国）
+0 0 5 * * php /home/web/bin/crontab subway_rebuild
+##行政地区缓存刷新（每天凌晨5点）（徐宝国）
+0 0 5 * * php /home/web/bin/crontab area_rebuild
+##椋鸟计划统计（每天凌晨6点）（徐宝国）
+0 0 6 * * php /home/web/bin/crontab starling_user_count
+##椋鸟计划执行中的合同（每天凌晨4点）（徐宝国）
+0 0 4 * * php /home/web/bin/crontab starling_user_contract_sync
+##循环根据合同更新用户身份
+0 */20 * * * php /home/web/bin/crontab user_identity_timing
+##定时同步用户身份
+30 10 1 12 * php /home/web/bin/crontab user_identity
+##定时捞取签约合同
+0 0 */1 * * php /home/web/bin/crontab sign
+##电话咨询生成线索
+0 */1 * * * php /home/web/bin/crontab passenger

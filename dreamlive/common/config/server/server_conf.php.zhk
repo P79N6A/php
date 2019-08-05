@@ -1,0 +1,360 @@
+<?php
+$ROOT_PATH = "/home/zhangkun/work/dreamlive/service";
+
+//------------------------------ 直播 --------------------------------
+$MYSQL_CONF_LIVE = [
+    "hosts" => [
+        1 => [
+            "driver" => "mysql",
+            "host" => "localhost",
+            "port" => "3306",
+            "username" => "root",
+            "password" => 'dreamlive888',
+            "charset" => "utf8",
+            "database" => "dream_live",
+            "persistent" => false,
+            "unix_socket" => "",
+            "options" => [PDO::ATTR_TIMEOUT => 3],
+        ],
+    ],
+    "sharding" => [
+        "newsfeeds" => [
+            "type" => "hash",
+            "shard" => 100,
+            "range" => [
+                ["min" => 0, "max" => 99, "confid" => 1],
+            ],
+        ],
+        "userfeeds" => [
+            "type" => "hash",
+            "shard" => 100,
+            "range" => [
+                ["min" => 0, "max" => 99, "confid" => 1],
+            ],
+        ],
+        "reply" => [
+            "type" => "hash",
+            "shard" => 100,
+            "range" => [
+                ["min" => 0, "max" => 99, "confid" => 1],
+            ],
+        ],
+    ],
+];
+
+//------------------------------ 消息  --------------------------------
+$MYSQL_CONF_MESSAGE = [
+    "hosts" => [
+        1 => [
+            "driver" => "mysql",
+            "host" => "localhost",
+            "port" => "3306",
+            "username" => "root",
+            "password" => 'dreamlive888',
+            "charset" => "utf8",
+            "database" => "dream_message",
+            "unix_socket" => "",
+            "options" => [PDO::ATTR_TIMEOUT => 3, PDO::ATTR_PERSISTENT => false],
+        ],
+    ],
+    "sharding" => [
+        "message" => [
+            "type" => "hash",
+            "shard" => 100,
+            "range" => [
+                ["min" => 0, "max" => 99, "confid" => 1],
+            ],
+        ],
+    ],
+];
+
+//------------------------------ 用户  --------------------------------
+$MYSQL_CONF_PASSPORT = [
+    "hosts" => [
+        1 => [
+            "driver" => "mysql",
+            "host" => "localhost",
+            "port" => "3306",
+            "username" => "root",
+            "password" => 'dreamlive888',
+            "charset" => "utf8",
+            "database" => "dream_passport",
+            "persistent" => false,
+            "unix_socket" => "",
+            "options" => [],
+            PDO::ATTR_TIMEOUT => 3,
+        ],
+    ],
+    "sharding" => [
+        "profile" => [
+            "type" => "hash",
+            "shard" => 100,
+            "range" => [
+                ["min" => 0, "max" => 99, "confid" => 1],
+            ],
+        ],
+        "follower" => [
+            "type" => "hash",
+            "shard" => 100,
+            "range" => [
+                ["min" => 0, "max" => 99, "confid" => 1],
+            ],
+        ],
+        "following" => [
+            "type" => "hash",
+            "shard" => 100,
+            "range" => [
+                0 => ["min" => 0, "max" => 99, "confid" => 1],
+            ],
+        ],
+    ],
+];
+
+$MYSQL_CONF_TASK = [
+    "hosts" => [
+        1 => [
+            "driver" => "mysql",
+            "host" => "localhost",
+            "port" => "3306",
+            "username" => "root",
+            "password" => 'dreamlive888',
+            "charset" => "utf8",
+            "database" => "dream_task",
+            "persistent" => false,
+            "unix_socket" => "",
+            "options" => [],
+            PDO::ATTR_TIMEOUT => 3,
+        ],
+    ],
+    "sharding" => [
+        "user_exp" => [
+            "type" => "hash",
+            "shard" => 100,
+            "range" => [
+                ["min" => 0, "max" => 99, "confid" => 1],
+            ],
+        ],
+        "user_task" => [
+            "type" => "hash",
+            "shard" => 100,
+            "range" => [
+                ["min" => 0, "max" => 99, "confid" => 1],
+            ],
+        ],
+    ],
+];
+
+//------------------------------ 经济系统  --------------------------------
+$MYSQL_CONF_PAYMENT = [
+    "hosts" => [
+        1 => [
+            "driver" => "mysql",
+            "host" => "localhost",
+            "port" => "3306",
+            "username" => "root",
+            "password" => 'dreamlive888',
+            "charset" => "utf8",
+            "database" => "dream_payment",
+            "persistent" => false,
+            "unix_socket" => "",
+            "options" => [PDO::ATTR_TIMEOUT => 3],
+        ],
+    ],
+    "sharding" => [
+        "account" => [
+            "type" => "hash",
+            "shard" => 100,
+            "range" => [
+                ["min" => 0, "max" => 99, "confid" => 1],
+            ],
+        ],
+        "journal" => [
+            "type" => "hash",
+            "shard" => 100,
+            "range" => [
+                0 => ["min" => 0, "max" => 99, "confid" => 1],
+            ],
+        ],
+    ],
+];
+
+$MYSQL_CONF_FAMILY = [
+    "hosts" => [
+        1 => [
+            "driver" => "mysql",
+            "host" => "localhost",
+            "port" => "3306",
+            "username" => "root",
+            "password" => "dreamlive888",
+            "charset" => "utf8",
+            "database" => "dream_family",
+            "persistent" => false,
+            "unix_socket" => "",
+            "options" => [PDO::ATTR_TIMEOUT => 3],
+        ],
+    ],
+];
+
+$MYSQL_CONF_CHANNEL = [
+    "hosts" => [
+        1 => [
+            "driver" => "mysql",
+            "host" => "rm-2zeno35ll686wkxip.mysql.rds.aliyuncs.com",
+            "port" => "3306",
+            "username" => "channel",
+            "password" => 'Dream@Live#2016$',
+            "charset" => "utf8",
+            "database" => "dream_channel",
+            "persistent" => false,
+            "unix_socket" => "",
+            "options" => [PDO::ATTR_TIMEOUT => 3],
+        ],
+    ],
+];
+
+
+$MYSQL_CONF_GAME = [
+    "hosts" => [
+        1 => [
+            "driver" => "mysql",
+            "host" => "localhost",
+            "port" => "3306",
+            "username" => "root",
+            "password" => "dreamlive888",
+            "charset" => "utf8",
+            "database" => "dream_game",
+            "persistent" => false,
+            "unix_socket" => "",
+            "options" => [PDO::ATTR_TIMEOUT => 3],
+        ],
+    ],
+];
+
+//------------------------------ 计数器  --------------------------------
+$REDIS_CONF_COUNTER = [
+    "hosts" => [
+        //组
+        0 => [
+            "master" => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive"],
+            "slave" => [
+                0 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive"],
+            ],
+        ],
+    ],
+    "sharding" => [
+        "type" => "hash",
+    ],
+];
+
+//------------------------------ USER --------------------------------
+$REDIS_CONF_USER = [
+    "hosts" => [
+        //组
+        0 => [
+            "master" => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive"],
+            "slave" => [
+                0 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive"],
+            ],
+        ],
+    ],
+    "sharding" => [
+        "type" => "range",
+        "range" => [
+            ["min" => 0, "max" => 20000000, "group" => 0],
+        ],
+    ],
+];
+
+$REDIS_CONF_SESSION = [
+    "hosts" => [
+        //组
+        0 => [
+            "master" => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive"],
+            "slave" => [
+                0 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive"],
+            ],
+        ],
+    ],
+    "sharding" => [
+        "type" => "range",
+        "range" => [
+            ["min" => 0, "max" => 20000000, "group" => 0],
+        ],
+    ],
+];
+
+$REDIS_CONF_FOLLOW = [
+    "hosts" => [
+        //组
+        0 => [
+            "master" => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive"],
+            "slave" => [
+                0 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive"],
+            ],
+        ],
+    ],
+    "sharding" => [
+        "type" => "range",
+        "range" => [
+            ["min" => 0, "max" => 20000000, "group" => 0],
+        ],
+    ],
+];
+
+$REDIS_CONF_FORBIDDEN = [
+    "hosts" => [
+        //组
+        0 => [
+            "master" => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive", "master" => true],
+            "slave" => [
+                0 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive", "master" => false, "index" => 0],
+                1 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive", "master" => false, "index" => 1],
+                2 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive", "master" => false, "index" => 2],
+                3 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive", "master" => false, "index" => 3],
+            ],
+        ],
+        1 => [
+            "master" => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive", "master" => true],
+            "slave" => [
+                0 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive", "master" => false, "index" => 0],
+                1 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive", "master" => false, "index" => 1],
+                2 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive", "master" => false, "index" => 2],
+                3 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive", "master" => false, "index" => 3],
+            ],
+        ],
+    ],
+    "sharding" => [
+        "type" => "range",
+        "range" => [
+            ["min" => 0, "max" => 10000, "group" => 0],
+            ["min" => 10000, "max" => 20000, "group" => 1],
+        ],
+    ],
+];
+//------------------------------ 公共  --------------------------------
+$REDIS_CONF_CACHE = [
+    "hosts" => [
+        //组
+        0 => [
+            "master" => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive"],
+            "slave" => [
+                0 => ["host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => "dreamlive"],
+            ],
+        ],
+    ],
+    "sharding" => [
+        "type" => "hash",
+    ],
+];
+
+$STORAGE_CONF = [
+    "accessKeyId" => "LTAI4i6TUY03TCdR",
+    "accessKeySecret" => "nPfuEkMW0wY0Hi0sEzeCbKJi2DZxW7",
+    "endpoint" => "oss-cn-beijing.aliyuncs.com",
+    "bucket" => "img-2",
+];
+
+$STATIC_DOMAIN = "http://api.dreamlive.tv";
+
+include $ROOT_PATH . "/config/server/server_conf.common.php";
+?>

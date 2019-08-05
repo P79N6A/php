@@ -1,0 +1,4 @@
+在线签约入口
+
+http://172.16.41.130:8000/zhuanti/online/v2/online-sign-upload?public_id=999768927
+http://172.16.41.130:8000/zhuanti/online/v2/online-sign-renttime?public_id=999768927

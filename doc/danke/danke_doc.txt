@@ -1,0 +1,138 @@
+wiki和jira账号
+xubaoguo
+danke@0413
+
+
+本地mysql密码
+Xubaoguo_123
+ALTER TABLE `danke`.`starling_config` ADD COLUMN `addtime` datetime COMMENT '创建时间' AFTER `reason`, ADD COLUMN `modtime` datetime COMMENT '修改时间' AFTER `addtime`;
+听云账号
+https://saas.tingyun.com/web/console/console?domain=tingyun.com&saasDomain=https%3A%2F%2Fsaas.tingyun.com
+xubaoguo@danke.com
+Xubaoguo1985#
+
+无线网密码
+danke_bi        bi.dev.sys
+dankebi         danke.bjspace
+danke-guest wifi.danke.life
+danke-dns danke.dnstest
+共享 地址   172.16.30.130  用户名 xubaoguo   密码 danke0125
+vpn用户名都为 xubaoguo   密码 青云 Danke1102    办公室 danke1102
+
+代码
+http://gitlab.danke.life/
+xubaoguo
+xubaoguo1985
+
+我的堡垒机
+ssh xubaoguo@ssh.danke.life  -p 60022
+密码danke@0413
+
+wiki和jira
+xubaoguo
+密码：danke@0413
+
+
+杨远超堡垒机
+ssh -p60022 yangyuanchao@ssh.danke.life
+Aa111111
+elk
+http://172.21.10.10:5601
+
+100.11数据库连接
+http://mysql.danke.life
+用户名:xubaoguo1
+密码:s4POvupsubLuv4y0fBLP
+新密码：xubaoguo1985
+
+线上100.5数据库连接
+http://mysql.danke.life
+用户名:xubaoguo
+密码:eq5It9LFZwxCoTOoFDfT
+
+线上mapi查询库
+http://mysql.danke.life
+用户名:xubaoguo3
+密码:eq5It9LFZwxCoTOoFDfT
+xubaoguo1985
+新密码：xubaoguo1985
+
+
+邮箱帐号
+xubaoguo@dankegongyu.com
+qwer1234xbg
+
+ssh登录帐号
+172.16.31.54
+xubaoguo
+xubaoguo
+
+172.16.31.54
+xubaoguo
+xubaoguo
+开发数据库已创建库名规范为： Mapi   用户名： mapi_user  密码： hA2nN3Yp6bpan
+172.16.31.52
+dsp_user
+zxABdHG2lfAZ5D
+数据库host：172.16.31.52
+端口：3306
+用户名: mapiactivity_user
+密码: AqhLlPSw2WI8
+数据库: Mapiactivity
+
+elk
+http://kibana.elk.wutongwan.org/login/login.html?returnurl=http%3A%2F%2Fkibana.elk.wutongwan.org%2Fgoto%2Fa0839505893014e9dc2eb57dd1831f8f
+xubaoguo@dankegongyu.com
+danke@1234
+
+
+oa账号
+oa.danke.com
+xubaoguo@danke.com
+xubaoguo1985
+
+jenkins
+yangyuanchao
+Aa111111
+
+jenkins
+xubaoguo
+danke@0413
+
+wiki
+xubaoguo
+danke@0319
+
+新功能feature分支命令
+sh bin/tool.sh fstart 自己起名字
+
+hotfix分支命令
+sh bin/tool.sh hstart 自己起名字
+
+TYPE="$1"
+BRANCH_NAME="$2"
+
+if test "$TYPE" = 'feature'; then
+    PRE="feature-"
+else
+    PRE="hotfix-"
+fi
+NEW_NAME=${PRE}${BRANCH_NAME}
+
+git checkout master && git pull && \
+git checkout -b ${NEW_NAME} master  && \
+
+set 你好 '你好'
+git push -u origin ${NEW_NAME} && \
+ok "start ${NEW_NAME} ok,\n and push branch to origin"
+
+//查找包含关键字的文字
+find .|xargs grep -ri "bi_communitiy"
+
+每行的行首都添加一个字符串：%s/^/要插入的字符串
+每行的行尾都添加一个字符串：%s/$/要插入的字符串
+
+删除本地分支
+git push origin --delete pangu-master-bugfix-xbg-20181207
+删除远程分支
+git branch -d pangu-master-bugfix-xbg-20181207

@@ -1,0 +1,105 @@
+#api.putaofenxiang.com
+server {
+	listen 80;
+    listen 443;
+
+    ssl on;
+    ssl_certificate /home/ptshare/codebase/service/ssl/1_api.putaofenxiang.com_bundle.crt;
+    ssl_certificate_key /home/ptshare/codebase/service/ssl/2_api.putaofenxiang.com.key;
+
+    server_name api.putaofenxiang.com;
+
+    root /home/ptshare/codebase/service/src/www/;
+
+    gzip on;
+    gzip_min_length 1k;
+    gzip_buffers 16 64k;
+    gzip_http_version 1.1;
+    gzip_comp_level 9;
+    gzip_types text/plain application/json application/x-javascript text/css application/xml;
+    gzip_vary on;
+
+    if ($request_filename ~ .*) {
+        rewrite ^/(.*)$ /index.php last;
+    }
+
+    location ~ \.php$ {
+        fastcgi_param SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        fastcgi_pass unix:/tmp/php-cgi.sock;
+        include fastcgi_params;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+    }
+
+    access_log logs/api.putaofenxiang.com.access.log;
+    error_log  logs/api.putaofenxiang.com.error.log;
+}
+
+#upload.putaofenxiang.com
+server {
+	listen 80;
+    listen 443;
+
+    ssl on;
+    ssl_certificate /home/ptshare/codebase/service/ssl/1_upload.putaofenxiang.com_bundle.crt;
+    ssl_certificate_key /home/ptshare/codebase/service/ssl/2_upload.putaofenxiang.com.key;
+
+    server_name upload.putaofenxiang.com;
+
+    root /home/ptshare/codebase/service/src/www/;
+
+    gzip on;
+    gzip_min_length 1k;
+    gzip_buffers 16 64k;
+    gzip_http_version 1.1;
+    gzip_comp_level 9;
+    gzip_types text/plain application/json application/x-javascript text/css application/xml;
+    gzip_vary on;
+
+    if ($request_filename ~ .*) {
+        rewrite ^/(.*)$ /index.php last;
+    }
+
+    location ~ \.php$ {
+        fastcgi_param SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        fastcgi_pass unix:/tmp/php-cgi.sock;
+        include fastcgi_params;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+    }
+
+    access_log logs/upload.putaofenxiang.com.access.log;
+    error_log  logs/upload.putaofenxiang.com.error.log;
+}
+
+#source.static.putaofenxiang.com
+server {
+    listen 80;
+
+    server_name source.static.putaofenxiang.com;
+
+    root /home/ptshare/codebase/service/src/www/;
+
+    gzip on;
+    gzip_min_length 1k;
+    gzip_buffers 16 64k;
+    gzip_http_version 1.1;
+    gzip_comp_level 9;
+    gzip_types text/plain application/json application/x-javascript text/css application/xml;
+    gzip_vary on;
+
+    if ($request_filename ~ .*) {
+        rewrite ^/(.*)$ /index.php last;
+    }
+
+    location ~ \.php$ {
+        fastcgi_param SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        fastcgi_pass unix:/tmp/php-cgi.sock;
+        include fastcgi_params;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+    }
+
+    access_log logs/source.static.putaofenxiang.com.access.log;
+    error_log  logs/source.static.putaofenxiang.com.error.log;
+}

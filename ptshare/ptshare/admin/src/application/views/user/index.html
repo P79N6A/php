@@ -1,0 +1,118 @@
+
+<div class="rightinfo">
+      <div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/user/list">
+            <h6>条件搜索</h6>
+            <table class="table">
+                <tr>
+                    <td style="height: 30px; line-height: 40px; text-align: right;">用户id：</td>
+                    <td><input type="text" name="uid" value="<?=$_GET['uid']?>" style="height: 25px"/></td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;昵称：</td>
+                    <td><input type="text" name="nickname" value="<?=$_GET['nickname']?>" style="height: 25px"/></td>
+
+
+                </tr>
+                <tr><td><input type="submit" name="submit" value="查 询" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px"></td></tr>
+            </table>
+        </form>
+    </div>
+          <table id="tfhover" class="tftable" >
+            <thead class="thin-border-bottom">
+              <tr>
+                <th align="center" class="text-center">帐号id</th>
+				<th align="center" class="text-center">昵称</th>
+				<th align="center" class="text-center">头像</th>
+				<th align="center" class="text-center">手机号</th>
+				<th align="center" class="text-center">来源</th>
+                <th align="center" class="text-center">性别</th>
+				<th align="center" class="text-center">注册时间</th>
+                <th align="center" class="text-center">修改时间</th>
+				<th align="center" class="text-center">操作</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php foreach($list as $value) { ?>
+              <tr>
+                <td><center><?php echo $value['uid'];?></center></td>
+                <td><center><?php echo $value['nickname'];?></center></td>
+				<td><center><img style="width:20px;height:20px;" src="<?=Util::joinStaticDomain($value['avatar'])?>"/></center></td>
+				<td><center><?php echo $value['phone'];?></center></td>
+				<td><center><?php echo $value['channel'];?></center></td>
+                <td><center><?php echo $value['gender'];?></center></td>
+				<td><center><?php echo $value['addtime'];?></center></td>
+                <td><center><?php echo $value['modtime'];?></center></td>
+                <td>
+                <center><?if($frozen_user[$value['uid']]){?>
+          <a href="javascript:;" onclick="unfrozen('<?=$value['uid']?>')" class="unfrozen grey_btn">账户解冻</a>
+          <?}else{?>
+          <a href="javascript:;" onclick="frozen('<?=$value['uid']?>')" class="frozen grey_btn">账户冻结</a>
+          <?}?>
+          <a href="/user/accountList?uid=<?=$value['uid']?>" class=" grey_btn">账户</a>
+          </center>
+          </td>
+              </tr>
+              <?php } ?>
+
+              <tr style="height: 20px;"><td colspan="9"> </td></tr>
+
+            <style>
+                .pagination{float: none}
+            </style>
+        <?php if ($mutipage) {?>
+            <tr style="text-align: center; background: #FFF; height: 40px;">
+                <td colspan="7"><?=$mutipage?></td>
+                <td colspan="2">总数=<?=$total?></td>
+            </tr>
+        <?php }?>
+            </tbody>
+          </table>
+
+</div>
+<script type="text/javascript">
+function frozen(uid)
+{
+  var reason=prompt("请输入冻结理由:","");
+
+  if (reason!=null && reason!="")
+  {
+    $.ajax({
+      type: "POST",
+      url: "/Frozen/frozen",
+      data: {uid:uid,reason:reason},
+      dataType:"json",
+      success: function(ret){
+        if(ret.errno=="0") {
+          location.reload();
+        }else{
+          alert(ret.errmsg);
+        }
+      }
+    });
+  }
+}
+
+function unfrozen(uid)
+{
+  var reason=confirm("是否解除冻结?!");
+
+  if (reason==true)
+  {
+    $.ajax({
+      type: "POST",
+      url: "/Frozen/unfrozen",
+      data: {uid:uid},
+      dataType:"json",
+      success: function(ret){
+        if(ret.errno=="0") {
+          alert('解冻成功');
+          location.reload();
+        }else{
+          alert(ret.errmsg);
+        }
+      }
+    });
+  }
+}
+</script>

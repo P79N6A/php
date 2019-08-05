@@ -1,0 +1,22 @@
+server {
+    listen 80;
+    server_name admin.ptshare.com admin.putaofenxiang.com;
+    root /home/ptshare/codebase/admin/src/www/;
+
+    gzip off;
+
+    if ($request_filename !~* ^/(.*)\.(zip|js|ico|gif|jpg|png|css|php|xml|txt|html|swf|apk|ipa|plist|woff|ttf)$) {
+	    rewrite ^/(.*)$ /index.php last;
+    }
+
+    location ~ \.php$ {
+       fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+       fastcgi_pass  unix:/tmp/php-cgi.sock;
+       include fastcgi_params;
+       fastcgi_index index.php;
+       include fastcgi.conf;
+    }
+
+    access_log logs/admin.ptshare.com.log;
+	error_log logs/admin.ptshare.com.error.log;
+}

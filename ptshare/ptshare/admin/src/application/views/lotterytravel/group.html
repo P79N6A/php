@@ -1,0 +1,80 @@
+<center ><h1><?=$title?></h1></center>
+<div class="wrapper">
+<div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/lotteryTravel/group">
+        <input type="hidden" name="id" value="<?=$_GET['id']?>"/>
+            <h6>条件搜索</h6>
+            <table>
+                <tr>
+                    <td style="height: 30px; line-height: 40px; text-align: right;">抽奖序列号：</td>
+                    <td><input type="text" name="code" value="<?=$_GET['code']?>" style="height: 25px"/></td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;用户id：</td>
+                    <td><input type="text" name="uid" value="<?=$_GET['uid']?>" style="height: 25px"/></td>
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;状态：</td>
+                    <td>
+                        <select name="isfinish" style="height: 15px;width: 70px;'">
+                            <option value="" <?php if($_GET['isfinish'] == '') {echo 'selected="selected"';}?>>所有</option>
+                            <option value="Y" <?php if($_GET['isfinish'] == 'Y') {echo 'selected="selected"';}?>>组队已完成</option>
+                            <option value="N" <?php if($_GET['isfinish'] == 'N') {echo 'selected="selected"';}?>>组队未完成</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                <td><input type="submit" name="submit" value="查 询" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <table id = "tfhover" class="tftable" border="1">
+            <tr>
+                <th>编号</th>
+                <th>用户id</th>
+                <th>组队序列号</th>
+                <th>组队总数</th>
+                <th>完成人数</th>
+                <th>完成时间</th>
+                <th>创建时间</th>
+                <th>组队是否完成</th>
+                <th>操作</th>
+            </tr>
+        <?php if($list)foreach($list as $key=>$val){ ?>
+            <tr class="replay_item" node-type="replayItem" data-uid="<?=$val[uid]?>">
+
+                <td><center><?=$val['id']?></center></td>
+                <td><center><?=$val['uid']?></center></td>
+                <td><center><?=$val['code']?></center></td>
+                <td><center><?=$val['num']?></center></td>
+                <td><center><?=$val['finish_num']?></center></td>
+                <td><center><?=$val['finish_time']?></center></td>
+                <td><center><?=$val['addtime']?></center></td>
+                <td><center><a href="/lotteryTravel/group?isfinish=<?=$val['isfinish']?>&id=<?=$val['travel_id']?>" <?php if ($val['isfinish'] == 'Y') {?> class="btn2 btn-w-m btn-info" <?php }else{?>  class="btn2 btn-w-m btn-warning" <?php }?> ><?=$val['finish_note']?></a></center></td>
+                <td width="10%">
+                	<center>
+
+                </td>
+            </tr>
+        <?php } else { ?>
+            <tr style="height: 20px;"><td colspan="9"> <center>列表信息为空！ </center></td></tr>
+        <?php } ?>
+		<tr style="height: 20px;"><td colspan="9"> </td></tr>
+
+            <style>
+                .pagination{float: none}
+            </style>
+        <?php if ($page) {?>
+            <tr style="text-align: center; background: #FFF; height: 40px;">
+                <td colspan="6"><?=$page?></td>
+                <td colspan="3">总数=<?=$total?></td>
+            </tr>
+        <?php }?>
+    </table>
+</div>
+<script>
+function search_form_submit(){
+    $("#search_form").submit();
+}
+</script>
+<script src="/js/My97DatePicker/WdatePicker.js"></script>

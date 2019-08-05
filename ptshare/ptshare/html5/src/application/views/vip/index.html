@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type">
+		<meta content="text/html; charset=utf-8">
+		<meta charset="utf-8">
+		<title>加入VIP</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta http-equiv="pragma" content="no-cache">
+		<!-- HTTP 1.0 -->
+		<meta http-equiv="cache-control" content="no-cache">
+		<!-- Prevent caching at the proxy server -->
+		<meta http-equiv="expires" content="0">
+
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/rem.js"></script>
+		<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	</head>
+
+	<body>
+    <article>
+				<?php if($userinfo['nickname']){ ?><div class="user_name">Hi, <?php echo $userinfo['nickname'];?></div><?php }?>
+			
+		<div>
+				<?php if($inviter['inviter_name']){ ?>
+					<div class='banner_wrap'>
+							<div><?php echo $inviter['inviter_name'];?></div>
+							<div>邀请你开通葡萄分享VIP</div>
+						</div>
+					<?php }else{?>
+						<img class='banner' src='images/vip_banner.png'/>
+					<?php }?>
+
+		<div class='vip_box box1'>
+		  <div class='vip_box_tilte'>| VIP特权一</div>
+		  <div class='vip_box_main'>
+		    <div class='vip_box_img'><img src='images/vip_img1.png' /></div>
+		    <div class='vip_box_txt'>
+		      <div>精品无限租</div>
+		      <div>VIP专享精品全年 1 葡萄租用</div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class='vip_box box2'>
+		  <div class='vip_box_tilte'>| VIP特权二</div>
+		  <div class='vip_box_main'>
+		    <div class='vip_box_img'><img src='images/vip_img2.png' /></div>
+		    <div class='vip_box_txt'>
+		      <div>租用免押金</div>
+		      <div>无需押金，拒绝葡萄不足的尴尬</div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class='vip_box box3'>
+		  <div class='vip_box_tilte'>| VIP特权三</div>
+		  <div class='vip_box_main'>
+		    <div class='vip_box_img'><img src='images/vip_img3.png' /></div>
+		    <div class='vip_box_txt'>
+		      <div>购买享八折</div>
+		      <div>购买闲置享受葡萄八折优惠</div>
+		    </div>
+		  </div>
+		</div>
+
+		<form class="btn_fixed">
+				<button form-type='submit' class='btn large' onclick="javascript:pay();return false;"><?php echo $config['vip_price']?>元/年，<?php if($vip){?>续费VIP立享特权<?php }else{?>升级VIP立享特权<?php }?></button>
+		</form>
+
+		</div>
+	<section class="pop">
+		<div class='pop_mask'></div>
+		<div class='pop_wrap'>
+		  <div class='pop_close' >
+		    <img src='images/close.png' />
+		  </div>
+		  <div class='pop_vip_main'>
+		    <div class='pop_title_wrap'>
+		      <div class='pop_title'>开通VIP成功！邀请好友开通可返现</div>
+		      <div class='pop_txt1'>累计邀请3个好友开通VIP，即可获得49元返现</div>
+		    </div>
+		    <div class='headimg'>
+		        <div class='head'>
+			        <img class="head_3" src="images/avatar_default.png" />
+			        <text>等待助力</text>
+			    </div>
+			    <div class='head'>
+			        <img class="head_3" src="images/avatar_default.png" />
+			        <text>等待助力</text>
+			    </div>
+			    <div class='head'>
+			        <img class="head_3" src="images/avatar_default.png" />
+			        <text>等待助力</text>
+			    </div>
+		    </div>
+		    <div class="pop_code">
+		    	<img src="images/vip_code.jpg">
+		    	<div>长按识别进入小程序，邀请好友得返现</div>
+		    </div>
+		  </div>
+		  
+		</div>
+	</section>
+	</article>
+	<script type="text/javascript">
+		(function($){
+			var evclick = "ontouchend" in window ? "touchend" : "click";
+
+			$('.pop_close').on(evclick,function(){
+				$(this).click(function(){
+					$('.pop').fadeOut()
+				})
+			})
+
+		})(jQuery)
+	</script>
+	<script type="text/javascript">
+	var orderid;
+	var appId,timeStamp,nonceStr,package,signType,paySign;
+
+	function pay(){
+		$.get("/pay/vipPrepare",function(result) {
+			if(result.errno){
+				return false;
+			}
+			appId = result.data.appId;
+			timeStamp = result.data.timeStamp;
+			nonceStr = result.data.nonceStr;
+			package = result.data.package;
+			signType = result.data.signType;
+			paySign = result.data.paySign;
+			orderid = result.data.orderid;
+			
+			if (typeof WeixinJSBridge == "undefined"){
+				if( document.addEventListener ){
+						document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+				}else if (document.attachEvent){
+						document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+						document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+				}
+			}else{
+				onBridgeReady();
+			}
+		});
+	}
+
+	function onBridgeReady(){
+		WeixinJSBridge.invoke(
+			'getBrandWCPayRequest',{
+          "appId":appId,
+          "timeStamp":timeStamp,
+          "nonceStr":nonceStr,
+          "package":package,
+          "signType":signType,
+          "paySign":paySign
+         },
+				function(res){
+				if(res.err_msg == "get_brand_wcpay_request:ok" ){
+					$.get("/vip/createGroup", {orderid:orderid}, function(result) {
+					});
+					getGroupDetail();
+				}else if(res.err_msg == "get_brand_wcpay_request:cancel" ){
+					alert('取消支付');
+				}
+		}); 
+	}
+	function getGroupDetail()
+	{
+		$('.pop').fadeIn();
+		
+	}
+
+		</script>
+	</body>
+</html>

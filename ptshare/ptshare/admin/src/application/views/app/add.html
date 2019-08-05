@@ -1,0 +1,106 @@
+
+<div class="content">
+	<!-- Main content -->
+	<div class="row">
+		<a href="/AppConfig/list" class="btn btn-xs btn-primary pull-right">返回</a>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>添加配置</h3>
+		</div>
+		<div class="panel-body text-center">
+			<form action="/AppConfig/add" method="post" class="form-horizontal">
+				<div class="form-group">
+					<label  class="col-sm-2 control-label">key</label>
+					<div class="col-sm-6">
+						<input type="text" name="name" class="form-control" placeholder="配置名称，一类配置，需要统一开头，例如：prefix_xxx" required="required" >
+						<p class="text-warning help-block pull-left">同名配置，按照最大可用版本获取，<span class="text-danger">不允许存在相同的key、平台、最小版本！</span></p>
+					</div>
+				</div>
+        <div class="form-group">
+					<label class="col-sm-2 control-label">区域</label>
+					<div class="col-sm-2">
+						<select name="region" class="form-control" required="required" >
+							<option value="china">中国</option>
+            </select>
+					</div>
+				</div>
+        <div class="form-group">
+					<label  class="col-sm-2 control-label">value</label>
+					<div class="col-sm-6">
+						<textarea name="value" class="form-control" placeholder="配置值，获取时原样返回" required="required" ></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label  class="col-sm-2 control-label">Json Schema</label>
+					<div class="col-sm-6">
+						<textarea name="schema" class="form-control" placeholder="如果配置值为json，此处可配置json schema" rows="1"></textarea>
+						<p class="text-warning help-block pull-left"><span class="text-danger">高级选项，不会填可留空。最长3000字符。</span>工具：<a href="http://jsonschema.net/" target="_blank">通过JSON生成schema</a> <a href="http://jeremydorn.com/json-editor/" target="_blank">jsonSchema效果及微调</a></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label  class="col-sm-2 control-label">缓存时间</label>
+					<div class="col-sm-6">
+						<input type="text" name="expire" class="form-control" placeholder="单位：秒" required="required" value="3600">
+						<p class="text-warning help-block pull-left">客户端读取云控后，缓存到本地，直到下次获取云控的最长时间。单位：秒</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">平台</label>
+					<div class="col-sm-2">
+						<select name="platform" class="form-control" required="required" >
+							<?php foreach ($platforms as $platform):?>
+							<option value="<?php Util::S($platform);?>"><?php Util::S($platform);?></option>
+							<?php endforeach;?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">可用版本区间</label>
+					<div class="col-sm-10">
+						<div class="row">
+							<div class="col-sm-4 col-lg-3">
+								<input type="text" name="version[min]" class="form-control" placeholder="最小可用版本号，例如：1.2.0" required="required" title="此项必填">
+							</div>
+							<!-- /.col-lg-6 -->
+							<div class="col-sm-4 col-lg-3">
+								<input type="text" name="version[max]" class="form-control" placeholder="最大可用版本号，例如：1.3.0 留空则不限">
+							</div>
+							<!-- /.col-lg-6 -->
+						</div>
+						<p class="text-danger pull-left">客户端获取时，返回的是符合客户端版本号的最新的那个版本的配置。如同时存在[1.2, 0] [1.4, 0]两个配置，当1.2版本客户端请求时返回的是第一个配置，当1.4、1.5版本请求时返回的是第二个配置</p>
+						<!-- /.row -->
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">分组标签</label>
+					<div class="col-sm-6">
+						<input type="text" name="tag" class="form-control" placeholder="相同标签会被分为一组" required="required" >
+						<p class="text-danger pull-left">不是配置项说明！！！请合理使用精简的标签进行配置归类分组</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">备注</label>
+					<div class="col-sm-6">
+						<textarea name="remark" class="form-control" placeholder="备注信息，供后台查看。相同的分组标签、key、配置值、备注会聚合展示，方便同时修改" required="required" rows="3">
+此配置的详细说明，务必填写清楚！
+						</textarea>
+						<p class="text-danger pull-left">配置项说明，请写清楚此配置项的<b>含义</b>，<b>取值格式</b>，<b>负责人</b>。警告：不写负责人的会通过后台操作日志追责！</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">添加人</label>
+					<div class="col-sm-6">
+						<input type="text" name="adduser" class="form-control" placeholder="添加人姓名及联系方式" required="required">
+						<p class="text-danger pull-left">必填！不正确填写的通过日志查出来全员通报批评！</p>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-sm-offset-2" style="text-align:left">
+					<button class="btn btn-primary">提交</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /.content-wrapper -->

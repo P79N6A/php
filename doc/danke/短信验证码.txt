@@ -1,0 +1,25 @@
+1、官网入口
+1440分钟之内每次先提示图片验证码
+/Laputa/app/Http/PanguControllers/FE/WebAPI/UserController.php
+
+
+2、微信小程序入口
+/Laputa/app/Http/Controllers/WebAPI/WechatAppletsController.php
+/Laputa/app/Logics/Pangu/FE/WebSite/User/AccountEditLogic.php
+/Laputa/app/Logics/User/AccountEditLogic.php
+/Laputa/app/Logics/API/Saler/V1/Mobile.php
+3、app入口
+
+2分钟之内第二次发送语音验证码
+
+git cherry-pick fa2218b5febfa85061fe812f0225259096075b4a
+git cherry-pick db723e69b297294eaf9f4b2e8d4273b113580679
+git cherry-pick 38a993acd5677ac860903f9675fb537748f4301e
+git cherry-pick 52dc1c62519d149139bebf9e01fdf4c3c9a09d5e
+git cherry-pick 8ac302ef6ecba66e9bb9cb4285ee3de5b0b922bc
+
+1，前端控制请求
+2，4分钟三次，2次短信、1次语音，循环调用；验证码限制20次，语音限制10次；  每次验证码有效期10分钟；发多次，最后一次覆盖上一下；
+3，mapi返回验证码到期时间；
+4，图形验证码；
+5，其他逻辑照常限制

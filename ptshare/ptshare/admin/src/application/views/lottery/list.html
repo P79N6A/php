@@ -1,0 +1,43 @@
+<div class="rightinfo">
+        <input type="button" class="cancel" value="《 点击返回" onclick="history.go(-1);"/>
+        <div class="formbody">
+            <div class="formtitle"><span style="color: #ff0000;">七星彩 <?=$param['issue']?> 期</span></div>
+            
+            <table id = "tfhover" class="tftable" border="1">
+                <tr>
+                    <th>用户uid</th>
+                    <th>号码</th>
+                    <th>中奖状态</th>
+                    <th>发奖状态</th>
+                    <th>购买时间</th>
+                    <th>操作</th>
+                </tr>
+            <?php if($data['data'])foreach($data['data'] as $key=>$val){ ?>
+                <tr class="replay_item" node-type="replayItem" >
+                    <td><center><?=$val['uid']?></center></td>
+                    <td><center><?=$val['number']?></center></td>
+                    
+                    <td><center><?=$this->result[$val['result']]?></center></td>
+                    <td><center><?=$this->status[$val['status']]?></center></td>
+                    <td><center><?=$val['addtime']?></center></td>
+                    <td width="10%">
+                        <center>
+                            <!-- <a href="/lottery/list?issue=<?=$val['issue']?>">查看</a> -->
+                            <?php if(in_array($val['result'],[1,2,3,4,5,6]) && $val['status'] == "N"){ ?>
+                            <a href="/lottery/pay?id=<?=$val['id']?>">发奖</a>
+                            <?php } ?>
+                        </center>
+                    </td>
+                </tr>
+            <?php } else { ?>
+                <tr style="height: 20px;"><td colspan="7"> <center>列表信息为空！ </center></td></tr>
+            <?php } ?>
+    
+        </table>
+        <div>
+        <?php echo $data['mutipage'];?>
+        </div>
+           
+        </div>
+</div>
+

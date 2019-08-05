@@ -1,0 +1,52 @@
+Creating directory helloworld
+Creating basic files: config.m4 config.w32 .gitignore helloworld.c php_helloworld.h CREDITS EXPERIMENTAL tests/001.phpt helloworld.php [done].
+
+To use your new extension, you will have to execute the following steps:
+
+1.  $ cd ..
+2.  $ vi ext/helloworld/config.m4
+3.  $ ./buildconf
+4.  $ ./configure --[with|enable]-helloworld
+5.  $ make
+6.  $ ./sapi/cli/php -f ext/helloworld/helloworld.php
+7.  $ vi ext/helloworld/helloworld.c
+8.  $ make
+
+Repeat steps 3-6 until you are satisfied with ext/helloworld/config.m4 and
+step 6 confirms that your module is compiled into PHP. Then, start writing
+code and repeat the last two steps as often as necessary.
+
+
+步骤
+sudo /usr/local/Cellar/php71/7.1.14_25/bin/phpize
+sudo /usr/local/Cellar/php71/7.1.16_1/bin/phpize
+./configure --with-php-config=/usr/local/Cellar/php71/7.1.14_25/bin/php-config
+./configure --with-php-config=/usr/local/Cellar/php71/7.1.16_1/bin/php-config
+make
+
+cp modules/helloworld.so /usr/local/opt/php71-helloworld
+
+sudo killall php-fpm
+
+sudo php-fpm -D --fpm-config /usr/local/etc/php/7.1/php-fpm.conf
+
+
+
+
+    Nginx特点
+
+    1.支持Http协议，工作在网络7层
+    2.支持通过端口健康检测
+    3.支持强大的正则匹配规则
+    4.支持WebSocket协议
+    5.支持Http Cache
+
+
+
+    Haproxy特点
+
+    1.支持TCP与Http协议，工作在网络4层和7层
+    2.支持Session共享、Cookies引导
+    3.支持通过URL健康检测
+    4.支持8种负载均衡策略
+    5.支持心跳检测

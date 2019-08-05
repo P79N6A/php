@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+body{color:#353535; background-color: #fff; overflow-x:hidden; }
+div{box-sizing: border-box;}
+
+.content_sharer{padding: 0.512rem 0 0.213rem;position: relative; height: 1.707rem; overflow: hidden;}
+.avatar{width: 1.707rem; height: 1.707rem; float: left; margin-right: 0.341rem; border-radius: 1.707rem;}
+.sharer_info{font-size:0.597rem; line-height: 0.939rem; font-weight: 500;}
+.sharer_info text{margin-right: 0.213rem;}
+.sharer_info .icon{margin-right:0.213rem; position: relative; top: -0.043rem;}
+.sharer_signature{font-size: 0.512rem; color: #888;}
+
+.member_box{padding: 0.427rem 0.512rem 0;  overflow: hidden; background: url('https://static.putaofenxiang.com/v1/images/cat/member_bg.png') top center no-repeat; background-size: 100%;}
+.member_icon{width: 2.389rem; height: 2.219rem; margin: 0.427rem auto; display: block;}
+.member_icon2{width:3.328rem; height: 3.072rem; position: relative; top: -1.707rem; margin-bottom: -1.707rem;}
+.content_sharer{padding:0; margin-bottom: 0.853rem;}
+.content_sharer .icon4{margin-right: 0.213rem;width: 0.683rem; height: 0.683rem; vertical-align: middle;}
+.sharer_info{color: #fff;}
+.member_txt{color: #fff; line-height: 0.853rem; font-size: 0.597rem; margin-bottom: 0.64rem;}
+.member_info{margin-bottom:0.853rem; border-radius: 0.213rem; box-shadow: 0 0 0.213rem #eee; text-align: center; overflow: hidden;}
+.member_info_title{height: 3.627rem;position: relative; background: url('https://static.putaofenxiang.com/v1/images/cat/member_bg_info.png') 0 0 no-repeat; background-size:14.976rem 3.627rem; overflow: hidden; color: #fff; font-size: 0.853rem; line-height: 3.627rem; padding: 0;}
+.member_info_txt{line-height: 1.621rem;position: relative; font-size: 0.555rem; background-color: #fff; }
+.member_info_txt text{color: #9FE8DF; font-weight: 500;}
+.member_img{width:100%; height:100%;}
+
+.arrow_more2{position: absolute; right:0.427rem; top: 50%; margin-top: -0.299rem; }
+.icon2{width: 0.768rem; height: 0.768rem; vertical-align: middle;}
+.arrow_more2{width: 0.341rem; height: 0.597rem; vertical-align: middle;}
+
+.member_main{padding: 0 0 1.024rem 0.512rem; overflow: hidden;}
+.member_main_img{float: left; width: 4.267rem; height: 4.267rem; overflow:hidden; margin-top: 0.128rem; border-radius: 0.213rem; box-shadow: 0 0 0.213rem #eee ;}
+.member_intro{float: right; width: 10.795rem;}
+.member_intro_title{border-bottom: 0.085rem solid #9FE8DF;margin-bottom: 0.427rem;}
+.member_intro_title div{display: inline-block; line-height: 0.853rem; padding:0 0.981rem 0.213rem 0; font-size: 0.597rem; font-weight: 500; border:0.128rem solid #9FE8DF; border-right-color: #fff; border-width: 0 0.128rem 0.128rem 0;}
+.member_intro_txt{line-height: 0.853rem; font-size: 0.469rem; font-weight: lighter;}
+
+.pop_mask{ position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; bottom: 0;background-color: rgba(53, 53, 53, .8);}
+.pop_wrap{display: none;}
+.pop_member_wrap{position: fixed; z-index: 1100; width: 13.291rem; height:16.128rem; left: 50%; top: 50%; transform: translate(-50%,-50%); background: url('https://static.putaofenxiang.com/v1/images/cat/bg_member_pop2.png') top center no-repeat; background-size: cover; text-align: center; color: #fff;}
+
+.pop_member_title{font-size: 0.853rem; font-weight: 500;line-height:1.195rem; margin-bottom: 0.427rem; }
+.pop_member_txt{font-size: 0.597rem; line-height: 0.853rem; padding-bottom:  0.853rem;}
+.pop_member_btn{position: absolute; left: 0; right: 0; bottom: 0; height: 2.133rem;ext-align: center; border-top: 1px solid #888; color:#9FE8DF; font-size: 0.597rem; line-height: 2.133rem; border-radius: 0 }
+.min_code{ width:5.973rem; height: 5.973rem;}
+
+@media screen and (max-width: 320px) {
+    .member_main_img{margin-top:0.427rem; }
+    .member_main_img{width:3.2rem; height: 3.2rem;}
+    .member_intro{width:11.861rem;}
+}
+
+
+

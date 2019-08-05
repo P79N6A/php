@@ -1,0 +1,100 @@
+Command+L 跳转行
+Command+delete 删除当前行
+Command+shift+U 大小写转换
+Command+加号,Command+减号 收缩代码块
+Command+shift+加号，Command+shift+减号 收缩整个文档的代码块
+Command+W 关闭当前文件选项卡
+Command+O 跳转到某个类
+Command+shift+O 跳转到某个文件
+Command+E 弹出最近文件
+Command+B 跳转到变量声明处
+Command+Y 小浮窗显示变量声明时的行
+
+mapi_laputa_contract_with_landlords
+
+$contractService = app(WithLandlordServiceIf::class);
+        $contract = $contractService->findEffectContractBySuiteId($suite->id);
+        if (!$contract) {
+            return false;
+        }
+
+        return WithLandlord::query()
+            ->where('suite_id', $suiteId)
+            ->where(function ($query) {
+                return $query->where('status', Constant::get('STATUS_YIQIANYUE'))
+                    ->orWhere(function ($query) {
+                        $query->whereIn('stage', [Constant::get('STAGE_ZHIXINGZHONG'), Constant::get('STAGE_ZHIXINGJIESHU')]);
+                    });
+            })
+            ->orderBy('sign_date', 'desc')
+            ->orderBy('stage')
+            ->first();
+
+mapi_laputa_configuration
+
+// 固定月租房源
+        if ($this->isSettledMonthlyRent($suite)) {
+            return true;
+        }
+
+        if ($this->isMonthRentConfig($room)) {
+            return true;
+        }
+
+public function isMonthRentConfig($room)
+    {
+        $roomCode = $this->getMonthRentConfigValue();
+        return $roomCode && in_array($room->code, $roomCode);
+    }
+
+/**
+     * 获取config里的不可租房间id
+     */
+    public function getMonthRentConfigValue()
+    {
+        $config = \Configuration::findKey('月租房源列表');
+        if ($config && $config->value) {
+            $configValue = explode("|", $config->value);
+            foreach ($configValue as $value) {
+                $value = explode(":", $value);
+                if ($value[0] === 'BI录入可月租房源') {
+                    return explode(',', $value[1]);
+                }
+            }
+        }
+        return null;
+    }
+
+    public function isSettledMonthlyRent(Suite $suite, $room = null)
+    {
+        $contractService = app(WithLandlordServiceIf::class);
+        $contract = $contractService->findEffectContractBySuiteId($suite->id);
+        if (!$contract) {
+            return false;
+        }
+
+        $monthRentCity = [
+            "北京市",
+            "上海市",
+            "杭州市",
+            "深圳市",
+            "天津市",
+            "武汉市",
+            "南京市",
+            "成都市",
+            "广州市"
+        ];
+
+        if (!in_array($suite->cityName, $monthRentCity)) {
+            return false;
+        }
+
+        if ($suite->isMonth === "否" && (!$room || ($room && !$this->isMonthRentConfig($room)))) {
+            return false;
+        }
+
+        return true;
+    }
+
+    contract_with_customer_changes
+    

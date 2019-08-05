@@ -1,0 +1,80 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,input,textarea,p,table,th,td,img{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6{ font-weight: normal;}
+ul,li { list-style: none; }
+img { border: none; }
+
+a,a:visited,a:hover,a:active,button {
+    text-decoration: none;
+    vertical-align: middle;
+    outline: none;
+}
+button,input,select,textarea {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+}
+
+textarea,input {
+    resize: none;
+    outline: none;
+}
+textarea {
+    resize: none;
+    -webkit-appearance: none;
+}
+::-webkit-input-placeholder {
+    color: #999 !important;
+    text-overflow: ellipsis;
+    font-size: .64rem;
+    letter-spacing: 0;
+    font-family:Helvetica,"PingFang SC","Helvetica Neue","Microsoft Yahei",Arial,"sans-serif";
+}
+:-moz-placeholder {
+    color: #999 !important;
+    text-overflow: ellipsis;
+    font-size: .64rem;
+    letter-spacing: 0;
+    font-family:Helvetica,"PingFang SC","Helvetica Neue","Microsoft Yahei",Arial,"sans-serif";
+}
+::-moz-placeholder {
+    color: #999 !important;
+    text-overflow: ellipsis;
+    font-size: .64rem;
+    letter-spacing: 0;
+    font-family:Helvetica,"PingFang SC","Helvetica Neue","Microsoft Yahei",Arial,"sans-serif";
+} /* for the future */
+:-ms-input-placeholder {
+    color: #999 !important;
+    text-overflow: ellipsis;
+    font-size: .64rem;
+    letter-spacing: 0;
+    font-family:Helvetica,"PingFang SC","Helvetica Neue","Microsoft Yahei",Arial,"sans-serif";
+}
+
+button, input[type=submit],input[type=button], input[type=reset],input[type=number] {
+    -webkit-appearance: none !important;
+    outline: none !important;cursor: pointer;}
+
+
+
+html { -webkit-text-size-adjust: none; font-size: 20px;}
+.img { display: block; max-width: 100%; height:auto;  border: none; }
+.video embed,.video object,.video iframe { width: 100%; height: auto; }
+a { text-decoration: none; outline: none;}
+em{ font-style: normal;}
+table,th,td{border-collapse: collapse; }
+.clearfix:after,
+.clearfix:before { content: ""; display: table; }
+.clearfix:after { clear: both;}
+.clearfix { zoom: 1; }
+.fl {float: left;}
+.fr {float: right;}
+body{min-width:16rem; font-family:Helvetica,"PingFang SC","Helvetica Neue","Microsoft Yahei",Arial,"sans-serif"; background-color:#F4F5F7; color: #444; font-size:20px; font-weight: normal; }
+
+article{
+    width: 100%;
+    min-width: 16rem;
+    box-sizing: border-box;
+}

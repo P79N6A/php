@@ -1,0 +1,133 @@
+无线网密码
+danke_bi        bi.dev.sys
+dankebi         danke.bjspace
+danke-guest wifi.danke.life
+#共享目录权限
+172.16.30.130
+共享账号：xubaoguo  密码：Danke@1234
+
+172.16.31.54
+xubaoguo
+xubaoguo
+
+
+开发数据库已创建库名规范为： Mapi   用户名： mapi_user  密码： hA2nN3Yp6bpan
+172.16.31.52
+dsp_user
+zxABdHG2lfAZ5D
+
+#git权限
+找运维开通laputa的developer权限
+
+#wiki文档
+http://172.16.31.55:8083/doc/PEFehKSAl
+
+#数据字段文档
+http://www.dankegongyu.com/admin/arch/table-doc
+
+#公司VPN权限
+  找运维开通
+
+#jre权限
+http://project.danke.life
+
+#测试环境web root权限
+172.16.31.54，找运维开通
+
+#测试后台地址
+http://172.16.31.54:8080/admin
+
+
+#盘古wiki地址
+http://gitlab.danke.life/dankegongyu/PHP/Laputa/wikis/pangu
+
+#共享目录权限
+172.16.30.130，找运维开通
+
+运维邮箱 yunwei@dankegongyu.com
+
+数据字典
+http://172.16.31.54:8080/admin/arch/table-doc
+
+共享盘
+smb://172.16.30.130/蛋壳公寓APP需求/蛋壳公寓APP/APP1.6.0前需求汇总
+
+
+登录开发环境
+ssh -i ~/.ssh/id_rsa root@172.16.31.54
+
+城市-》区域-》小区-》公寓-》房间
+这是从大到小的关系
+
+
+
+git权限-laputa仓库权限
+172.16.31.54，开发服务器
+172.16.30.130，网盘
+公司VPN权限 + 青云vpn
+
+
+合并分支
+git reset HEAD~1
+git merge origin/gyl-optimize-user-article 合并到当前分支
+删除本地分支
+git push origin --delete pangu-master-bugfix-xbg-20181207
+删除远程分支
+git branch -d pangu-master-bugfix-xbg-20181207
+
+git push origin --delete feature-sugest-blacklist
+git push origin --delete feature-xbg
+git push origin --delete feature-xbg-ali
+
+git branch -D feature-sugest-blacklist
+git branch -D feature-xbg
+git branch -D feature-xbg-ali
+--------------------------撤销git上一次
+gco -b dev-1.9.8-bak
+git reflog
+git reset 68992be270
+gsb
+git reset --hard
+tig
+gsb
+git clean -fd
+gsb
+tig
+--------------------------撤销git上一次
+--------------------------撤销git某一次
+git reset 9a92638523bec9a009a16ed0f55ac6b8eb376d2e
+gsb
+tig
+git reset --hard
+git clean -fd
+gsb
+git push -f origin feature-promotion-change
+gsb
+tig
+--------------------------撤销git某一次
+
+sso.session.redis.danke:6379[1]> SELECT 0
+OK
+sso.session.redis.danke:6379> keys '*mobile:13311550087'
+1) "Firewall:MobileVerify::verifyCodemobile:13311550087"
+(3.16s)
+sso.session.redis.danke:6379> get Firewall:MobileVerify::verifyCodemobile:13311550087
+
+get Firewall:MobileVerify::verifyCodemobile:18556781907
+get Firewall:MobileVerify::verifyCodeAppletmobile:18556781907
+
+sso.session.redis.danke:6379
+选择数据库select 0
+
+get Firewall:SendMobileCode::sendCodetext2019-06-1818556781907
+get Firewall:SendMobileCode::sendCodevocie2019-06-1818556781907
+get Firewall:total_send_2019-06-1818556781907
+
+禁止git push -f
+禁止rm -rf
+
+git强制更新
+git fetch --all
+git reset --hard origin/master
+git cherry-pick
+https://www.cnblogs.com/0201zcr/p/5752771.html

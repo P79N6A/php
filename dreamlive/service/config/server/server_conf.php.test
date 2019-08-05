@@ -1,0 +1,516 @@
+<?php
+$ROOT_PATH = "/home/dream/codebase/service";
+
+//------------------------------ 游戏系统  --------------------------------
+$MYSQL_CONF_GAME= array(
+	"hosts"=>array(
+		1=>array(
+			"driver"       => "mysql",
+			"host"         => "localhost",
+			"port"         => "3306",
+			"username"     => "root",
+			"password"     => 'Dnvq$w0.mp637C0zEea',
+			"charset"      => "utf8mb4",
+			"database"     => "dream_game",
+			"persistent"   => false,
+			"unix_socket"  => "",
+			"options"      => array(PDO::ATTR_TIMEOUT => 3)
+		),
+	),
+	"sharding"=>array(
+		/*"account" => array(
+			"type"=>"hash",
+			"shard"=>100,
+			"range"=>array(
+				array("min"=>0,  "max"=>99, "confid"=>1),
+			)
+		),*/
+	),
+);
+
+//------------------------------ report系统  --------------------------------
+$MYSQL_CONF_DREAM_REPORT= array(
+	"hosts"=>array(
+		1=>array(
+			"driver"       => "mysql",
+			"host"         => "localhost",
+			"port"         => "3306",
+			"username"     => "root",
+			"password"     => 'Dnvq$w0.mp637C0zEea',
+			"charset"      => "utf8mb4",
+			"database"     => "dream_report",
+			"persistent"   => false,
+			"unix_socket"  => "",
+			"options"      => array(PDO::ATTR_TIMEOUT => 3)
+		),
+	),
+);
+//------------------------------ 直播 --------------------------------
+$MYSQL_CONF_LIVE = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "localhost",
+	        "port"         => "3306",
+	        "username"     => "root",
+	        "password"     => 'Dnvq$w0.mp637C0zEea',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_live",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3),
+        ),
+	),
+	"sharding"=>array(
+    	"newsfeeds" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+    	"userfeeds" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+     	"reply" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+	),
+);
+
+//------------------------------ 渠道  --------------------------------
+$MYSQL_CONF_CHANNEL = [
+    "hosts" => [
+        1 => [
+            "driver" => "mysql",
+            "host" => "localhost",
+            "port" => "3306",
+            "username" => "root",
+            "password"     => 'Dnvq$w0.mp637C0zEea',
+            "charset" => "utf8mb4",
+            "database" => "dream_channel",
+            "persistent" => false,
+            "unix_socket" => "",
+            "options" => [PDO::ATTR_TIMEOUT => 3],
+        ],
+    ],
+];
+
+//------------------------------ 计数器  --------------------------------
+$MYSQL_CONF_COUNTER = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "localhost",
+	        "port"         => "3306",
+	        "username"     => "root",
+	        "password"     => 'Dnvq$w0.mp637C0zEea',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_counter",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3),
+        ),
+	),
+	"sharding"=>array(
+    	"counter" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	)
+	),
+);
+//------------------------------ 消息  --------------------------------
+$MYSQL_CONF_MESSAGE = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "localhost",
+	        "port"         => "3306",
+	        "username"     => "root",
+	        "password"     => 'Dnvq$w0.mp637C0zEea',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_message",
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3, PDO::ATTR_PERSISTENT => false),
+        ),
+	),
+	"sharding"=>array(
+    	"message" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+	),
+);
+
+//------------------------------ 用户  --------------------------------
+$MYSQL_CONF_PASSPORT = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "localhost",
+	        "port"         => "3306",
+	        "username"     => "root",
+	        "password"     => 'Dnvq$w0.mp637C0zEea',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_passport",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(),
+	         PDO::ATTR_TIMEOUT => 3
+        ),
+	),
+	"sharding"=>array(
+    	"profile" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+        "follower" => array(
+	   		"type"=>"hash",
+	   		"shard"=>100,
+	   		"range"=>array(
+    	    	array("min"=>0,  "max"=>99, "confid"=>1),
+    	    )
+    	),
+        "following" => array(
+        	"type"=>"hash",
+        	"shard"=>100,
+        	"range"=>array(
+            	0=>array("min"=>0,  "max"=>99, "confid"=>1),
+            )
+        )
+	),
+);
+
+$MYSQL_CONF_TASK = array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "localhost",
+	        "port"         => "3306",
+	        "username"     => "root",
+	        "password"     => 'Dnvq$w0.mp637C0zEea',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_task",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(),
+	         PDO::ATTR_TIMEOUT => 3
+        ),
+	),
+	"sharding"=>array(
+    	"user_exp" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0,  "max"=>99, "confid"=>1)
+    		)
+    	),
+    	"user_task" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0, "max"=>99, "confid"=>1)
+    		)
+    	),
+    	"user_task_details" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0, "max"=>99, "confid"=>1)
+    		)
+    	),
+    	"user_task_award" => array(
+    		"type"=>"hash",
+    		"shard"=>100,
+    		"range"=>array(
+    			array("min"=>0, "max"=>99, "confid"=>1)
+    		)
+    	),
+    ),
+);
+
+//------------------------------ 经济系统  --------------------------------
+$MYSQL_CONF_PAYMENT= array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "localhost",
+	        "port"         => "3306",
+	        "username"     => "root",
+	        "password"     => 'Dnvq$w0.mp637C0zEea',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_payment",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3)
+        ),
+	),
+	"sharding"=>array(
+	   "account" => array(
+	   		"type"=>"hash",
+	   		"shard"=>100,
+	   		"range"=>array(
+    	    	array("min"=>0,  "max"=>99, "confid"=>1),
+    	    )
+    	),
+        "journal" => array(
+        	"type"=>"hash",
+        	"shard"=>100,
+        	"range"=>array(
+            	0=>array("min"=>0,  "max"=>99, "confid"=>1),
+            )
+        ),
+        "star_journal" => array(//增加配置
+        			"type"=>"hash",
+        			"shard"=>100,
+        			"range"=>array(
+        				0=>array("min"=>0,  "max"=>99, "confid"=>1),
+        			)
+        ),
+        "order" => array(
+        			"type"=>"hash",
+        			"shard"=>100,
+        			"range"=>array(
+        				0=>array("min"=>0,  "max"=>99, "confid"=>1),
+        			)
+        		),
+	)
+);
+//------------------------------活动-----------------------------------
+$MYSQL_CONF_ACTIVITY_JAVA= array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "localhost",
+	        "port"         => "3306",
+	        "username"     => "root",
+	        "password"     => 'Dnvq$w0.mp637C0zEea',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_activity",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3)
+        ),
+	),
+);
+//------------------------------ 家族  --------------------------------
+$MYSQL_CONF_FAMILY= array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "localhost",
+	        "port"         => "3306",
+	        "username"     => "root",
+	        "password"     => 'Dnvq$w0.mp637C0zEea',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_family",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3)
+        ),
+	),
+);
+//------------------------------ 图床  --------------------------------
+$MYSQL_CONF_UPLOAD= array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "localhost",
+	        "port"         => "3306",
+	        "username"     => "root",
+	        "password"     => 'Dnvq$w0.mp637C0zEea',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_upload",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3)
+        ),
+	),
+	"sharding"=>array(
+	)
+);
+//------------------------------ 计数器  --------------------------------
+$REDIS_CONF_COUNTER = array(
+	"hosts"=>array(
+		//组
+	    0 => array(
+	        "master" => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => ""),
+	        "slave" => array(
+	        0 => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => "")
+	        ),
+	    ),
+    ),
+    "sharding"=>array(
+    	"type"=>"hash",
+    )
+);
+
+//------------------------------ USER --------------------------------
+$REDIS_CONF_USER = array(
+	"hosts"=>array(
+		//组
+	    0 => array(
+	        "master" => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => ""),
+	        "slave" => array(
+	        0 => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => "")
+	        ),
+	    ),
+    ),
+    "sharding"=>array(
+    	"type"=>"range",
+    	"range"=>array(
+    		array("min"=>0, "max"=>20000000, "group"=>0)
+    	)
+    )
+);
+
+$REDIS_CONF_SESSION = array(
+        "hosts"=>array(
+            //组
+            0 => array(
+                "master" => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => ""),
+                "slave" => array(
+                    0 => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => "")
+                    ),
+                ),
+            ),
+        "sharding"=>array(
+            "type"=>"range",
+            "range"=>array(
+                array("min"=>0, "max"=>20000000, "group"=>0)
+                )
+            )
+        );
+
+$REDIS_CONF_FOLLOW = array(
+	"hosts"=>array(
+		//组
+	    0 => array(
+	        "master" => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => ""),
+	        "slave" => array(
+	        0 => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => "")
+	        ),
+	    ),
+    ),
+    "sharding"=>array(
+    	"type"=>"range",
+    	"range"=>array(
+    		array("min"=>0, "max"=>20000000, "group"=>0)
+    	)
+    )
+);
+
+$REDIS_CONF_FORBIDDEN = array(
+        "hosts"=>array(
+            //组
+            0 => array(
+                "master" => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => "", "master"=>true),
+                "slave" => array(
+                    0 => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => "", "master"=>false, "index"=>0),
+                    ),
+                ),
+            1 => array(
+                "master" => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => "", "master"=>true),
+                "slave" => array(
+                    0 => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => "", "master"=>false, "index"=>0),
+                    ),
+                ),
+            ),
+        "sharding"=>array(
+                "type"=>"range",
+                "range"=>array(
+                    array("min"=>0, "max"=>10000, "group"=>0),
+                    array("min"=>10000, "max"=>20000, "group"=>1)
+                    )
+                )
+        );
+
+//------------------------------ 用户  --------------------------------
+$MYSQL_CONF_ACTIVITY= array(
+	"hosts"=>array(
+		1=>array(
+	        "driver"       => "mysql",
+	        "host"         => "localhost",
+	        "port"         => "3306",
+	        "username"     => "root",
+	        "password"     => 'Dnvq$w0.mp637C0zEea',
+	        "charset"      => "utf8mb4",
+	        "database"     => "dream_activity",
+	        "persistent"   => false,
+	        "unix_socket"  => "",
+	        "options"      => array(PDO::ATTR_TIMEOUT => 3)
+        ),
+	),
+);
+
+//------------------------------ 公共  --------------------------------
+$REDIS_CONF_CACHE = array(
+	"hosts"=>array(
+		//组
+	    0 => array(
+	        "master" => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => ""),
+	        "slave" => array(
+	        0 => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => "")
+	        ),
+	    ),
+    ),
+    "sharding"=>array(
+    	"type"=>"hash",
+    )
+);
+
+//------------------------------ 经济系统  --------------------------------
+$REDIS_CONF_PAYMENT = array(
+	"hosts"=>array(
+    		//组
+    	    0 => array(
+    	        "master" => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => ""),
+    	        "slave" => array(
+    	        0 => array("host" => "127.0.0.1","port" => 6379,"timeout" => 3,"password" => "")
+    	        ),
+    	    ),
+        ),
+        "sharding"=>array(
+        	"type"=>"hash",
+        )
+);
+
+$STORAGE_CONF = array(
+    "accessKeyId"      => "LTAIorLBnvlkwtYd",
+    "accessKeySecret"  => "U15f9f3bLnd9caBvsCwGKWSY8rb43b",
+    "endpoint"         => "oss-cn-beijing.aliyuncs.com",
+    "bucket"           => "image-10",
+);
+
+$RONGCLOUD_CONF = array(
+	"appkey" 	=> "y745wfm8yobxv",//融云测试appkey
+	"secret"	=> "X5PbEVRXjThiD",//融云密钥
+);
+
+$ENV = 'beta';
+
+//$STATIC_DOMAIN = "http://static.dreamlive.tv";
+
+$RONGCLOUD_KAFKA_URL = "http://kafkamsgapi.cn.ronghub.com/rtmsg/chatroom/qrymsg.json";
+//$RONGCLOUD_KAFKA_URL = "http://apikafkaqa.cn.ronghub.com/rtmsg/chatroom/qrymsg.json";
+
+include $ROOT_PATH."/config/server/server_conf.common.php";
+include $ROOT_PATH."/config/server/language_conf.php";
+?>

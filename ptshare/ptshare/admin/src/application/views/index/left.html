@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>left</title>
+	<link rel="stylesheet" type="text/css" href="/css/common/main.css" />
+	<style>
+	.left dl dd a.click_on{
+		background-color: #ccc;
+	}
+	</style>
+	<script language="javascript" src="/js/jquery.min.js"></script>
+
+   </head>
+<body>
+	<div class="left">
+        <?php foreach ($menu_list as $cateKey=>$cate) { ?>
+		<dl>
+            <dt><span class="icon"></span><a href="javascript:;"><?=$cateKey?></a></dt>
+            <dd>
+                <?php foreach ($cate as $title=>$path) { ?>
+                    <?php if(count($path) > 1 and is_array($path)) { ?>
+                    <dl>
+                        <dt><a href="javascript:;"><?=$title?></a></dt>
+                        <dd>
+                            <?php foreach ($path as $title2=>$path2){ ?>
+	                            <?php if(count($path2) > 1 && is_array($path2)) {?>
+			                    <dl>
+			                        <dt><a href="javascript:;"><?=$title2?></a></dt>
+			                        <dd>
+			                        <?php foreach($path2 as $title3=>$path3) {?>
+			                        	<a href="<?=$path3?>" target="I2"><?=$title3?></a>
+			                       	<?php } ?>
+			                        </dd>
+			                    </dl>
+	                            <?php } else {?>
+	                            <a href="<?=$path2?>" target="I2"><?=$title2?></a>
+	                            <?php } ?>
+	                         <?php } ?>
+                        </dd>
+                        </dl>
+                     <?php } else { ?>
+                        <a href="<?=$path?>" target="I2"><?=$title?></a>
+                     <?php } ?>
+                <?php } ?>
+            </dd>
+        </dl>
+        <?php } ?>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$(".left dl dt").click(function(){
+			$(this).toggleClass("on");
+			$(this).next().toggle(300);
+		});
+	
+		$('.left dl a').click(function(){
+			$('.left dl a').removeClass('click_on');
+			$(this).addClass('click_on');
+		});
+	});
+	</script>
+</body>
+</html>

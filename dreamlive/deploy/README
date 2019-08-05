@@ -1,0 +1,14 @@
+deploy-package.sh:
+  第一次部署的时候使用。从svn中获取所有代码，打包上传。
+  将代码传到 $REAL_REMOTE_DEPLOY_DIR 目录下
+  并建立 $REMOTE_DEPLOY_DIR -> $REAL_REMOTE_DEPLOY_DIR 的link
+  如果发现$REAL_REMOTE_DEPLOY_DIR 已经存在， 会提示是否继续部署。 选择n 会退出程序
+
+deploy-release.sh
+  ./deploy-release.sh file1 file2 dir1 dir2
+  原有的文件会被打包保存到    $ONLINE_BACKUP_DIR 目录下, 20111220122016-$PROJECT_NAME-bak.tgz (时间-project_name-bak.tgz)
+  新上传的文件会被打包保存到  $ONLINE_BACKUP_DIR 目录下, 20111220122016-290-gyz-test-up.tgz  (时间-svn版本号-project_name-up.tgz)
+
+deploy-beta.sh
+  project_home=deploy_tools_dir/..
+  从project_home目录下取文件更新到线上。 当deploy_tools目录不在源码目录中，运行会有问题

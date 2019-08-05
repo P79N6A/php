@@ -1,0 +1,104 @@
+
+
+<div class="rightinfo">
+      <div style="margin-bottom: 5px; border: 1px solid #000000; padding: 10px">
+        <form name="search" method="get" action="/pay/list">
+            <h6>条件搜索</h6>
+            <table class="table">
+                <tr>
+                    <td style="height: 30px; line-height: 40px; text-align: right;">用户id：</td>
+                    <td><input type="text" name="uid" value="<?=$_GET['uid']?>" style="height: 25px"/></td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;订单号：</td>
+                    <td><input type="text" name="orderid" value="<?=$_GET['orderid']?>" style="height: 25px"/></td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;状态：</td>
+                    <td>
+                        <select name="status" style="height: 15px;width: 100px;'">
+                          <option value="-1" <?php if($_GET['status'] == '-1') {echo 'selected="selected"';}?>>所有</option>
+                          <option value="P" <?php if($_GET['status'] == 'P') {echo 'selected="selected"';}?>>支付准备</option>
+                            <option value="Y" <?php if($_GET['status'] == 'Y') {echo 'selected="selected"';}?>>支付成功</option>
+                          <option value="N" <?php if($_GET['status'] == 'N') {echo 'selected="selected"';}?>>支付失败</option>
+                          <option value="C" <?php if($_GET['status'] == 'C') {echo 'selected="selected"';}?>>支付取消</option>
+                          <option value="R" <?php if($_GET['status'] == 'R') {echo 'selected="selected"';}?>>已退款</option>
+                        </select>
+                    </td>
+
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;付款类型：</td>
+                    <td>
+                        <select name="type" style="height: 15px;width: 100px;'">
+                          <option value="-1" <?php if($_GET['type'] == '-1') {echo 'selected="selected"';}?>>所有</option>
+                          <option value="VIP" <?php if($_GET['type'] == 'VIP') {echo 'selected="selected"';}?>>VIP</option>
+                            <option value="ORDER" <?php if($_GET['type'] == 'ORDER') {echo 'selected="selected"';}?>>订单</option>
+                          <option value="MEMBER" <?php if($_GET['type'] == 'MEMBER') {echo 'selected="selected"';}?>>会员</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr style="height: 30px;"><td> </td></tr>
+                <tr><td><input type="submit" name="submit" value="查 询" style="padding: 3px 5px; background-color: #0000FF; color:#FFFFFF; width: 70px"></td></tr>
+            </table>
+        </form>
+    </div>
+          <table id="tfhover" class="tftable">
+            <thead class="thin-border-bottom">
+              <tr>
+                <th align="center" class="text-center">帐号id</th>
+				<th align="center" class="text-center">订单号</th>
+				<th align="center" class="text-center">金额</th>
+        <th align="center" class="text-center">代金券</th>
+				<th align="center" class="text-center">币种</th>
+				<th align="center" class="text-center">来源</th>
+                <th align="center" class="text-center">状态</th>
+                <th align="center" class="text-center">创建时间</th>
+                <th align="center" class="text-center">付款类型</th>
+                <th align="center" class="text-center">退款时间</th>
+				<th align="center" class="text-center">操作</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php if($list) foreach($list as $value) { ?>
+              <tr>
+                <td><center><?php echo $value['uid'];?></center></td>
+                <td><center><a href="/orders/detail?orderid=<?php echo $value['orderid'];?>"><?php echo $value['orderid'];?></a></center></td>
+				<td><center><?=$value['amount']?></center></td>
+				<td><center><?php echo $value['coupon'];?></center></td>
+				<td><center><?php echo $value['currency'];?></center></td>
+                <td><center><?php echo $paymentData[$value['source']];?></center></td>
+				<td><center><a <?php if ($value['status'] == 'Y') {?> class="btn2 btn-w-m btn-green" <?php } else {?> class="btn2 btn-w-m btn-pink" <?php } ?> style="padding: 2px 5px;" href="/pay/list?status=<?=$value['status']?>"><?=$statusData[$value['status']]?></a></center></td>
+                <td><center><?php echo $value['addtime'];?></center></td>
+                <td><center><a <?php if ($value['type'] == 'ORDER') {?> class="btn2 btn-w-m btn-warning" <?php } else {?> class="btn2 btn-w-m btn-info" <?php } ?> style="padding: 2px 5px;" ><?php echo $typeData[$value['type']];?></a></center></td>
+                <td><center><?if($value['refund_time'] != '0000-00-00 00:00:00'){?><?php echo $value['refund_time'];?><?}else{?> 无 <?php } ?></center></td>
+
+                <td>
+                <center><?if($value['refund_time'] != '0000-00-00 00:00:00'){?>
+          			<?}else{?>
+            		<?if($value['status'] == 'Y'){?>
+			              <!-- <a href="javascript:;" onclick="frozen('<?=$value['uid']?>')" class="frozen grey_btn">退款</a> -->
+			              <?}else{?>
+
+              		<? }?>
+          			<?}?></center>
+          		</td>
+              </tr>
+		<?php } else { ?>
+            <tr style="height: 20px;"><td colspan="11"> <center>列表信息为空！ </center></td></tr>
+        <?php } ?>
+
+        <tr style="height: 20px;"><td colspan="11"> </td></tr>
+            <style>
+                .pagination{float: none}
+            </style>
+        <?php if ($page) {?>
+            <tr style="text-align: center; background: #FFF; height: 40px;">
+                <td colspan="9"><?=$page?></td>
+                <td colspan="2">总数=<?=$total?></td>
+            </tr>
+        <?php }?>
+            </tbody>
+          </table>
+        <div>
+        </div>
+
+</div>

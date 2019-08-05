@@ -1,0 +1,8 @@
+http://172.21.50.38:8383/dk/es/searchhs
+http://172.21.50.38:8383/dk/es/searchRecommendHs
+http://172.18.130.7:8383/dk/data/cityHotLocation/1
+http://172.18.130.7:8383/dk/data/cityHotWordV2/178
+http://172.18.130.7:8383/dk/data/roomLively/142120
+http://172.21.50.38:8383/dk/es/searchXiaoquAggs/1/悠唐
+http://172.18.130.7:8383/dk/data/roomNearSite/142120
+http://172.21.50.38:8383/dk/es/searchHotBlock/1/39.929108/116.445052

@@ -1,0 +1,23 @@
+<div class="rightinfo">
+    <form id='form'  action="/admin/insert/" method="post">
+        <div class="formbody">
+            <div class="formtitle"><span>基本信息</span></div>
+            <ul class="forminfo">
+                <li><label>名称</label><input name="username" type="text" value="" class="dfinput" /><i>登陆账号，如liuchenguang</i></li>
+                <li><label>真实姓名</label><input name="realname" type="text" value="" class="dfinput" /><i>&nbsp;</i></li>
+                <li><label>密码</label><input name="password" type="password" value="" class="dfinput" /><i>至少六位字母数字组成</i></li>
+                <li><label>超级权限</label><cite><input name="super" type="radio" value="N" checked="checked" />&nbsp;否&nbsp;&nbsp;&nbsp;&nbsp;<input name="super" type="radio" value="Y" />&nbsp;是</cite></li>
+                <li><label>用户角色</label><cite>
+                <?php
+                foreach($role_list as $v){
+                    echo '&nbsp;<input type="checkbox" value="'.$v['roleid'].'" name="roleids[]" />&nbsp;'.$v['name'];
+                }
+                ?>
+                </cite></li>
+                <li><label>手机号码</label><input name="mobile" type="text" value="" class="dfinput" /><i>11位数字，如13888888888</i></li>
+                <li><label>&nbsp;</label><input id="_saveBtn" name="" type="submit" class="btn" value="确认保存"/></li>
+            </ul>
+
+        </div>
+    </form>
+</div>

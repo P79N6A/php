@@ -1,0 +1,80 @@
+一、椋鸟计划，（1天）
+    1、接口
+        1、加入
+            逻辑判断
+                国内
+                    爬虫信息(通过第三方合作公司获取)比对，看毕业时间是否是2019年
+                国外
+                    后台人肉审核
+
+    2、表
+        1、 starling_program_member表
+            id
+            user_id蛋壳用户id
+            name 姓名
+            idcard身份证
+            gender性别
+            college_name 院校
+            department 院系
+            major专业
+            graduation_date毕业日期
+            is_abroad 是否是海外
+            attachment附件
+            status状态
+            addtime
+            modtime
+二、万元礼包（1天）
+    1、接口
+        1、发起活动接口
+        2、加入活动接口
+            逻辑判断
+                每个人仅可以助力三个人
+                必须登录
+                要记录昵称头像
+        3、查询是否助力过的状态接口
+    2、表
+        1、发起人表
+        group表
+            id
+            user_id
+            group_type活动类型
+            startime
+            endtime
+            addtime
+            modtime
+
+
+
+        2、助力人成员表
+        group_member
+            id
+            group_id
+            user_id
+            open_id微信openid
+            user_name用户名
+            avatar头像
+            addtime
+            modtime
+
+
+三、校园合伙人（3天）
+    1、接口
+        1、成为合伙人表
+        2、我的个人中心页面接口
+        3、我的佣金列表页（3个tab，全部，本月，本周）
+        4、我的合伙人列表页（3个tab， 全部,已签约，未签约）
+        5、绑定银行卡接口
+        6、发起提现接口
+        7、排行榜接口（3个tab，全部，本月，本周）
+        8、我的提现明细列表
+        9、接受邀请加入接口
+
+    2、表
+        1、合伙人表
+        2、合伙人下级成员表
+        3、提现表
+        4、我的银行卡表
+        5、我的佣金表
+        6、排行榜表
+    3、定时任务
+        跑佣金

@@ -1,0 +1,36 @@
+椋鸟注册量
+
+椋鸟呼出量	无法来源纬度	无法渠道纬度	无法城市纬度待定
+椋鸟带看量	无法来源纬度	无法渠道纬度	无法城市纬度待定
+
+椋鸟签约量
+
+以下除非王健传来源给我可以来源纬度
+
+认证总量		来源纬度待定
+通过总量		来源纬度待定
+
+学信网认证量	来源纬度待定
+学信网通过量	来源纬度待定
+
+海外认证量	来源纬度待定
+海外通过量	来源纬度待定
+
+select a.block_id, b.name from Laputa.passengers as a left join Laputa.areas as b on a.block_id = b.id where a.source = '椋鸟计划第四季' and a.block_id is not null limit 10;
+
+北京  官网线上  APP
+北京  官网线上  PC
+北京  官网线上  M
+北京  官网线上  小程序
+
+北京  线下1  APP
+北京  线下1  PC
+北京  线下1  M
+北京  线下1  小程序
+
+北京  线下2  APP
+北京  线下2  PC
+北京  线下2  M
+北京  线下2  小程序
+
+

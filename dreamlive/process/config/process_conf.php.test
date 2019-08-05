@@ -1,0 +1,152 @@
+<?php
+define("QUEUE_TYPE_NORMAL", 1); //普通队列
+define("QUEUE_TYPE_PRIORITY", 2); //优先队列
+define("QUEUE_TYPE_ROUTE", 3); //分发队列
+define("QUEUE_TYPE_DELAY", 4); //延迟队列
+
+$QUEUE_CONF = array(
+    "dream" => array(
+	"servers" => array(
+		0 => array(
+		array("host" => "127.0.0.1", "port" => 6379, "timeout" => 3, "password" => ""),
+		),
+	),
+    "queue" => array(
+        "image-thumb"=>array("type"=>QUEUE_TYPE_NORMAL, "retry"=>2, "server"=>0), //图片处理[缩略图]
+        "image-webp"=>array("type"=>QUEUE_TYPE_NORMAL, "retry"=>2, "server"=>0), //图片处理[格式转换]
+        // 计数器
+        'counter_change' => array('type' => QUEUE_TYPE_NORMAL, "retry"=>2, 'server' => 0),
+        "verified_apply" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//前台通知后台用户申请认证
+        "verified_modify" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//前台通知后台用户修改认证信息
+        "live_start" => array("type" => QUEUE_TYPE_ROUTE, "server" => 0, "queues" => array("live_start_broadcast", 'live_start_operate', 'live_distribute_robot', 'create_room', 'activity_live_start', 'live_start_broadcast_distribute')),
+        'live_start_broadcast_distribute'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0,"queues" => array("live_start_broadcast_push")),
+        'live_sync_control'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        'live_distribute_robot'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        'live_start_broadcast_push'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        'live_robot_action'=>array("type" => QUEUE_TYPE_DELAY, "retry" => 2, "server" => 0),
+        'live_robot_praise'=>array("type" => QUEUE_TYPE_DELAY, "retry" => 2, "server" => 0),
+        'live_robot_quit'=>array("type" => QUEUE_TYPE_DELAY, "retry" => 2, "server" => 0),
+        'live_rank_generate'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "followings_increase_newsfeeds" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "followings_decrease_newsfeeds" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "live_delete_control" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+		"live_monitor_addpoint" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//后台记录前台直播监控打点
+		"live_admin_start_broadcast" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//后台记录前台直播监控打点
+		"live_admin_start_push" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//后台记录前台直播监控打点
+		"deal_replay_title" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//后台处理回放字幕队列
+		"push_replay_title" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//前台记录回放字幕写入队列
+		"delete_feeds_worker" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//前台删除图片视频
+		"live_error_worker" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//聊天室失败日志
+		"login_gift_log_worker" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//登录送礼
+		"login_bonus_worker" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//注册送10元现金
+		"free_revival_worker" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//充值送复活卡
+		"match_release_worker" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//送礼移除小黑屋
+		"live_error_new_worker" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//新聊天室失败日志
+		"follower_robot_add" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//自动加粉丝
+		"live_kafka_worker" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//kafka日志
+		"replay_no_title" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//没有回放字幕
+		"client_log_worker" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//日志收集
+		"live_monitor_errormsg" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//日志收集
+		"live_monitor_step1" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//直播监控1
+		"live_monitor_step2" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//直播监控2
+		'robot_chat'=>array("type" => QUEUE_TYPE_DELAY, "retry" => 2, "server" => 0),
+		'robot_receive'=> array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//机器人聊天
+
+		'admin_notice_worker'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+		'admin_notice_distribute'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+		'admin_notice_push'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+		
+		'zhubo_admin_start_push'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//主播推送开始
+		'zhubo_admin_distrbute'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//主播推送分发
+		'zhubo_admin_start_prepare'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//主播推送接收
+		
+		'sex_liver_prepare'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//性感主播推送开始
+		'sex_liver_distrbute'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//性感主播推送分发
+		'sex_liver_push'=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//性感主播推送接收
+		
+		"report" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//后台举报
+		"answer_cash_send" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//答题发奖
+
+        "image_create_control" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "image_delete_control" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "image_deleted_control_broadcast" => array("type" => QUEUE_TYPE_ROUTE, "server" => 0, "queues" => array("image_audit_stop", 'image_recommend_stop')),
+        "image_sync_control" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "image_audit_init" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "image_audit_stop" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+
+        "video_create_control" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "video_created_control_broadcast" => array("type" => QUEUE_TYPE_ROUTE, "server" => 0, "queues" => array("video_audit_init")),
+        "video_sync_control" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "video_delete_control" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "video_deleted_control_broadcast" => array("type" => QUEUE_TYPE_ROUTE, "server" => 0, "queues" => array("video_audit_stop")),
+        "video_audit_init" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+
+        "reply_audit_init" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "rivival_used_log" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//答题复活卡使用记录
+
+        "cover_audit_init" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+
+        "activity_comment_data" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+
+        "passport_sync_data" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),//用户
+        //直播开始
+        "live_start_broadcast" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0), //直播开始广播
+        "live_start_operate" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0), //直播开始需要异步处理操作
+        "live_distribute_robot" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0), //直播分发机器人
+        "create_room" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0), //直播开始 创建聊天室
+        "live_stop" => array("type" => QUEUE_TYPE_ROUTE, "server" => 0, "queues" => array('live_stop_operate', 'destroy_room', 'activity_live_stop')),
+        //直播结束
+        "live_stop_operate" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0), //直播结束需要异步处理操作
+        "destroy_room" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0), //直播结束 销毁聊天室
+        "activity_live_stop" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0), //直播结束广播 活动订阅
+        "passport_add_dau" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0), //添加用户日活记录
+        "live_screenshot" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "live_started_control_broadcast" => array("type" => QUEUE_TYPE_ROUTE, "server" => 0, "queues" => array("live_audit_init", 'live_recommend_init')),
+        "live_audit_init" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "live_recommend_init" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "live_stoped_control_broadcast" => array("type" => QUEUE_TYPE_ROUTE, "server" => 0, "queues" => array("live_audit_stop", 'live_recommend_stop')),
+        "live_audit_stop" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "live_recommend_stop" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "live_stop_control" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 2, "server" => 0),
+        "passport_task_execute" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),
+        "passport_send_email" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),
+        "passport_save_avatar" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),
+        "filter_word_log" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),
+        "filter_nickname_worker" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),
+
+        "resources_add_newsfeeds"=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),
+        "follower_add_newsfeeds"=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),
+
+        "sync_feedback_add" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0), //反馈
+        "account_task_work" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//做任务分配星光
+        "stream_monitor_addpoint" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),
+        "passport_merge_user" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//合并老用户
+        "passport_sync_user_weibo"=> array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//大v 提醒
+        "antispam_gather"=> array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//垃圾数据
+        "user_login_speed"=> array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//测速
+        "task_payment_worker"=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//充值任务
+		"task_execute_worker" =>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//充值任务分发
+		"istudio_receive_msg" =>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//istudio合作
+		"chat_send_async" =>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//聊天异步
+		"audience_sort_worker" =>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//观众列表排序
+
+        "kefu_message_woker" =>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//客服消息
+        "vip_consume_add_worker"=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//vip累计消费
+        "package_share" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//红包分享次数
+        "channel_shortlink" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//用户注册渠道
+
+        "forbidden_control"=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//封禁
+        "live_receive_audience_online"=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//看播用户列表
+        "live_receive_audience_online_delete"=>array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//看播用户列表
+        "chat_count_num" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//聊天数量记录
+        
+        "user_guard_activity_add_worker" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//守护活动
+        "passport_user_login_position" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//用户位置
+        "same_city_slave" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//同城bucket
+        "same_city_refresh_list" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),//同城 城市列表刷新
+
+        "passport_sync_user_recall" => array("type" => QUEUE_TYPE_NORMAL, "retry" => 0, "server" => 0),
+        ),
+    ),
+);
+
